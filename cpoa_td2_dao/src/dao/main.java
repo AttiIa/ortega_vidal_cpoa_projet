@@ -33,7 +33,7 @@ public class main {
 		}
 		
 		//recuperation de l'operation desire
-		System.out.println("quel op�ration? "
+		System.out.println("quel operation? "
 				+ "1.Ajouter une ligne "
 				+ "2.Supprimer une ligne "
 				+ "3.Modifier un ligne ");
@@ -45,7 +45,7 @@ public class main {
 		case 3 : modif=true;
 		}
 		
-		//table Periodicite, m�thode d'ajout
+		//table Periodicite, methode d'ajout
 		if(b_per&&ajout) {
 			Periodicite per = new Periodicite();
 			
@@ -59,7 +59,7 @@ public class main {
 			Init();
 		}
 
-		//table Periodicite, m�thode de suppression
+		//table Periodicite, methode de suppression
 		else if(b_per&&supp) {
 			Periodicite per = new Periodicite();
 			
@@ -70,7 +70,7 @@ public class main {
 			Init();
 		}
 
-		//table Periodicite, m�thode de modification
+		//table Periodicite, methode de modification
 		else if(b_per&&modif) {
 			Periodicite per = new Periodicite();
 			
@@ -84,9 +84,9 @@ public class main {
 			Init();
 		}
 
-		//table Abonnement, m�thode d'ajout
+		//table Abonnement, methode d'ajout
 		else if(b_abo&&ajout) {
-			Abonnement abo = null; //new Abonnement();
+			Abonnement abo = new Abonnement();
 			
 			System.out.println("quel id_client?");
 			int id1 = sc.nextInt();
@@ -102,9 +102,9 @@ public class main {
 			Init();
 		}
 
-		//table Abonnement, m�thode de suppression
+		//table Abonnement, methode de suppression
 		else if(b_abo&&supp) {
-			Abonnement abo = null; //new Abonnement();
+			Abonnement abo = new Abonnement();
 			
 			System.out.println("supprimer quel client?");
 			int id1 = sc.nextInt();
@@ -115,9 +115,9 @@ public class main {
 			Init();
 		}
 
-		//table Abonnement, m�thode de modification
+		//table Abonnement, methode de modification
 		else if(b_abo&&modif) {
-			Abonnement abo = null ;//new Abonnement();
+			Abonnement abo = new Abonnement();
 			
 			System.out.println("modifier quelle ligne?");
 			int id1 = sc.nextInt();
@@ -133,7 +133,7 @@ public class main {
 			Init();
 		}
 
-		//table Client, m�thode d'ajout
+		//table Client, methode d'ajout
 		else if(b_cli&&ajout) {
 			Client cli = new Client();
 			
@@ -159,7 +159,7 @@ public class main {
 			Init();
 		}
 
-		//table Client, m�thode de suppression
+		//table Client, methode de suppression
 		else if(b_cli&&supp) {
 			Client cli = new Client();
 			
@@ -170,7 +170,7 @@ public class main {
 			Init();
 		}
 
-		//table Client, m�thode de modif
+		//table Client, methode de modif
 		else if(b_cli&&modif) {
 			Client cli = new Client();
 			
@@ -196,7 +196,7 @@ public class main {
 			Init();
 		}
 
-		//table Revue, m�thode d'ajout
+		//table Revue, methode d'ajout
 		else if(b_rev&&ajout) {
 			Revue rev = new Revue();
 			
@@ -219,7 +219,7 @@ public class main {
 			Init();
 		}
 
-		//table Revue, m�thode de suppression
+		//table Revue, methode de suppression
 		else if(b_rev&&supp) {
 			Revue rev = new Revue();
 			
@@ -230,7 +230,7 @@ public class main {
 			Init();
 		}
 
-		//table Revue, m�thode de modif
+		//table Revue, methode de modif
 		else if(b_rev&&modif) {
 			Revue rev = new Revue();
 			
