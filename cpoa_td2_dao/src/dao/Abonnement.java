@@ -15,8 +15,49 @@ public class Abonnement {
 		connexion = new connexion();
 		laConnexion = connexion.creeConnexion();
 		
+		this.setId_cli(id_cli);
+		this.setId_rev(id_rev);
+		this.setS_deb(s_deb);
+		this.setS_fin(s_fin);
 	}
 	
+	public int getId_cli() {
+		return id_cli;
+	}
+
+	public void setId_cli(int id_cli) {
+		this.id_cli = id_cli;
+	}
+
+	public int getId_rev() {
+		return id_rev;
+	}
+
+	public void setId_rev(int id_rev) {
+		this.id_rev = id_rev;
+	}
+
+	public String getS_deb() {
+		return s_deb;
+	}
+
+	public void setS_deb(String s_deb) {
+		this.s_deb = s_deb;
+	}
+
+	public String getS_fin() {
+		return s_fin;
+	}
+
+	public void setS_fin(String s_fin) {
+		this.s_fin = s_fin;
+	}
+	
+	@Override
+	public String toString() {
+		return "Abonnement [id_cli=" + id_cli + ", id_rev=" + id_rev + ", s_deb=" + s_deb + ", s_fin=" + s_fin + "]";
+	}
+
 	public void ajout(int id_cli, int id_rev, String s_deb, String s_fin) {
 		try {
 			Date d_deb = Date.valueOf(s_deb);
