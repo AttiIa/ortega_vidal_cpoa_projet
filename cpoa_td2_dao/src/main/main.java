@@ -1,4 +1,4 @@
-package dao;
+package main;
 
 import java.util.Scanner;
 

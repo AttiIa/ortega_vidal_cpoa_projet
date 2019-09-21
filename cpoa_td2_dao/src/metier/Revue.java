@@ -1,6 +1,7 @@
-package dao;
+package metier;
 
 import java.sql.*;
+import connexion.connexion;
 
 public class Revue {
 

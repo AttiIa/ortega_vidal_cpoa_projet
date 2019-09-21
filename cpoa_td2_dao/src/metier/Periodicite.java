@@ -1,16 +1,44 @@
-package dao;
+package metier;
 
 import java.sql.*;
+import connexion.connexion;
 
 public class Periodicite {
 	private connexion connexion;
 	private Connection laConnexion;
 	
+	int id_per;
+	String libelle;
+	
 	public Periodicite() {
 		connexion = new connexion();
 		laConnexion = connexion.creeConnexion();
+		
+		this.setId_per(id_per);
+		this.setLibelle(libelle);
 	}
 	
+	public int getId_per() {
+		return id_per;
+	}
+
+	public void setId_per(int id_per) {
+		this.id_per = id_per;
+	}
+
+	public String getLibelle() {
+		return libelle;
+	}
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+	
+	@Override
+	public String toString() {
+		return "Periodicite [id_per=" + id_per + ", libelle=" + libelle + "]";
+	}
+
 	public void ajout(int id_per, String libelle) {
 		try {
 			PreparedStatement requete = laConnexion.prepareStatement("insert into Periodicite (id_periodicite, libelle)" + "VALUES (?, ?)");

@@ -1,4 +1,4 @@
-package dao;
+package connexion;
 
 import java.sql.*;
 public class connexion
