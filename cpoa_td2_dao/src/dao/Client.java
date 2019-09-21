@@ -27,6 +27,10 @@ public class Client {
 		this.setC_post(c_post);
 		this.setVille(ville);
 		this.setPays(pays);
+		
+		
+		
+		
 	}
 	
 	public int getId_cli() {
