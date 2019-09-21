@@ -5,10 +5,86 @@ import java.sql.*;
 public class Client {
 	private connexion connexion;
 	private Connection laConnexion;
+	private int id_cli;
+	private String nom;
+	private String prenom;
+	private String rue;
+	private String voie;
+	private String c_post;
+	private String ville;
+	private String pays;
+
 	
-	public Client() {
+	public Client(int id_cli, String nom, String prenom, String rue, String voie, String c_post, String ville, String pays) {
 		connexion = new connexion();
 		laConnexion = connexion.creeConnexion();
+	
+		this.setId_cli(id_cli);
+		this.setNom(nom);
+		this.setPrenom(prenom);
+		this.setRue(rue);
+		this.setVoie(voie);
+		this.setC_post(c_post);
+		this.setVille(ville);
+		this.setPays(pays);
+	}
+	
+	public int getId_cli() {
+		return id_cli;
+	}
+
+	public void setId_cli(int id_cli) {
+		this.id_cli = id_cli;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getRue() {
+		return rue;
+	}
+
+	public void setRue(String rue) {
+		this.rue = rue;
+	}
+	public String getVoie() {
+		return voie;
+	}
+	public void setVoie(String voie) {
+		this.voie = voie;
+	}
+	public String getC_post() {
+		return c_post;
+	}
+	public void setC_post(String c_post) {
+		this.c_post = c_post;
+	}
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+	public String getPays() {
+		return pays;
+	}
+
+	public void setPays(String pays) {
+		this.pays = pays;
 	}
 	
 	public void ajout(int id_cli, String nom, String prenom, String rue, String voie, String c_post, String ville, String pays) {
