@@ -7,11 +7,79 @@ public class Revue {
 	private connexion connexion;
 	private Connection laConnexion;
 	
+	int id_rev;
+	String titre;
+	String description;
+	double tar;
+	String visu;
+	int id_per;
+	
 	public Revue() {
 		connexion = new connexion();
 		laConnexion = connexion.creeConnexion();
+		
+		this.setId_rev(id_rev);
+		this.setTitre(titre);
+		this.setDescription(description);
+		this.setTar(tar);
+		this.setVisu(visu);
+		this.setId_per(id_per);
 	}
 	
+	public int getId_rev() {
+		return id_rev;
+	}
+
+	public void setId_rev(int id_rev) {
+		this.id_rev = id_rev;
+	}
+
+	public String getTitre() {
+		return titre;
+	}
+
+	public void setTitre(String titre) {
+		this.titre = titre;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public double getTar() {
+		return tar;
+	}
+
+	public void setTar(double tar) {
+		this.tar = tar;
+	}
+
+	public String getVisu() {
+		return visu;
+	}
+
+	public void setVisu(String visu) {
+		this.visu = visu;
+	}
+
+	public int getId_per() {
+		return id_per;
+	}
+
+	public void setId_per(int id_per) {
+		this.id_per = id_per;
+	}
+
+	@Override
+	public String toString() {
+		return "Revue [id_rev=" + id_rev + ", titre=" + titre + ", description=" + description + ", tar=" + tar
+				+ ", visuel=" + visu + ", id_per=" + id_per + "]";
+	}
+
 	public void ajout(int id_rev, String titre, String description, double tar, String visuel, int id_per) {
 		try {
 			PreparedStatement requete = laConnexion.prepareStatement("insert into Revue (id_revue, titre, description, tarif_numero, visuel, id_periodicite)" + "VALUES (?, ?, ?, ?, ?, ?)");
