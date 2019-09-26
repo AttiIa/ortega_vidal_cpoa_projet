@@ -1,6 +1,7 @@
 package main;
 
 import java.util.Scanner;
+import metier.*;
 
 public class main {
 	static Scanner sc = new Scanner(System.in);
