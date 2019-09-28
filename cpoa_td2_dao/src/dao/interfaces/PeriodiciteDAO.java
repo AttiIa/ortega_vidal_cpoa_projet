@@ -3,7 +3,7 @@ package dao.interfaces;
 import java.sql.*;
 import dao.metier.Periodicite;
 
-public abstract class PeriodiciteDAO implements IDao<Periodicite>{
+public abstract class PeriodiciteDAO implements DAO<Periodicite>{
 	private Connection laConnexion;
 	
 	public boolean create(Periodicite periodicite) {

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import dao.metier.Client;
 
-public abstract class ClientDAO implements IDao<Client>{
+public abstract class ClientDAO implements DAO<Client>{
 	private Connection laConnexion;
 
 	

@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import dao.metier.Revue;
 
-public abstract class RevueDAO implements IDao<Revue>{
+public abstract class RevueDAO implements DAO<Revue>{
 	private Connection laConnexion;
 
 	

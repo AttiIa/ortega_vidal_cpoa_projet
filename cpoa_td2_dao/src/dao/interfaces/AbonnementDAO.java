@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import dao.metier.Abonnement;
 
-public abstract class AbonnementDAO implements IDao<Abonnement> {
+public abstract class AbonnementDAO implements DAO<Abonnement> {
 	private Connection laConnexion;
 
 	
