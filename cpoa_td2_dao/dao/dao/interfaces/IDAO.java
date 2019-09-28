@@ -2,12 +2,12 @@ package dao.interfaces;
 
 public interface IDAO<T> {
 		
-		abstract boolean create(Object T);
+		abstract boolean create(T object);
 		
-		abstract boolean delete(Object T);
+		abstract boolean delete(T object);
 		
-		abstract boolean update(Object T);
+		abstract boolean update(T object);
 		
-		abstract Object getById(int id);
+		abstract T getById(int id);
 
 }
