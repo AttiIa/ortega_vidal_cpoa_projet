@@ -5,15 +5,15 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import connexion.Connexion;
 import dao.metier.Abonnement;
 
-public abstract class AbonnementDAO implements DAO<Abonnement> {
-	private Connection laConnexion;
+public abstract class AbonnementDAO implements IDAO<Abonnement> {
 
-	
 	public boolean create(Abonnement abonnement) {
 		boolean nbLignes;
 		try {
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
 			Date d_deb = Date.valueOf(abonnement.getDate_debut());
 			Date d_fin = Date.valueOf(abonnement.getDate_fin());
 			
@@ -42,6 +42,8 @@ public abstract class AbonnementDAO implements DAO<Abonnement> {
 	public boolean delete(Abonnement abonnement) {
 		boolean nbLignes;
 		try {
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
+
 			PreparedStatement requete = laConnexion.prepareStatement("delete from Abonnement where id_client = ? and id_revue = ?");
 			requete.setInt(1, abonnement.getId_client());
 			requete.setInt(2, abonnement.getId_revue());
@@ -60,6 +62,7 @@ public abstract class AbonnementDAO implements DAO<Abonnement> {
 	public boolean update(Abonnement abonnement) {
 		boolean nbLignes;
 		try {
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
 			Date d_deb = Date.valueOf(abonnement.getDate_debut());
 			Date d_fin = Date.valueOf(abonnement.getDate_fin());
 			
@@ -90,6 +93,8 @@ public abstract class AbonnementDAO implements DAO<Abonnement> {
 		Abonnement abonnement = null;
 		
 		try {
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
+
 			PreparedStatement requete = laConnexion.prepareStatement("select * from Abonnement where id_client = ? and id_revue = ?");
 			requete.setInt(1, id_client);
 			requete.setInt(2, id_revue);

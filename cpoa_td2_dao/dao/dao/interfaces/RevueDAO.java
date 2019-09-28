@@ -3,15 +3,17 @@ package dao.interfaces;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import connexion.Connexion;
 import dao.metier.Revue;
 
-public abstract class RevueDAO implements DAO<Revue>{
-	private Connection laConnexion;
-
+public abstract class RevueDAO implements IDAO<Revue>{
 	
 	public boolean create(Revue revue) {
 		boolean nbLignes;
 		try {
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
+
 			PreparedStatement requete = laConnexion.prepareStatement("insert into Revue (id_revue, titre, description, tarif_numero, visuel, id_periodicite)" + "VALUES (?, ?, ?, ?, ?, ?)");
 			requete.setInt(1, revue.getId_revue());
 			requete.setString(2, revue.getTitre());
@@ -34,6 +36,8 @@ public abstract class RevueDAO implements DAO<Revue>{
 	public boolean delete(Revue revue) {
 		boolean nbLignes;
 		try {
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
+
 			PreparedStatement requete = laConnexion.prepareStatement("delete from Revue where id_revue = ?");
 			requete.setInt(1, revue.getId_revue());
 		
@@ -51,6 +55,8 @@ public abstract class RevueDAO implements DAO<Revue>{
 	public boolean update(Revue revue) {
 		boolean nbLignes;
 		try {
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
+
 			PreparedStatement requete = laConnexion.prepareStatement("update Revue set titre = ?, description = ?, tarif_numero = ?, visuel = ?, id_periodicite = ? where id_revue = ?");
 			requete.setString(1, revue.getTitre());
 			requete.setString(2, revue.getDescription());
@@ -73,6 +79,8 @@ public abstract class RevueDAO implements DAO<Revue>{
 	public Revue getById(int id) {
 		Revue revue = null;
 		try {
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
+
 			PreparedStatement requete = laConnexion.prepareStatement("select * from Periodicite where id_periodicite = ?");
 			requete.setInt(1, id);
 			
