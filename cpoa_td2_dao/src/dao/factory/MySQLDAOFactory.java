@@ -1,10 +1,14 @@
 package dao.factory;
 
-import dao.interfaces.PeriodiciteDAO;
+import dao.interfaces.*;
 
 public class MySQLDAOFactory extends DAOFactory{
+	@Override
 	public PeriodiciteDAO getPeriodiciteDAO() {
-		return null; //MySQLPeriodicite
+		return null; //MySQLPeriodiciteDAO.getInstance();
 	}
-
+	@Override
+	public AbonnementDAO getAbonnementDAO(){
+		return null;// MySQLPromoDAO.getInstance();
+	}
 }
