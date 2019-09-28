@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import connexion.Connexion;
+import dao.interfaces.ClientDAO;
 import dao.metier.Client;
 
 public class MySQLClientDAO implements ClientDAO{
