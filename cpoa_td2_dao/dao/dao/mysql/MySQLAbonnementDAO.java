@@ -10,6 +10,15 @@ import dao.interfaces.AbonnementDAO;
 import dao.metier.Abonnement;
 
 public class MySQLAbonnementDAO implements AbonnementDAO{
+	private static MySQLAbonnementDAO instance;
+	private MySQLAbonnementDAO() {}
+	
+	public static MySQLAbonnementDAO getInstance() {
+		if (instance==null) {
+			instance = new MySQLAbonnementDAO();
+		}
+		return instance;
+	}
 	
 	@Override
 	public boolean create(Abonnement abonnement){

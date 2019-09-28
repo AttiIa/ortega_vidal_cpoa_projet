@@ -8,7 +8,16 @@ import connexion.Connexion;
 import dao.interfaces.PeriodiciteDAO;
 import dao.metier.Periodicite;
 
-public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
+public class MySQLPeriodiciteDAO implements PeriodiciteDAO{	
+	private static MySQLPeriodiciteDAO instance;
+	private MySQLPeriodiciteDAO() {}
+	
+	public static MySQLPeriodiciteDAO getInstance() {
+		if (instance==null) {
+			instance = new MySQLPeriodiciteDAO();
+		}
+		return instance;
+	}
 	
 	public boolean create(Periodicite periodicite) {
 		boolean nbLignes;
