@@ -9,6 +9,14 @@ import dao.interfaces.ClientDAO;
 import dao.metier.Client;
 
 public class MySQLClientDAO implements ClientDAO{
+	private static MySQLClientDAO instance;
+	private MySQLClientDAO() {}
+	public static MySQLClientDAO getInstance() {
+	if (instance==null) {
+	instance = new MySQLClientDAO();
+	}
+	return instance;
+	}
 	
 	public boolean create(Client client) {
 		boolean nbLignes;

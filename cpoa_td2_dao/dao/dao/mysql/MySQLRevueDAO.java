@@ -9,6 +9,14 @@ import dao.interfaces.RevueDAO;
 import dao.metier.Revue;
 
 public class MySQLRevueDAO implements RevueDAO{
+	private static MySQLRevueDAO instance;
+	private MySQLRevueDAO() {}
+	public static MySQLRevueDAO getInstance() {
+	if (instance==null) {
+	instance = new MySQLRevueDAO();
+	}
+	return instance;
+	}
 
 	public boolean create(Revue revue) {
 		boolean nbLignes;
