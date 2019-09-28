@@ -1,5 +1,7 @@
 package dao.interfaces;
 
+import java.util.ArrayList;
+
 import dao.metier.Periodicite;
 
 public interface PeriodiciteDAO extends IDAO<Periodicite>{
@@ -15,5 +17,7 @@ public interface PeriodiciteDAO extends IDAO<Periodicite>{
 	
 	@Override
 	Periodicite getById(int id);
+
+	ArrayList<Periodicite> findAll();
 	
 }

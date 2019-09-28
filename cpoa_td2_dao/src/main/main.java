@@ -1,6 +1,6 @@
 package main;
 
-import java.util.Scanner;
+/*import java.util.Scanner;
 import metier.*;
 
 public class main {
@@ -268,4 +268,4 @@ public class main {
 		modif=false;
 	}
 
-}
+}*/
