@@ -3,6 +3,7 @@ package dao.mysql;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import connexion.Connexion;
 import dao.interfaces.PeriodiciteDAO;
@@ -93,6 +94,11 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 		}
 		
 		return periodicite;		
+	}
+
+	@Override
+	public ArrayList<Periodicite> findAll() {
+		return null;
 	}
 
 }

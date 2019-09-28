@@ -7,9 +7,7 @@ import dao.interfaces.PeriodiciteDAO;
 import dao.metier.Periodicite;
 
 public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
-
 	private static ListeMemoirePeriodiciteDAO instance;
-
 	private List<Periodicite> donnees;
 
 
@@ -21,13 +19,9 @@ public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 
 		return instance;
 	}
-
 	private ListeMemoirePeriodiciteDAO() {
 
 		this.donnees = new ArrayList<Periodicite>();
-
-		this.donnees.add(new Periodicite(1, "Mensuel"));
-		this.donnees.add(new Periodicite(2, "Quotidien"));
 	}
 
 
