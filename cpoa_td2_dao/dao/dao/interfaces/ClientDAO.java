@@ -4,16 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import connexion.Connexion;
 import dao.metier.Client;
 
-public abstract class ClientDAO implements DAO<Client>{
-	private Connection laConnexion;
-
+public abstract class ClientDAO implements IDAO<Client>{
 	
 	public boolean create(Client client) {
 		boolean nbLignes;
 		try {
-	
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
+
 			PreparedStatement requete = laConnexion.prepareStatement("insert into Client (id_client, nom, prenom, no_rue, voie, code_postal, ville, pays)" + "VALUES (?, ?, ?, ? , ?, ?, ?, ?)");
 			requete.setInt(1, client.getId_client());
 			requete.setString(2, client.getNom());
@@ -36,6 +36,8 @@ public abstract class ClientDAO implements DAO<Client>{
 	public boolean delete(Client client) {
 		boolean nbLignes;
 		try {
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
+
 			PreparedStatement requete = laConnexion.prepareStatement("delete from Client where id_client = ?");
 			requete.setInt(1, client.getId_client());
 		
@@ -53,6 +55,8 @@ public abstract class ClientDAO implements DAO<Client>{
 	public boolean update(Client client) {
 		boolean nbLignes;
 		try {
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
+
 			PreparedStatement requete = laConnexion.prepareStatement("update Client set nom = ?, prenom = ?, no_rue = ?, voie = ?, code_postal = ?, ville = ?, pays = ?  where id_client = ?");
 			requete.setString(1, client.getNom());
 			requete.setString(2, client.getPrenom());
@@ -78,6 +82,8 @@ public abstract class ClientDAO implements DAO<Client>{
 		Client client = null;
 		
 		try {
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
+
 			PreparedStatement requete = laConnexion.prepareStatement("select * from Periodicite where id_periodicite = ?");
 			requete.setInt(1, id);
 			
