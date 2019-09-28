@@ -81,10 +81,25 @@ public abstract class AbonnementDAO implements IDao<Abonnement> {
 		return nbLignes;		
 	}
 	
+	@Override
 	public Abonnement getById(int id) {
 		return null;
 	}
 	
-	//faire un getid avec deux id en parametres
-
+	public Abonnement getById(int id_client, int id_revue) {
+		Abonnement abonnement = null;
+		
+		try {
+			PreparedStatement requete = laConnexion.prepareStatement("select * from Abonnement where id_client = ? and id_revue = ?");
+			requete.setInt(1, id_client);
+			requete.setInt(2, id_revue);
+			
+			requete.executeUpdate();
+		}
+		catch(SQLException sqle){
+			System.out.println("Pb Abonnement.getById" + sqle.getMessage());
+		}
+		
+		return abonnement;
+	}	
 }
