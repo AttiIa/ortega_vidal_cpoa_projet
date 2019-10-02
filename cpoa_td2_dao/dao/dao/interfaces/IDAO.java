@@ -1,5 +1,7 @@
 package dao.interfaces;
 
+import java.util.ArrayList;
+
 public interface IDAO<T> {
 		
 		abstract boolean create(T object);
@@ -9,5 +11,7 @@ public interface IDAO<T> {
 		abstract boolean update(T object);
 		
 		abstract T getById(int id);
+
+		ArrayList<T> findAll();
 
 }

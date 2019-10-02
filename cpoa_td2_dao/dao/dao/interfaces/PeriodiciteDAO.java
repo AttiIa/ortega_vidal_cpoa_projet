@@ -18,6 +18,7 @@ public interface PeriodiciteDAO extends IDAO<Periodicite>{
 	@Override
 	Periodicite getById(int id);
 
+	@Override
 	ArrayList<Periodicite> findAll();
 	
 }

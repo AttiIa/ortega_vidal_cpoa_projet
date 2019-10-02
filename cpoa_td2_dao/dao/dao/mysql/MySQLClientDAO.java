@@ -3,6 +3,7 @@ package dao.mysql;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import connexion.Connexion;
 import dao.interfaces.ClientDAO;
@@ -32,6 +33,8 @@ public class MySQLClientDAO implements ClientDAO{
 			requete.setString(6, client.getCode_postal());
 			requete.setString(7, client.getVille());
 			requete.setString(8, client.getPays());
+			
+			requete.executeUpdate();
 			
 			nbLignes = true;			
 		}
@@ -105,6 +108,11 @@ public class MySQLClientDAO implements ClientDAO{
 		return client;
 		
 		
+	}
+	@Override
+	public ArrayList<Client> findAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -1,5 +1,7 @@
 package dao.interfaces;
 
+import java.util.ArrayList;
+
 import dao.metier.Abonnement;
 
 public interface AbonnementDAO extends IDAO<Abonnement> {
@@ -14,5 +16,8 @@ public interface AbonnementDAO extends IDAO<Abonnement> {
 	boolean update(Abonnement abonnement);
 	
 	@Override
-	Abonnement getById(int id);	
+	Abonnement getById(int id);
+
+	@Override
+	ArrayList<Abonnement> findAll();	
 }

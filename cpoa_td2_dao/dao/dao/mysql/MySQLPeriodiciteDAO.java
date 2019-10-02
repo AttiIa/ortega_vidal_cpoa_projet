@@ -34,7 +34,7 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 				
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Periodicite.create" + sqle.getMessage());
+			System.out.println("Pb Periodicite.create " + sqle.getMessage());
 			nbLignes = false;
 		}
 		return nbLignes;
@@ -53,7 +53,7 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 				
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Periodicite.delete" + sqle.getMessage());
+			System.out.println("Pb Periodicite.delete " + sqle.getMessage());
 			nbLignes = false;
 		}
 		return nbLignes;
@@ -73,7 +73,7 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 				
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Periodicite.update" + sqle.getMessage());
+			System.out.println("Pb Periodicite.update " + sqle.getMessage());
 			nbLignes = false;
 		}
 		return nbLignes;	
@@ -90,7 +90,7 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 			requete.executeUpdate();
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Periodicite.getById" + sqle.getMessage());
+			System.out.println("Pb Periodicite.getById " + sqle.getMessage());
 		}
 		
 		return periodicite;		

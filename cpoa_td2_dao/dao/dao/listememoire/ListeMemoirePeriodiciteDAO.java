@@ -16,54 +16,37 @@ public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 		if (instance == null) {
 			instance = new ListeMemoirePeriodiciteDAO();
 		}
-
 		return instance;
 	}
-	private ListeMemoirePeriodiciteDAO() {
+	
+	private ListeMemoirePeriodiciteDAO(){
 
 		this.donnees = new ArrayList<Periodicite>();
 	}
 
 
 	@Override
-	public boolean create(Periodicite periodicite) {
+	public boolean create(Periodicite periodicite){
 
 		periodicite.setId_periodicite(3);
-		// Ne fonctionne que si l'objet métier est bien fait...
-		while (this.donnees.contains(periodicite)) {
-
-			periodicite.setId_periodicite(periodicite.getId_periodicite() + 1);
-		}
-		boolean ok = this.donnees.add(periodicite);
 		
+		while (this.donnees.contains(periodicite)){
+			periodicite.setId_periodicite(periodicite.getId_periodicite() + 1);
+		}		
+		boolean ok = this.donnees.add(periodicite);
 		return ok;
 	}
-
-	@Override
-	public boolean update(Periodicite periodicite) {
-		
-		// Ne fonctionne que si l'objet métier est bien fait...
-		int idx = this.donnees.indexOf(periodicite);
-		if (idx == -1) {
-			throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
-		} else {
-			
-			this.donnees.set(idx, periodicite);
-		}
-		
-		return true;
-	}
-
+	
 	@Override
 	public boolean delete(Periodicite periodicite) {
 
-		Periodicite supprime;
-		
-		// Ne fonctionne que si l'objet métier est bien fait...
+		Periodicite supprime;		
 		int idx = this.donnees.indexOf(periodicite);
+		
 		if (idx == -1) {
 			throw new IllegalArgumentException("Tentative de suppression d'un objet inexistant");
-		} else {
+		} 
+		else {
 			supprime = this.donnees.remove(idx);
 		}
 		
@@ -71,12 +54,28 @@ public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 	}
 
 	@Override
+	public boolean update(Periodicite periodicite){
+		
+		int idx = this.donnees.indexOf(periodicite);
+		
+		if (idx == -1){
+			throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
+		} 
+		else{			
+			this.donnees.set(idx, periodicite);
+		}
+		
+		return true;
+	}
+
+	@Override
 	public Periodicite getById(int id) {
-		// Ne fonctionne que si l'objet métier est bien fait...
 		int idx = this.donnees.indexOf(new Periodicite(id, "test"));
+		
 		if (idx == -1) {
-			throw new IllegalArgumentException("Aucun objet ne possède cet identifiant");
-		} else {
+			throw new IllegalArgumentException("Aucun objet ne possede cet identifiant");
+		} 
+		else{
 			return this.donnees.get(idx);
 		}
 	}

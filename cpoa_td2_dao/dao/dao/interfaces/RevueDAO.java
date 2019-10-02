@@ -1,5 +1,7 @@
 package dao.interfaces;
 
+import java.util.ArrayList;
+
 import dao.metier.Revue;
 
 public interface RevueDAO extends IDAO<Revue>{
@@ -14,5 +16,8 @@ public interface RevueDAO extends IDAO<Revue>{
 	
 	@Override
 	Revue getById(int id);
+	
+	@Override
+	ArrayList<Revue> findAll();
 
 }

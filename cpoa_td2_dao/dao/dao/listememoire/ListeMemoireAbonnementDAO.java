@@ -5,7 +5,6 @@ import java.util.List;
 
 import dao.interfaces.AbonnementDAO;
 import dao.metier.Abonnement;
-import dao.metier.Periodicite;
 
 public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 	private static ListeMemoireAbonnementDAO instance;
@@ -29,14 +28,61 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 	@Override
 	public boolean create(Abonnement abonnement) {
 
-		abonnement.setId_client(id_client);(3);
-		// Ne fonctionne que si l'objet métier est bien fait...
-		while (this.donnees.contains(periodicite)) {
+		abonnement.setId_client(3);
+		while (this.donnees.contains(abonnement)) {
 
-			periodicite.setId_periodicite(periodicite.getId_periodicite() + 1);
+			abonnement.setId_client(abonnement.getId_client() + 1);
 		}
-		boolean ok = this.donnees.add(periodicite);
+		boolean ok = this.donnees.add(abonnement);
 		
 		return ok;
+	}
+	
+	@Override
+	public boolean delete(Abonnement abonnement) {
+
+		Abonnement supprime;
+		
+		int idx = this.donnees.indexOf(abonnement);
+		if (idx == -1) {
+			throw new IllegalArgumentException("Tentative de suppression d'un objet inexistant");
+		} 
+		else {
+			supprime = this.donnees.remove(idx);
+		}
+		
+		return abonnement.equals(supprime);
+	}
+	
+	@Override
+	public boolean update(Abonnement abonnement){
+		
+		int idx = this.donnees.indexOf(abonnement);
+		
+		if (idx == -1){
+			throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
+		} 
+		else{			
+			this.donnees.set(idx, abonnement);
+		}
+		
+		return true;
+	}
+	
+	@Override
+	public Abonnement getById(int id) {
+		int idx = this.donnees.indexOf(new Abonnement(id, 3, "1999-09-18", "2000-11-21"));
+		
+		if (idx == -1) {
+			throw new IllegalArgumentException("Aucun objet ne possede cet identifiant");
+		} 
+		else{
+			return this.donnees.get(idx);
+		}
+	}
+	
+	@Override
+	public ArrayList<Abonnement> findAll() {
+		return (ArrayList<Abonnement>) this.donnees;
 	}
 }

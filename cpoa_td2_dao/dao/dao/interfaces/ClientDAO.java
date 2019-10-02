@@ -1,5 +1,7 @@
 package dao.interfaces;
 
+import java.util.ArrayList;
+
 import dao.metier.Client;
 
 public interface ClientDAO extends IDAO<Client>{
@@ -15,5 +17,8 @@ public interface ClientDAO extends IDAO<Client>{
 	
 	@Override
 	Client getById(int id);
+
+	@Override
+	ArrayList<Client> findAll();
 
 }

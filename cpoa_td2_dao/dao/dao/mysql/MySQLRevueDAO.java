@@ -3,6 +3,7 @@ package dao.mysql;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import connexion.Connexion;
 import dao.interfaces.RevueDAO;
@@ -100,5 +101,10 @@ public class MySQLRevueDAO implements RevueDAO{
 		}
 		
 		return revue;			
+	}
+	@Override
+	public ArrayList<Revue> findAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

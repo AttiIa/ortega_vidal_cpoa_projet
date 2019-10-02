@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import connexion.Connexion;
 import dao.interfaces.AbonnementDAO;
@@ -24,7 +26,7 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 	public boolean create(Abonnement abonnement){
 		boolean nbLignes;
 		try {
-			Connection laConnexion = Connexion.getInstance().creeConnexion();			
+			Connection laConnexion = Connexion.getInstance().creeConnexion();
 			Date d_deb = Date.valueOf(abonnement.getDate_debut());
 			Date d_fin = Date.valueOf(abonnement.getDate_fin());
 			
@@ -36,10 +38,11 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 			requete.setDate(3, d_deb);
 			requete.setDate(4, d_fin);
 			
+			requete.executeUpdate();			
 			nbLignes = true;
 			}
 			else {
-				System.out.println("La date de début est supperieur à la date de fin, Veuillez recommencer");
+				System.out.println("La date de debut est supperieur a la date de fin, Veuillez recommencer");
 				nbLignes = false;
 			}
 		}
@@ -79,6 +82,8 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 			Date d_deb = Date.valueOf(abonnement.getDate_debut());
 			Date d_fin = Date.valueOf(abonnement.getDate_fin());
 			
+			int comp=d_deb.compareTo(d_fin);
+			if(comp<0) {
 			PreparedStatement requete = laConnexion.prepareStatement("update Abonnement set id_revue = ?, date_debut = ?, date_fin = ? where id_client = ?");
 						
 			requete.setInt(1, abonnement.getId_revue());
@@ -87,7 +92,12 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 			requete.setInt(4, abonnement.getId_client());
 		
 			requete.executeUpdate();
-			nbLignes = true;		
+			nbLignes = true;
+			}
+			else {
+				System.out.println("La date de debut est supperieur a la date de fin, Veuillez recommencer");
+				nbLignes = false;
+			}
 				
 		}
 		catch(SQLException sqle){
@@ -119,6 +129,12 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 		}
 		
 		return abonnement;
+	}
+
+	@Override
+	public ArrayList<Abonnement> findAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

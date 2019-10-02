@@ -8,10 +8,10 @@ public abstract class DAOFactory {
 		DAOFactory daoF = null;
 		switch (cible) {
 
-		case MYSQL:
+		case MySQL:
 			daoF = new MySQLDAOFactory();
 			break;
-		case LISTE_MEMOIRE:
+		case ListeMemoire:
 			daoF = new ListeMemoireDAOFactory();
 			break;
 		}

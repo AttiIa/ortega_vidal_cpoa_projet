@@ -1,13 +1,7 @@
 package dao.factory;
 
-import dao.interfaces.AbonnementDAO;
-import dao.interfaces.ClientDAO;
-import dao.interfaces.PeriodiciteDAO;
-import dao.interfaces.RevueDAO;
-import dao.mysql.MySQLAbonnementDAO;
-import dao.mysql.MySQLClientDAO;
-import dao.mysql.MySQLPeriodiciteDAO;
-import dao.mysql.MySQLRevueDAO;
+import dao.interfaces.*;
+import dao.mysql.*;
 
 public class MySQLDAOFactory extends DAOFactory {
 
