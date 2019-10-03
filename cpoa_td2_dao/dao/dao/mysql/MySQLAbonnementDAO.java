@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import connexion.Connexion;
@@ -84,12 +83,13 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 			
 			int comp=d_deb.compareTo(d_fin);
 			if(comp<0) {
-			PreparedStatement requete = laConnexion.prepareStatement("update Abonnement set id_revue = ?, date_debut = ?, date_fin = ? where id_client = ?");
+			PreparedStatement requete = laConnexion.prepareStatement("update Abonnement set date_debut = ?, date_fin = ? where id_client = ? and id_revue = ?");
 						
-			requete.setInt(1, abonnement.getId_revue());
-			requete.setDate(2, d_deb);
-			requete.setDate(3, d_fin);
-			requete.setInt(4, abonnement.getId_client());
+		
+			requete.setDate(1, d_deb);
+			requete.setDate(2, d_fin);
+			requete.setInt(3, abonnement.getId_client());
+			requete.setInt(4, abonnement.getId_revue());
 		
 			requete.executeUpdate();
 			nbLignes = true;
