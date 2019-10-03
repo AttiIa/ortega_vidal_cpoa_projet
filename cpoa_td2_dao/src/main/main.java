@@ -21,7 +21,20 @@ public class main {
 
 	public static void main(String[] args) {
 																//Debut du programmme
-		DAOFactory daos = DAOFactory.getDAOFactory(Persistance.MySQL);
+		DAOFactory daos = null;
+		System.out.println(
+				 "1.MySQL "
+				+ "2.ListeMemoire ");
+		int i = sc.nextInt();
+		if(i ==1)
+		{
+			daos = DAOFactory.getDAOFactory(Persistance.MySQL);
+		}
+		else if (i == 2)
+		{
+			 daos = DAOFactory.getDAOFactory(Persistance.ListeMemoire);	
+		}
+		
 		//recuperation de la table voulue
 		System.out.println("operation sur quel table? "
 				+ "1.Periodicite "
@@ -50,15 +63,6 @@ public class main {
 		case 3 : update=true;
 		}
 		
-		System.out.println(
-				 "1.MySQL "
-				+ "2.ListeMemoire ");
-		int bo = sc.nextInt();
-		switch(bo)
-		{
-		case 1 : daos = DAOFactory.getDAOFactory(Persistance.MySQL);
-		case 2 : daos = DAOFactory.getDAOFactory(Persistance.ListeMemoire);;
-		}
 		
 		//table Periodicite, methode d'ajout
 		if(b_per&&create) {
