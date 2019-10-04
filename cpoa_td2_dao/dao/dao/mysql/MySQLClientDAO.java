@@ -96,7 +96,7 @@ public class MySQLClientDAO implements ClientDAO{
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
 
-			PreparedStatement requete = laConnexion.prepareStatement("select * from Periodicite where id_periodicite = ?");
+			PreparedStatement requete = laConnexion.prepareStatement("select * from Client where id_client = ?");
 			requete.setInt(1, id);
 			
 			requete.executeUpdate();
