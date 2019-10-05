@@ -3,6 +3,7 @@ package dao.mysql;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -122,7 +123,10 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 			requete.setInt(1, id_client);
 			requete.setInt(2, id_revue);
 			
-			requete.executeUpdate();
+			ResultSet res = requete.executeQuery();
+			res.next();
+			
+			abonnement = new Abonnement(id_client, id_revue, res.getString("date_debut"), res.getString("date_fin"));
 		}
 		catch(SQLException sqle){
 			System.out.println("Pb Abonnement.getById" + sqle.getMessage());

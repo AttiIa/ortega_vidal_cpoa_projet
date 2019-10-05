@@ -2,6 +2,7 @@ package dao.mysql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -94,8 +95,11 @@ public class MySQLRevueDAO implements RevueDAO{
 			PreparedStatement requete = laConnexion.prepareStatement("select * from Revue where id_revue = ?");
 			requete.setInt(1, id);
 			
-			requete.executeUpdate();
-		}
+			ResultSet res = requete.executeQuery();
+			res.next();
+			
+			revue = new Revue(id, res.getString("titre"), res.getString("description"), res.getDouble("tarif_numero"), res.getString("visuel"), res.getInt("id_periodicite"));
+			}
 		catch(SQLException sqle){
 			System.out.println("Pb Revue.getById" + sqle.getMessage());
 		}

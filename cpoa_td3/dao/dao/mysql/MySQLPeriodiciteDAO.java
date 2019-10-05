@@ -2,6 +2,7 @@ package dao.mysql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -87,7 +88,11 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 			PreparedStatement requete = laConnexion.prepareStatement("select * from Periodicite where id_periodicite = ?");
 			requete.setInt(1, id);
 			
-			requete.executeUpdate();
+			ResultSet res = requete.executeQuery();
+			res.next();
+			
+			periodicite = new Periodicite(id, res.getString("libelle"));
+			
 		}
 		catch(SQLException sqle){
 			System.out.println("Pb Periodicite.getById " + sqle.getMessage());

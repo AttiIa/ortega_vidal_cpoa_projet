@@ -2,6 +2,7 @@ package dao.mysql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -99,7 +100,10 @@ public class MySQLClientDAO implements ClientDAO{
 			PreparedStatement requete = laConnexion.prepareStatement("select * from Client where id_client = ?");
 			requete.setInt(1, id);
 			
-			requete.executeUpdate();
+			ResultSet res = requete.executeQuery();
+			res.next();
+			
+			client = new Client(id, res.getString("nom"), res.getString("prenom"), res.getString("no_rue"), res.getString("voie"), res.getString("code_postal"), res.getString("ville"), res.getString("pays"));
 		}
 		catch(SQLException sqle){
 			System.out.println("Pb Client.getById" + sqle.getMessage());
