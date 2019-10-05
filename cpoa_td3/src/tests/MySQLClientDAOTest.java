@@ -75,7 +75,27 @@ class MySQLClientDAOTest {
 
 	@Test
 	void testGetById() {
-		fail("Pas encore implémenté");
+MySQLClientDAO mcli = MySQLClientDAO.getInstance();
+		
+int id_client = 18;
+String nom = "Vidal";
+String prenom = "Thomas";
+String no_rue = "5";
+String voie ="rue paul doumer";
+String code_postal= "10150";
+String ville = "pont sainte marie";
+String pays = "France";		
+Client cli = new Client(id_client,  nom,  prenom,  no_rue,  voie,  code_postal,
+		 ville,  pays);
+		mcli.create(cli);
+		
+		if(mcli.getById(id_client).equals(cli)) {
+			mcli.delete(cli);
+			fail("Pas trouve");
+		}
+		else { 
+			mcli.delete(cli);
+		}
 	}
 
 }
