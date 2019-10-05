@@ -71,7 +71,12 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 	
 	@Override
 	public Abonnement getById(int id) {
-		int idx = this.donnees.indexOf(new Abonnement(id, 3, "1999-09-18", "2000-11-21"));
+		return null;
+	}
+	
+	@Override
+	public Abonnement getById(int id1, int id2) {
+		int idx = this.donnees.indexOf(new Abonnement(id1, id2, "1999-09-18", "2000-11-21"));
 		
 		if (idx == -1) {
 			throw new IllegalArgumentException("Aucun objet ne possede cet identifiant");
@@ -84,5 +89,5 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 	@Override
 	public ArrayList<Abonnement> findAll() {
 		return (ArrayList<Abonnement>) this.donnees;
-	}
+	}	
 }

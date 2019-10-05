@@ -3,15 +3,18 @@ package tests;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import dao.factory.DAOFactory;
+import dao.factory.Persistance;
+import dao.interfaces.PeriodiciteDAO;
 import dao.metier.Periodicite;
-import dao.mysql.MySQLPeriodiciteDAO;
 
 class MySQLPeriodiciteDAOTest {
+	
+	DAOFactory daos = DAOFactory.getDAOFactory(Persistance.MySQL);
+	PeriodiciteDAO mper = daos.getPeriodiciteDAO();
 
 	@Test
 	void testCreate() {
-		MySQLPeriodiciteDAO mper = MySQLPeriodiciteDAO.getInstance();
-		
 		int id_periodicite = 11;
 		String libelle = "test";		
 		Periodicite per = new Periodicite(id_periodicite, libelle);
@@ -26,8 +29,6 @@ class MySQLPeriodiciteDAOTest {
 
 	@Test
 	void testDelete() {
-		MySQLPeriodiciteDAO mper = MySQLPeriodiciteDAO.getInstance();
-		
 		int id_periodicite = 22;
 		String libelle = "test";		
 		Periodicite per = new Periodicite(id_periodicite, libelle);
@@ -39,8 +40,6 @@ class MySQLPeriodiciteDAOTest {
 
 	@Test
 	void testUpdate() {
-		MySQLPeriodiciteDAO mper = MySQLPeriodiciteDAO.getInstance();
-		
 		int id_periodicite = 33;
 		String libelle = "test";		
 		Periodicite per = new Periodicite(id_periodicite, libelle);
@@ -55,8 +54,6 @@ class MySQLPeriodiciteDAOTest {
 
 	@Test
 	void testGetById() {
-		MySQLPeriodiciteDAO mper = MySQLPeriodiciteDAO.getInstance();
-		
 		int id_periodicite = 44;
 		String libelle = "test";		
 		Periodicite per = new Periodicite(id_periodicite, libelle);
