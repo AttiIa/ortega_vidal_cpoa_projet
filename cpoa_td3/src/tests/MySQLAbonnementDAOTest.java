@@ -28,27 +28,53 @@ class MySQLAbonnementDAOTest {
 
 	@Test
 	void testDelete() {
-		fail("Pas encore implémenté");
+		MySQLAbonnementDAO mabo = MySQLAbonnementDAO.getInstance();
+		
+		int id_client = 33;
+		int  id_revue = 44;
+		String date_debut = "2018-09-18";
+		String date_fin = "2019-11-21";		
+		Abonnement abo = new Abonnement(id_client, id_revue, date_debut, date_fin);
+		if(!mabo.delete(abo)) {
+			fail("Pas supprime");
+		}	
 	}
 
 	@Test
 	void testUpdate() {
-		fail("Pas encore implémenté");
+		MySQLAbonnementDAO mabo = MySQLAbonnementDAO.getInstance();
+		
+		int id_client = 55;
+		int  id_revue = 66;
+		String date_debut = "2018-09-18";
+		String date_fin = "2019-11-21";		
+		Abonnement abo = new Abonnement(id_client, id_revue, date_debut, date_fin);
+		if(!mabo.update(abo)) {
+			fail("Pas modifie");
+		}	
+		else { 
+			mabo.delete(abo);
+		}
 	}
 
 	@Test
-	void testGetByIdInt() {
-		fail("Pas encore implémenté");
-	}
-
-	@Test
-	void testGetByIdIntInt() {
-		fail("Pas encore implémenté");
-	}
-
-	@Test
-	void testFindAll() {
-		fail("Pas encore implémenté");
+	void testGetById() {
+		MySQLAbonnementDAO mabo = MySQLAbonnementDAO.getInstance();
+		
+		int id_client = 77;
+		int  id_revue = 88;
+		String date_debut = "2018-09-18";
+		String date_fin = "2019-11-21";		
+		Abonnement abo = new Abonnement(id_client, id_revue, date_debut, date_fin);	
+		mabo.create(abo);
+		
+		if(mabo.getById(id_client, id_revue).equals(abo)) {
+			mabo.delete(abo);
+			fail("Pas trouve");
+		}
+		else { 
+			mabo.delete(abo);
+		}
 	}
 
 }
