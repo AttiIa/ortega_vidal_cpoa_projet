@@ -45,7 +45,7 @@ class MySQLPeriodiciteDAOTest {
 		String libelle = "test";		
 		Periodicite per = new Periodicite(id_periodicite, libelle);
 		
-		if(!mper.update(per)) {
+		if(!mper.update(per)) { 
 			fail("Pas modifie");
 		}
 		else {
@@ -66,7 +66,7 @@ class MySQLPeriodiciteDAOTest {
 			mper.delete(per);
 			fail("Pas trouve");
 		}
-		else {
+		else { 
 			mper.delete(per);
 		}
 	}

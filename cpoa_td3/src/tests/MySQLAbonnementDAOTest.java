@@ -1,6 +1,6 @@
 package tests;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*; 
 
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +21,7 @@ class MySQLAbonnementDAOTest {
 		if(!mabo.create(abo)) {
 			fail("Pas implemente");
 		}
-		else {
+		else { 
 			mabo.delete(abo);
 		}
 	}
