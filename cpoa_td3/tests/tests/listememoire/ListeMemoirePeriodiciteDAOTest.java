@@ -1,10 +1,10 @@
-package tests;
+package tests.listememoire;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class ListeMemoireAbonnementDAOTest {
+class ListeMemoirePeriodiciteDAOTest {
 
 	@Test
 	void testCreate() {
@@ -22,12 +22,7 @@ class ListeMemoireAbonnementDAOTest {
 	}
 
 	@Test
-	void testGetByIdInt() {
-		fail("Pas encore implémenté");
-	}
-
-	@Test
-	void testGetByIdIntInt() {
+	void testGetById() {
 		fail("Pas encore implémenté");
 	}
 
