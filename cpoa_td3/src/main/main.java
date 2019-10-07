@@ -9,6 +9,8 @@ import dao.metier.*;
 public class main {
 	static Scanner sc = new Scanner(System.in);
 	
+	static boolean ok=false;
+	
 	static Boolean b_per=false;
 	static Boolean b_abo=false;
 	static Boolean b_cli=false;
@@ -22,45 +24,49 @@ public class main {
 	public static void main(String[] args) {
 																//Debut du programmme
 		DAOFactory daos = null;
-		System.out.println(
-				 "1.MySQL "
-				+ "2.ListeMemoire ");
-		int i = sc.nextInt();
-		if(i ==1)
-		{
-			daos = DAOFactory.getDAOFactory(Persistance.MySQL);
-		}
-		else if (i == 2)
-		{
-			 daos = DAOFactory.getDAOFactory(Persistance.ListeMemoire);	
-		}
 		
-		//recuperation de la table voulue
-		System.out.println("operation sur quel table? "
-				+ "1.Periodicite "
-				+ "2.Abonnement "
-				+ "3.Client "
-				+ "4.Revue ");
-		int table = sc.nextInt();
-		switch(table)
-		{
-		case 1 : b_per=true;
-		case 2 : b_abo=true;
-		case 3 : b_cli=true;
-		case 4 : b_rev=true;
-		}
-		
-		//recuperation de l'operation desire
-		System.out.println("quel operation? "
-				+ "1.Ajouter une ligne "
-				+ "2.Supprimer une ligne "
-				+ "3.Modifier un ligne ");
-		int op = sc.nextInt();
-		switch(op)
-		{
-		case 1 : create=true;
-		case 2 : delete=true;
-		case 3 : update=true;
+		while(!ok){
+			ok=true;
+			System.out.println(
+					  "1.MySQL "
+					+ "2.ListeMemoire ");
+			int i = sc.nextInt();
+			switch(i)
+			{
+				case 1 : daos = DAOFactory.getDAOFactory(Persistance.MySQL); break;
+				case 2 : daos = DAOFactory.getDAOFactory(Persistance.ListeMemoire); break;
+				default : ok=false; break;
+			}
+			
+			//recuperation de la table voulue
+			System.out.println("operation sur quel table? "
+					+ "1.Periodicite "
+					+ "2.Abonnement "
+					+ "3.Client "
+					+ "4.Revue ");
+			int table = sc.nextInt();
+			switch(table)
+			{
+			case 1 : b_per=true; break;
+			case 2 : b_abo=true; break;
+			case 3 : b_cli=true; break;
+			case 4 : b_rev=true; break;
+			default : ok=false; break;
+			}
+			
+			//recuperation de l'operation desire
+			System.out.println("quel operation? "
+					+ "1.Ajouter une ligne "
+					+ "2.Supprimer une ligne "
+					+ "3.Modifier un ligne ");
+			int op = sc.nextInt();
+			switch(op)
+			{
+			case 1 : create=true; break;
+			case 2 : delete=true; break;
+			case 3 : update=true; break;
+			default : ok=false; break; 
+			}
 		}
 		
 		

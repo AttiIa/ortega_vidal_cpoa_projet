@@ -1,9 +1,15 @@
 package connexion;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
+import java.util.Properties;
+
 public class Connexion{
 	
 	private static Connexion connexion = null;
+	private Connection maConnexion;
+	
 	private Connexion() {};
 	
 	public static Connexion getInstance(){
@@ -14,13 +20,18 @@ public class Connexion{
 	}	
 	
 	public Connection creeConnexion(){
-		String url = "jdbc:mysql://devbdd.iutmetz.univ-lorraine.fr:3306/vidal27u_cpoa";
-		url += "?serverTimezone=Europe/Paris";
-		String login = "vidal27u_appli";
-		String pwd = "31803976";
-		Connection maConnexion = null;
+		Properties accesBdd1 = new Properties();
+        try {
+            InputStream source = getClass().getResourceAsStream("/Properties");
+            accesBdd1.loadFromXML(source);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
 		try{ 
-			maConnexion = DriverManager.getConnection(url, login, pwd);
+			maConnexion = DriverManager.getConnection(accesBdd1.getProperty("url"), accesBdd1.getProperty("login"),
+                    accesBdd1.getProperty("pass"));
 		} 
 		catch (SQLException sqle){
 			System.out.println("Erreur connexion" + sqle.getMessage());
