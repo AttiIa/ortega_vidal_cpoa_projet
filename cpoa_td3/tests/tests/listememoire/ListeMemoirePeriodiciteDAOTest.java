@@ -19,13 +19,11 @@ class ListeMemoirePeriodiciteDAOTest {
 		int id_periodicite = 11;
 		String libelle = "test";		
 		Periodicite per = new Periodicite(id_periodicite, libelle);
-		
+			
 		if(!lper.create(per)) {
 			fail("Pas implemente");
 		}
-		else {
-			lper.delete(per);
-		}
+		lper.delete(per);
 	}
 
 	@Test
@@ -50,14 +48,21 @@ class ListeMemoirePeriodiciteDAOTest {
 		if(!lper.update(per)) { 
 			fail("Pas modifie");
 		}
-		else {
-			lper.delete(per);
-		}
+		lper.delete(per);
 	}
 
 	@Test
 	void testGetById() {
-		fail("Pas encore implemente");
+		int id_periodicite = 33;
+		String libelle = "test";		
+		Periodicite per = new Periodicite(id_periodicite, libelle);
+		lper.create(per);
+		
+		if(!lper.getById(per.getId_periodicite()).equals(per)) {
+			lper.delete(per);
+			fail("Pas trouve");			
+		}
+		lper.delete(per);
 	}
 
 	@Test

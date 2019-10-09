@@ -115,19 +115,33 @@ public class MySQLClientDAO implements ClientDAO{
 	}
 	@Override
 	public ArrayList<Client> findAll() {
-		ArrayList<Client> client = null;
+		ArrayList<Client> listeClient = new ArrayList<>();
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
 
 			PreparedStatement requete = laConnexion.prepareStatement("select * from Client");
 			
-			requete.executeQuery();			
+			ResultSet res = requete.executeQuery();
+			res.next();
+			
+			while (res.next()) {
+				listeClient.add(new Client(
+						res.getInt("id_client"),
+						res.getString("nom"),
+						res.getString("prenom"),
+						res.getString("no_rue"),
+						res.getString("voie"),
+						res.getString("code_postal"),
+						res.getString("ville"),
+						res.getString("pays")
+						));
+			}
 		}
 		catch(SQLException sqle){
 			System.out.println("Pb Revue.findAll " + sqle.getMessage());
 		}
 		
-		return client;	
+		return listeClient;	
 	}
 
 }

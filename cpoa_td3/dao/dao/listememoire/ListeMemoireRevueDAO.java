@@ -68,14 +68,21 @@ public class ListeMemoireRevueDAO implements RevueDAO{
 	
 	@Override
 	public Revue getById(int id) {
-		int idx = this.donnees.indexOf(new Revue(id, "titre", "description", 1, "visuel", 3));
-		
-		if (idx == -1) {
-			throw new IllegalArgumentException("Aucun objet ne possede cet identifiant");
-		} 
-		else{
-			return this.donnees.get(idx);
+		Revue revue = new Revue();
+		boolean trouve=false;
+		int i=0;
+		while (trouve==false && i<this.donnees.size()){
+			if (this.donnees.get(i).getId_revue() == id) {
+				revue = this.donnees.get(i);
+				trouve=true;
+				}
+			else
+				i++;			
 		}
+		if(i>=this.donnees.size()){
+			System.out.println("Pas de revue avec cet id_revue");
+			revue=null;}
+		return revue;
 	}
 	
 	@Override

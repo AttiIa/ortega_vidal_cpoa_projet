@@ -32,7 +32,6 @@ class MySQLClientDAOTest {
 			fail("Pas encore implemente");
 		}
 		mcli.delete(cli);
-
 	}
 
 	@Test
@@ -51,8 +50,7 @@ class MySQLClientDAOTest {
 		
 		if(!mcli.delete(cli)) {
 			fail("Pas encore supprime");
-		}
-		
+		}		
 	}
 
 	@Test
@@ -73,7 +71,6 @@ class MySQLClientDAOTest {
 			fail("Pas encore modifie");
 		}
 		mcli.delete(cli);
-
 	}
 
 	@Test

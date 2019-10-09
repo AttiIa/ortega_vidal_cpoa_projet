@@ -58,7 +58,18 @@ class ListeMemoireAbonnementDAOTest {
 
 	@Test
 	void testGetById() {
-		fail("Pas encore implemente");
+		int id_client = 55;
+		int  id_revue = 66;
+		String date_debut = "2018-09-18";
+		String date_fin = "2019-11-21";		
+		Abonnement abo = new Abonnement(id_client, id_revue, date_debut, date_fin);
+		labo.create(abo);
+		
+		if(!labo.getById(abo.getId_client(), abo.getId_revue()).equals(abo)) {
+			labo.delete(abo);
+			fail("Pas trouve");			
+		}
+		labo.delete(abo);
 	}
 
 	@Test

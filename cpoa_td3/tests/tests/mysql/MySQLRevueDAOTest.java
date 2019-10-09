@@ -29,7 +29,6 @@ class MySQLRevueDAOTest {
 			fail("Pas encore implemente");
 		}
 		mrev.delete(rev);
-
 	}
 
 	@Test
@@ -45,8 +44,7 @@ class MySQLRevueDAOTest {
 				id_periodicite);
 		if(!mrev.delete(rev)) {
 			fail("Pas encore supprime");
-		}
-		
+		}		
 	}
 
 	@Test
@@ -64,7 +62,6 @@ class MySQLRevueDAOTest {
 			fail("Pas encore modifie");
 		}
 		mrev.delete(rev);
-
 	}
 
 	@Test
@@ -106,5 +103,4 @@ class MySQLRevueDAOTest {
 		}
 		mrev.delete(rev);
 	}
-
 }

@@ -10,6 +10,8 @@ public class Periodicite {
 		this.libelle = libelle;
 	}
 
+	public Periodicite() {}
+
 	public int getId_periodicite() {
 		return id_periodicite;
 	}
@@ -29,6 +31,31 @@ public class Periodicite {
 	@Override
 	public String toString() {
 		return "Periodicite [id_periodicite=" + id_periodicite + ", libelle=" + libelle + "]";
+	}
+	
+	@Override
+	public boolean equals(Object periodicite) {
+		if (this == periodicite)
+			return true;
+		
+		if (periodicite == null)
+			return false;
+		
+		if (this.getClass() != periodicite.getClass())
+			return false;
+		
+		Periodicite other = (Periodicite) periodicite;
+		
+		if (libelle == null) {
+			if (other.libelle != null)
+				return false;		
+		} else if (!libelle.equals(other.libelle))
+			return false;
+		
+		if (id_periodicite != other.id_periodicite)
+			return false;
+		
+		return true;
 	}
 
 }

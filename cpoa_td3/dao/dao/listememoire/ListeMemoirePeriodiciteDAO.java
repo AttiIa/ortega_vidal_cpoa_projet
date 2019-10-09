@@ -32,7 +32,7 @@ public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 		
 		while (this.donnees.contains(periodicite)){
 			periodicite.setId_periodicite(periodicite.getId_periodicite() + 1);
-		}		
+		}
 		boolean ok = this.donnees.add(periodicite);
 		return ok;
 	}
@@ -68,17 +68,24 @@ public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 		return true;
 	}
 
-	@Override
-	public Periodicite getById(int id) {
-		int idx = this.donnees.indexOf(new Periodicite(id, "test"));
-		
-		if (idx == -1) {
-			throw new IllegalArgumentException("Aucun objet ne possede cet identifiant");
-		} 
-		else{
-			return this.donnees.get(idx);
+	  @Override
+		public Periodicite getById(int id) {
+			Periodicite periodicite = new Periodicite();
+			boolean trouve=false;
+			int i=0;
+			while (trouve==false && i<this.donnees.size()){
+				if (this.donnees.get(i).getId_periodicite() == id) {
+					periodicite = this.donnees.get(i);
+					trouve=true;
+					}
+				else
+					i++;			
+			}
+			if(i>=this.donnees.size()){
+				System.out.println("Pas de periodicite avec cet id_periodicite");
+				periodicite=null;}
+			return periodicite;
 		}
-	}
 
 	@Override
 	public ArrayList<Periodicite> findAll() {

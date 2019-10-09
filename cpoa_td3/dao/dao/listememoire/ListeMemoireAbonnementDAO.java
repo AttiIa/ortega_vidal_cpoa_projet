@@ -74,20 +74,27 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 		return null;
 	}
 	
-	@Override
-	public Abonnement getById(int id1, int id2) {
-		int idx = this.donnees.indexOf(new Abonnement(id1, id2, "1999-09-18", "2000-11-21"));
-		
-		if (idx == -1) {
-			throw new IllegalArgumentException("Aucun objet ne possede cet identifiant");
-		} 
-		else{
-			return this.donnees.get(idx);
+	 @Override
+		public Abonnement getById(int id_client, int id_revue) {
+			Abonnement abo = new Abonnement();
+			boolean trouve = false;
+			int i = 0;
+			while (trouve == false && i < this.donnees.size()) {
+				if (this.donnees.get(i).getId_client() == id_client && this.donnees.get(i).getId_revue() == id_revue) {
+					abo = this.donnees.get(i);
+					trouve = true;
+				} else
+					i++;
+			}
+			if (!trouve) {
+				System.out.println("Pas d'abonnement avec ces id");
+				abo = null;
+			}
+			return abo;
 		}
-	}
 	
 	@Override
 	public ArrayList<Abonnement> findAll() {
 		return (ArrayList<Abonnement>) this.donnees;
-	}	
+	}
 }

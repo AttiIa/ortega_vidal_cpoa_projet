@@ -24,6 +24,8 @@ public class Client {
 		this.ville = ville;
 		this.pays = pays;
 	}
+	
+	public Client() {}
 
 	public int getId_client() {
 		return id_client;
@@ -93,6 +95,68 @@ public class Client {
 	public String toString() {
 		return "Client [id_client=" + id_client + ", nom=" + nom + ", prenom=" + prenom + ", no_rue=" + no_rue
 				+ ", voie=" + voie + ", code_postal=" + code_postal + ", ville=" + ville + ", pays=" + pays + "]";
+	}
+	
+	@Override
+	public boolean equals(Object client) {
+		if (this == client)
+			return true;
+		
+		if (client == null)
+			return false;
+		
+		if (this.getClass() != client.getClass())
+			return false;
+		
+		Client other = (Client) client;
+		
+		if (nom == null) {
+			if (other.nom != null)
+				return false;		
+		} else if (!nom.equals(other.nom))
+			return false;
+		
+		if (prenom == null) {
+			if (other.prenom != null)
+				return false;
+		} else if (!prenom.equals(other.prenom))
+			return false;
+		
+		if (no_rue == null) {
+			if (other.no_rue != null)
+				return false;
+		} else if (!no_rue.equals(other.no_rue))
+			return false;
+		
+		if (voie == null) {
+			if (other.voie != null)
+				return false;
+		} else if (!voie.equals(other.voie))
+			return false;
+		
+		if (code_postal == null) {
+			if (other.code_postal != null)
+				return false;
+		} else if (!code_postal.equals(other.code_postal))
+			return false;
+		
+		if (ville == null) {
+			if (other.ville != null)
+				return false;
+		} else if (!ville.equals(other.ville))
+			return false;
+		
+		if (pays == null) {
+			if (other.pays != null)
+				return false;
+		} else if (!pays.equals(other.pays))
+			return false;
+		
+		if (id_client != other.id_client) {
+			return false;
+		}
+		
+		return true;
 	}
 
 }

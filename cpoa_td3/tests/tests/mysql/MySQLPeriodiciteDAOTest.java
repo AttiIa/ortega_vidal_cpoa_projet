@@ -68,7 +68,6 @@ class MySQLPeriodiciteDAOTest {
 		int id_periodicite = 55;
 		String libelle = "test";		
 		Periodicite per = new Periodicite(id_periodicite, libelle);
-		mper.create(per);
 		
 		if(mper.findAll()==null) {
 			mper.delete(per);

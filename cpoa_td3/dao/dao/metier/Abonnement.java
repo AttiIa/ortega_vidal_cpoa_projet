@@ -17,6 +17,9 @@ public class Abonnement {
 		}
 
 
+		public Abonnement() {}
+
+
 		public int getId_client() {
 			return id_client;
 		}
@@ -62,11 +65,41 @@ public class Abonnement {
 			return "Abonnement [id_client=" + id_client + ", id_revue=" + id_revue + ", date_debut=" + date_debut
 					+ ", date_fin=" + date_fin + "]";
 		}
-		 
 		
-		 
 		
+		@Override
+		public boolean equals(Object abonnement) {
+			if (this == abonnement)
+				return true;
 			
+			if (abonnement == null)
+				return false;
 			
-		
+			if (this.getClass() != abonnement.getClass())
+				return false;
+			
+			Abonnement other = (Abonnement) abonnement;
+			
+			if (date_debut == null) {
+				if (other.date_debut != null)
+					return false;		
+			} else if (!date_debut.equals(other.date_debut))
+				return false;
+			
+			if (date_fin == null) {
+				if (other.date_fin != null)
+					return false;
+			} else if (!date_fin.equals(other.date_fin))
+				return false;
+			
+			if (id_client != other.id_client) {
+				return false;
+			}
+			
+			if (id_revue != other.id_revue) {
+				return false;
+			}
+			
+			return true;
+		}
 }

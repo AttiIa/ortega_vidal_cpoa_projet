@@ -69,14 +69,21 @@ public class ListeMemoireClientDAO implements ClientDAO{
 	
 	@Override
 	public Client getById(int id) {
-		int idx = this.donnees.indexOf(new Client(id, "nom", "prenom", "9", "wad_billy", "57000", "Metz", "France"));
-		
-		if (idx == -1) {
-			throw new IllegalArgumentException("Aucun objet ne possede cet identifiant");
-		} 
-		else{
-			return this.donnees.get(idx);
+		Client client = new Client();
+		boolean trouve=false;
+		int i=0;
+		while (trouve==false && i<this.donnees.size()){
+			if (this.donnees.get(i).getId_client() == id) {
+				client = this.donnees.get(i);
+				trouve=true;
+				}
+			else
+				i++;			
 		}
+		if(i>=this.donnees.size()){
+			System.out.println("Pas de client avec cet id_client");
+			client=null;}
+		return client;
 	}
 	
 	@Override
