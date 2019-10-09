@@ -23,9 +23,7 @@ class MySQLAbonnementDAOTest {
 		if(!mabo.create(abo)) {
 			fail("Pas implemente");
 		}
-		else { 
-			mabo.delete(abo);
-		}
+		mabo.delete(abo);
 	}
 
 	@Test
@@ -50,9 +48,7 @@ class MySQLAbonnementDAOTest {
 		if(!mabo.update(abo)) {
 			fail("Pas modifie");
 		}	
-		else { 
-			mabo.delete(abo);
-		}
+		mabo.delete(abo);
 	}
 
 	@Test
@@ -68,9 +64,24 @@ class MySQLAbonnementDAOTest {
 			mabo.delete(abo);
 			fail("Pas trouve");
 		}
-		else { 
+		mabo.delete(abo);
+
+	}
+	
+	@Test
+	void testFindAll() {
+		int id_client = 99;
+		int  id_revue = 111;
+		String date_debut = "2018-09-18";
+		String date_fin = "2019-11-21";		
+		Abonnement abo = new Abonnement(id_client, id_revue, date_debut, date_fin);	
+		mabo.create(abo);
+		
+		if(mabo.findAll()==null) {
 			mabo.delete(abo);
+			fail("Pas trouve");
 		}
+		mabo.delete(abo);
 	}
 
 }

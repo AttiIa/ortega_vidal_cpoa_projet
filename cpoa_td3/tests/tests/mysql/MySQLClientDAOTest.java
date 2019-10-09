@@ -16,7 +16,7 @@ class MySQLClientDAOTest {
 
 	@Test
 	void testCreate() {
-		int id_client = 18;
+		int id_client = 15;
 		String nom = "Vidal";
 		String prenom = "Thomas";
 		String no_rue = "4";
@@ -31,14 +31,13 @@ class MySQLClientDAOTest {
 		if(!mcli.create(cli)) {
 			fail("Pas encore implemente");
 		}
-		else {
-			mcli.delete(cli);
-		}
+		mcli.delete(cli);
+
 	}
 
 	@Test
 	void testDelete() {
-		int id_client = 19;
+		int id_client = 16;
 		String nom = "Vidal";
 		String prenom = "Thomas";
 		String no_rue = "4";
@@ -58,7 +57,7 @@ class MySQLClientDAOTest {
 
 	@Test
 	void testUpdate() {
-		int id_client = 18;
+		int id_client = 17;
 		String nom = "Vidal";
 		String prenom = "Thomas";
 		String no_rue = "5";
@@ -73,9 +72,8 @@ class MySQLClientDAOTest {
 		if(!mcli.update(cli)) {
 			fail("Pas encore modifie");
 		}
-		else {
-			mcli.delete(cli);
-		}
+		mcli.delete(cli);
+
 	}
 
 	@Test
@@ -96,9 +94,29 @@ class MySQLClientDAOTest {
 			mcli.delete(cli);
 			fail("Pas trouve");
 		}
-		else { 
+		mcli.delete(cli);
+
+	}
+	
+	@Test
+	void testFindAll() {
+		int id_client = 19;
+		String nom = "Vidal";
+		String prenom = "Thomas";
+		String no_rue = "5";
+		String voie ="rue paul doumer";
+		String code_postal= "10150";
+		String ville = "pont sainte marie";
+		String pays = "France";		
+		Client cli = new Client(id_client,  nom,  prenom,  no_rue,  voie,  code_postal,
+		 ville,  pays);
+		mcli.create(cli);
+		
+		if(mcli.findAll()==null) {
 			mcli.delete(cli);
+			fail("Pas trouve");
 		}
+		mcli.delete(cli);
 	}
 
 }

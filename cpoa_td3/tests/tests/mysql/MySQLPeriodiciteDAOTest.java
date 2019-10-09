@@ -22,9 +22,7 @@ class MySQLPeriodiciteDAOTest {
 		if(!mper.create(per)) {
 			fail("Pas implemente");
 		}
-		else {
-			mper.delete(per);
-		}
+		mper.delete(per);
 	}
 
 	@Test
@@ -47,9 +45,7 @@ class MySQLPeriodiciteDAOTest {
 		if(!mper.update(per)) { 
 			fail("Pas modifie");
 		}
-		else {
-			mper.delete(per);
-		}
+		mper.delete(per);
 	}
 
 	@Test
@@ -63,9 +59,22 @@ class MySQLPeriodiciteDAOTest {
 			mper.delete(per);
 			fail("Pas trouve");
 		}
-		else { 
+		mper.delete(per);
+
+	}
+	
+	@Test
+	void testFindAll() {
+		int id_periodicite = 55;
+		String libelle = "test";		
+		Periodicite per = new Periodicite(id_periodicite, libelle);
+		mper.create(per);
+		
+		if(mper.findAll()==null) {
 			mper.delete(per);
+			fail("Pas trouve");
 		}
+		mper.delete(per);
 	}
 
 }

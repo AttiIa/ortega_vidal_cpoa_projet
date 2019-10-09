@@ -28,9 +28,8 @@ class MySQLRevueDAOTest {
 		if(!mrev.create(rev)) {
 			fail("Pas encore implemente");
 		}
-		else {
-			mrev.delete(rev);
-		}
+		mrev.delete(rev);
+
 	}
 
 	@Test
@@ -64,14 +63,13 @@ class MySQLRevueDAOTest {
 		if(!mrev.update(rev)) {
 			fail("Pas encore modifie");
 		}
-		else {
-			mrev.delete(rev);
-		}
+		mrev.delete(rev);
+
 	}
 
 	@Test
 	void testGetById() {
-		int id_revue =20;
+		int id_revue =21;
 		String titre ="coder en Java";
 		String description="livre pour apprendre a coder en Java";
 		double tarif_numero= 3.4;
@@ -86,9 +84,27 @@ class MySQLRevueDAOTest {
 			mrev.delete(rev);
 			fail("Pas trouve");
 		}
-		else { 
+		mrev.delete(rev);
+	}
+	
+	@Test
+	void testFindAll() {
+		int id_revue =22;
+		String titre ="coder en Java";
+		String description="livre pour apprendre a coder en Java";
+		double tarif_numero= 3.4;
+		String visuel="logo.png";
+		int id_periodicite =21;
+		 
+		Revue rev = new Revue(id_revue, titre, description, tarif_numero, visuel,
+					id_periodicite);
+		mrev.create(rev);
+		
+		if(mrev.findAll()==null) {
 			mrev.delete(rev);
+			fail("Pas trouve");
 		}
+		mrev.delete(rev);
 	}
 
 }
