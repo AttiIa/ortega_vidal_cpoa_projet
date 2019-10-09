@@ -137,8 +137,19 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 
 	@Override
 	public ArrayList<Abonnement> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Abonnement> abonnement = null;
+		try {
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
+
+			PreparedStatement requete = laConnexion.prepareStatement("select * from Abonnement");
+			
+			requete.executeQuery();			
+		}
+		catch(SQLException sqle){
+			System.out.println("Pb Abonnement.findAll " + sqle.getMessage());
+		}
+		
+		return abonnement;	
 	}
 
 }

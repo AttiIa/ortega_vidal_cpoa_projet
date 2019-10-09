@@ -103,7 +103,19 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 
 	@Override
 	public ArrayList<Periodicite> findAll() {
-		return null;
+		ArrayList<Periodicite> periodicite = null;
+		try {
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
+
+			PreparedStatement requete = laConnexion.prepareStatement("select * from Periodicite");
+			
+			requete.executeQuery();			
+		}
+		catch(SQLException sqle){
+			System.out.println("Pb Periodicite.findAll " + sqle.getMessage());
+		}
+		
+		return periodicite;	
 	}
 
 }

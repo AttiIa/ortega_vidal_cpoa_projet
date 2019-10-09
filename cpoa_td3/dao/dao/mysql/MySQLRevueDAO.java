@@ -108,7 +108,18 @@ public class MySQLRevueDAO implements RevueDAO{
 	}
 	@Override
 	public ArrayList<Revue> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Revue> revue = null;
+		try {
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
+
+			PreparedStatement requete = laConnexion.prepareStatement("select * from Revue");
+			
+			requete.executeQuery();			
+		}
+		catch(SQLException sqle){
+			System.out.println("Pb Revue.findAll " + sqle.getMessage());
+		}
+		
+		return revue;	
 	}
 }
