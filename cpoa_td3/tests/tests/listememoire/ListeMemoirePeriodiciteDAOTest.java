@@ -53,7 +53,7 @@ class ListeMemoirePeriodiciteDAOTest {
 
 	@Test
 	void testGetById() {
-		int id_periodicite = 33;
+		int id_periodicite = 44;
 		String libelle = "test";		
 		Periodicite per = new Periodicite(id_periodicite, libelle);
 		lper.create(per);

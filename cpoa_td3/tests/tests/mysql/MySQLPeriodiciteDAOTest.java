@@ -55,7 +55,7 @@ class MySQLPeriodiciteDAOTest {
 		Periodicite per = new Periodicite(id_periodicite, libelle);
 		mper.create(per);
 		
-		if(mper.getById(id_periodicite).equals(per)) {
+		if(!mper.getById(per.getId_periodicite()).equals(per)) {
 			mper.delete(per);
 			fail("Pas trouve");
 		}

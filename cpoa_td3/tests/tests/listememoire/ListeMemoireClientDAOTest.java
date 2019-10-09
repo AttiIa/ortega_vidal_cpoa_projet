@@ -77,7 +77,7 @@ class ListeMemoireClientDAOTest {
 	
 	@Test
 	void testGetById() {
-		int id_client = 17;
+		int id_client = 18;
 		String nom = "Vidal";
 		String prenom = "Thomas";
 		String no_rue = "4";

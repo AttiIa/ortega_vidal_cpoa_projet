@@ -60,7 +60,7 @@ class MySQLAbonnementDAOTest {
 		Abonnement abo = new Abonnement(id_client, id_revue, date_debut, date_fin);	
 		mabo.create(abo);
 		
-		if(mabo.getById(id_client, id_revue).equals(abo)) {
+		if(!mabo.getById(abo.getId_client(), abo.getId_revue()).equals(abo)) {
 			mabo.delete(abo);
 			fail("Pas trouve");
 		}

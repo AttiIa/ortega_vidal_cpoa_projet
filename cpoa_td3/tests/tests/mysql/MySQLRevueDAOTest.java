@@ -71,13 +71,13 @@ class MySQLRevueDAOTest {
 		String description="livre pour apprendre a coder en Java";
 		double tarif_numero= 3.4;
 		String visuel="logo.png";
-		int id_periodicite =21;
+		int id_periodicite =32;
 		 
 		Revue rev = new Revue(id_revue, titre, description, tarif_numero, visuel,
 					id_periodicite);
 		mrev.create(rev);
 				
-		if(mrev.getById(id_revue).equals(rev)) {
+		if(!mrev.getById(rev.getId_revue()).equals(rev)) {
 			mrev.delete(rev);
 			fail("Pas trouve");
 		}

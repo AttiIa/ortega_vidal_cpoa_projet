@@ -21,8 +21,9 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 		return instance;
 	}
 	
+	@Override
 	public boolean create(Periodicite periodicite) {
-		boolean nbLignes;
+		boolean ok;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
 
@@ -31,18 +32,23 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 			requete.setString(2, periodicite.getLibelle());
 		
 			requete.executeUpdate();
-			nbLignes = true;		
+			
+			 if (requete != null)
+					requete.close();
+			 
+			ok = true;		
 				
 		}
 		catch(SQLException sqle){
 			System.out.println("Pb Periodicite.create " + sqle.getMessage());
-			nbLignes = false;
+			ok = false;
 		}
-		return nbLignes;
+		return ok;
 	}
 	
+	@Override
 	public boolean delete(Periodicite periodicite) {
-		boolean nbLignes;
+		boolean ok;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
 
@@ -50,18 +56,23 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 			requete.setInt(1, periodicite.getId_periodicite());
 		
 			requete.executeUpdate();
-			nbLignes = true;		
+			
+			 if (requete != null)
+					requete.close();
+			 
+			ok = true;		
 				
 		}
 		catch(SQLException sqle){
 			System.out.println("Pb Periodicite.delete " + sqle.getMessage());
-			nbLignes = false;
+			ok = false;
 		}
-		return nbLignes;
+		return ok;
 	}
 	
+	@Override
 	public boolean update(Periodicite periodicite) {
-		boolean nbLignes;
+		boolean ok;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
 
@@ -70,16 +81,21 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 			requete.setInt(2, periodicite.getId_periodicite());
 		
 			requete.executeUpdate();
-			nbLignes = true;		
+			
+			 if (requete != null)
+					requete.close();
+			 
+			ok = true;		
 				
 		}
 		catch(SQLException sqle){
 			System.out.println("Pb Periodicite.update " + sqle.getMessage());
-			nbLignes = false;
+			ok = false;
 		}
-		return nbLignes;	
+		return ok;	
 	}
 	
+	@Override
 	public Periodicite getById(int id) {
 		Periodicite periodicite = null;
 		try {
@@ -89,9 +105,16 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 			requete.setInt(1, id);
 			
 			ResultSet res = requete.executeQuery();
+			
 			res.next();
 			
 			periodicite = new Periodicite(id, res.getString("libelle"));
+			
+			if (requete != null)
+				requete.close();
+			
+			if (res != null)
+				res.close();
 			
 		}
 		catch(SQLException sqle){
@@ -110,13 +133,19 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 			PreparedStatement requete = laConnexion.prepareStatement("select * from Periodicite");
 			
 			ResultSet res = requete.executeQuery();
-			res.next();
+					 
 			while (res.next()) {
 				listePeriodicite.add(new Periodicite(
 						res.getInt("id_periodicite"),
 						res.getString("libelle")
-						));
+						));				
 			}
+			
+			if (requete != null)
+				requete.close();
+			
+			if (res != null)
+				res.close();
 		}
 		catch(SQLException sqle){
 			System.out.println("Pb Periodicite.findAll " + sqle.getMessage());

@@ -20,8 +20,9 @@ public class MySQLClientDAO implements ClientDAO{
 	return instance;
 	}
 	
+	@Override
 	public boolean create(Client client) {
-		boolean nbLignes;
+		boolean ok;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
 
@@ -37,17 +38,21 @@ public class MySQLClientDAO implements ClientDAO{
 			
 			requete.executeUpdate();
 			
-			nbLignes = true;			
+			 if (requete != null)
+					requete.close();
+			
+			ok = true;			
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Client.create" + sqle.getMessage());
-			nbLignes = false;
+			System.out.println("Pb Client.create " + sqle.getMessage());
+			ok = false;
 		}
-		return nbLignes;	
+		return ok;	
 	}
 	
+	@Override
 	public boolean delete(Client client) {
-		boolean nbLignes;
+		boolean ok;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
 
@@ -55,18 +60,23 @@ public class MySQLClientDAO implements ClientDAO{
 			requete.setInt(1, client.getId_client());
 		
 			requete.executeUpdate();
-			nbLignes = true;		
+			
+			 if (requete != null)
+					requete.close();
+			 
+			ok = true;		
 				
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Client.delete" + sqle.getMessage());
-			nbLignes = false;
+			System.out.println("Pb Client.delete " + sqle.getMessage());
+			ok = false;
 		}
-		return nbLignes;		
+		return ok;		
 	}
 	
+	@Override
 	public boolean update(Client client) {
-		boolean nbLignes;
+		boolean ok;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
 
@@ -81,16 +91,21 @@ public class MySQLClientDAO implements ClientDAO{
 			requete.setInt(8, client.getId_client());
 		
 			requete.executeUpdate();
-			nbLignes = true;		
+			
+			 if (requete != null)
+					requete.close();
+			 
+			ok = true;		
 				
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Client.update" + sqle.getMessage());
-			nbLignes = false;
+			System.out.println("Pb Client.update " + sqle.getMessage());
+			ok = false;
 		}
-		return nbLignes;		
+		return ok;		
 	}
 	
+	@Override
 	public Client getById(int id) {
 		Client client = null;
 		
@@ -101,12 +116,19 @@ public class MySQLClientDAO implements ClientDAO{
 			requete.setInt(1, id);
 			
 			ResultSet res = requete.executeQuery();
+			
 			res.next();
 			
 			client = new Client(id, res.getString("nom"), res.getString("prenom"), res.getString("no_rue"), res.getString("voie"), res.getString("code_postal"), res.getString("ville"), res.getString("pays"));
+			
+			if (requete != null)
+				requete.close();
+			
+			if (res != null)
+				res.close();			
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Client.getById" + sqle.getMessage());
+			System.out.println("Pb Client.getById " + sqle.getMessage());
 		}
 		
 		return client;
@@ -122,8 +144,7 @@ public class MySQLClientDAO implements ClientDAO{
 			PreparedStatement requete = laConnexion.prepareStatement("select * from Client");
 			
 			ResultSet res = requete.executeQuery();
-			res.next();
-			
+	
 			while (res.next()) {
 				listeClient.add(new Client(
 						res.getInt("id_client"),
@@ -136,6 +157,12 @@ public class MySQLClientDAO implements ClientDAO{
 						res.getString("pays")
 						));
 			}
+				
+				if (requete != null)
+					requete.close();
+				
+				if (res != null)
+					res.close();
 		}
 		catch(SQLException sqle){
 			System.out.println("Pb Revue.findAll " + sqle.getMessage());

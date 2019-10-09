@@ -87,7 +87,7 @@ class MySQLClientDAOTest {
 		 ville,  pays);
 		mcli.create(cli);
 		
-		if(mcli.getById(id_client).equals(cli)) {
+		if(!mcli.getById(cli.getId_client()).equals(cli)) {
 			mcli.delete(cli);
 			fail("Pas trouve");
 		}

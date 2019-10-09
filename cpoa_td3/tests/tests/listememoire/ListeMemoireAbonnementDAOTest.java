@@ -58,8 +58,8 @@ class ListeMemoireAbonnementDAOTest {
 
 	@Test
 	void testGetById() {
-		int id_client = 55;
-		int  id_revue = 66;
+		int id_client = 77;
+		int  id_revue = 88;
 		String date_debut = "2018-09-18";
 		String date_fin = "2019-11-21";		
 		Abonnement abo = new Abonnement(id_client, id_revue, date_debut, date_fin);

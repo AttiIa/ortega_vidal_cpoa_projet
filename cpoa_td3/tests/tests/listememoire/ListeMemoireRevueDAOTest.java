@@ -69,7 +69,7 @@ class ListeMemoireRevueDAOTest {
 
 	@Test
 	void testGetById() {
-		int id_revue =20;
+		int id_revue =21;
 		String titre ="coder en Java";
 		String description="livre pour apprendre a coder en Java";
 		double tarif_numero= 3.4;
