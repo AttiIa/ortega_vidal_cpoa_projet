@@ -6,12 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.stage.*;
 
-public class mainInterface extends  {
+public class mainInterface {
 
-	@Override
+
 	public void start(Stage primaryStage) {
 	try {
-	URL fxmlURL=getClass().getResource("javafx/interface_graphique_revue.fxml");
+	java.net.URL fxmlURL=getClass().getResource("javafx/interface_graphique_revue.fxml");
 	FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 	Node root = fxmlLoader.load();
 	Scene scene = new Scene((VBox) root, 640, 400);
@@ -22,7 +22,7 @@ public class mainInterface extends  {
 	} catch (Exception e) {
 	e.printStackTrace();
 	}
-	}
+	}    
 	public static void main(String[] args) {
 		launch(args);
 		}
