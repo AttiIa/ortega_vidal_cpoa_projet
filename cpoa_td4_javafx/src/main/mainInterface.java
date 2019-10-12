@@ -6,7 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.stage.*;
 
-public class mainInterface extends main {
+public class mainInterface extends  {
 
 	@Override
 	public void start(Stage primaryStage) {
