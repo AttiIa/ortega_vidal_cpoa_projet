@@ -28,9 +28,4 @@ public class mainInterface {
 	public static void main(String[] args) {
 		launch(args);
 	}
-
-	private static void launch(String[] args) {
-		// TODO Stub de la méthode généré automatiquement
-		
-	}
 }
