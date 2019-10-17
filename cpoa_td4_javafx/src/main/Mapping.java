@@ -1,4 +1,4 @@
-package javafx;
+package main;
 import dao.metier.Revue;
 import dao.metier.Periodicite;
 import java.net.URL;

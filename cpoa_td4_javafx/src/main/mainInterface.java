@@ -17,6 +17,7 @@ public class mainInterface extends Application{
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Node root = fxmlLoader.load();
 			Scene scene = new Scene((VBox) root, 600, 400);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Ma premiere fenetre JavaFX");
 			primaryStage.show();
