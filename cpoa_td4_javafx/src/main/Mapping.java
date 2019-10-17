@@ -73,10 +73,10 @@ public class Mapping implements Initializable {
 		
 		else {	
 			DAOFactory daos = null;
-			if(mysql != null) {
+			if(mysql.isSelected()) {
 				daos = DAOFactory.getDAOFactory(Persistance.MySQL);
 			}
-			else if(list != null){
+			else if(list.isSelected()){
 				daos = DAOFactory.getDAOFactory(Persistance.ListeMemoire);
 			}
 			try {
