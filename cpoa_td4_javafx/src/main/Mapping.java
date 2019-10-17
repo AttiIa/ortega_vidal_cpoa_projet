@@ -38,8 +38,7 @@ public class Mapping implements Initializable {
 	
 	@Override
 	public String toString() {
-		return "Mapping [titre=" + titre.getText() + ", tarif=" + tarif.getText() + /*", libelle=" + libelle.getText() +*/ ", description=" + description.getText()
-				+ ", visuel=" + visuel.getText() + "]";
+		return titre.getText() + ", " + tarif.getText() + /*", " + libelle.getText() +*/ ", " + description.getText() + ", " + visuel.getText();
 	}
 	
 	 public void initialize(URL location, ResourceBundle resources) {
