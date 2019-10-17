@@ -41,6 +41,11 @@
             <Label text="Visuel:" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
             <Label text="id_revue:" GridPane.halignment="RIGHT" />
             <TextField fx:id="id_revue" maxWidth="-Infinity" prefWidth="100.0" GridPane.columnIndex="1" />
+            <Label prefHeight="17.0" prefWidth="122.0" text="euros au numéro" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="120.0" />
+               </GridPane.margin>
+            </Label>
          </children>
       </GridPane>
       <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="98.0" prefWidth="600.0" rowValignment="BASELINE">
@@ -65,3 +70,4 @@
       </FlowPane>
    </children>
 </VBox>
+
