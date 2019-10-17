@@ -66,7 +66,7 @@ public class Mapping implements Initializable {
 	public void create() {
 		Periodicite period = libelle.getValue();
 		
-		if ((id_revue.getText().isEmpty()) || (titre.getText().isEmpty()) || (description.getText().isEmpty()) || (tarif.getText().isEmpty()) || (visuel.getText().isEmpty()) /*|| (period == null)*/ || (id_revue.getText().isEmpty())){
+		if ((id_revue.getText().isEmpty()) || (titre.getText().isEmpty()) || (description.getText().isEmpty()) || (tarif.getText().isEmpty()) || (visuel.getText().isEmpty()) /*|| (period == null)*/ || (id_revue.getText().isEmpty()) || (mysql==null&&list==null)){
 			affichage.setTextFill(Color.web("red"));
 			this.affichage.setText("Les champs ne sont pas tous valides");
 		}
