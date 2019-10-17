@@ -30,7 +30,7 @@ public class Periodicite {
 
 	@Override
 	public String toString() {
-		return "Periodicite [id_periodicite=" + id_periodicite + ", libelle=" + libelle + "]";
+		return libelle ;
 	}
 	
 	@Override
