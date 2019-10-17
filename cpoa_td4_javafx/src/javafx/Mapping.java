@@ -23,7 +23,23 @@ public class Mapping {
 	@FXML
 	private RadioButton choix;
 	
-	public void appuiBoutonOK() {
-		
+	@Override
+	public String toString() {
+		return "Mapping [titre=" + titre + ", tarif=" + tarif + ", libelle=" + libelle + ", description=" + description
+				+ ", visuel=" + visuel + ", choix=" + choix + "]";
 	}
+	
+	public void Init() {
+		titre.setText("");
+		tarif.setText("");
+		description.setText("");
+		visuel.setText("");
+	}
+	
+	@FXML
+	public void create() {
+		this.affichage.setText("appuie sur bouton");
+	}
+	
+	
 }

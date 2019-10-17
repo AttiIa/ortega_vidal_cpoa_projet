@@ -26,6 +26,6 @@ public class mainInterface {
 	}         
 
 	public static void main(String[] args) {
-		start(args);
+		launch(args);
 	}
 }      
