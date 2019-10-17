@@ -50,7 +50,7 @@ public class Mapping implements Initializable {
 				System.out.println("Problème à l'initialisation ");
 				e.printStackTrace();
 			}
-	    }
+	    }   
 	
 	public void Init() {
 		titre.setText("");
