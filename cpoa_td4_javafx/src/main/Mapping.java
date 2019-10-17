@@ -38,7 +38,7 @@ public class Mapping implements Initializable {
 	
 	@Override
 	public String toString() {
-		return titre.getText() + " (" + tarif.getText() + ")";
+		return "Ajout de : " + titre.getText() + " (" + tarif.getText() + ")";
 	}
 	
 	 public void initialize(URL location, ResourceBundle resources) {
