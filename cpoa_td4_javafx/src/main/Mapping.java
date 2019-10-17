@@ -38,7 +38,7 @@ public class Mapping implements Initializable {
 	
 	@Override
 	public String toString() {
-		return titre.getText() + ", " + tarif.getText();
+		return titre.getText() + " (" + tarif.getText() + ")";
 	}
 	
 	 public void initialize(URL location, ResourceBundle resources) {
@@ -66,7 +66,7 @@ public class Mapping implements Initializable {
 		Periodicite period = libelle.getValue();
 		
 		if ((id_revue.getText().isEmpty()) || (titre.getText().isEmpty()) || (description.getText().isEmpty()) || (tarif.getText().isEmpty()) 
-				|| (visuel.getText().isEmpty()) /*|| (period == null)*/ || (id_revue.getText().isEmpty()) || (mysql==null&&list==null)){
+				|| (visuel.getText().isEmpty()) || (period == null) || (id_revue.getText().isEmpty()) || (mysql==null&&list==null)){
 			affichage.setTextFill(Color.web("red"));
 			this.affichage.setText("Les champs ne sont pas tous valides");
 		}
