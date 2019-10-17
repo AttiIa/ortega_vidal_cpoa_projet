@@ -13,8 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.control.*;
 
 public class Mapping implements Initializable {
-	//@FXML
-	private TextField id_revue;
+	
 	@FXML
 	private TextField titre;	
 	@FXML
@@ -33,6 +32,9 @@ public class Mapping implements Initializable {
 	private RadioButton mysql;
 	@FXML
 	private RadioButton list;
+	@FXML
+	private TextField id_revue;
+
 	
 	@Override
 	public String toString() {
@@ -64,7 +66,7 @@ public class Mapping implements Initializable {
 	public void create() {
 		Periodicite period = libelle.getValue();
 		
-		if ((id_revue.getText().isEmpty()) || (titre.getText().isEmpty()) || (description.getText().isEmpty()) || (tarif.getText().isEmpty()) || (visuel.getText().isEmpty()) || (period == null) ){
+		if ((id_revue.getText().isEmpty()) || (titre.getText().isEmpty()) || (description.getText().isEmpty()) || (tarif.getText().isEmpty()) || (visuel.getText().isEmpty()) /*|| (period == null)*/ || (id_revue.getText().isEmpty())){
 			affichage.setTextFill(Color.web("red"));
 			this.affichage.setText("Les champs ne sont pas tous valides");
 		}
@@ -93,7 +95,16 @@ public class Mapping implements Initializable {
 				affichage.setTextFill(Color.web("red"));
 				affichage.setText(toString());
 			}
-		//this.affichage.setText("appuie sur bouton");
 		}	
+	}
+	
+	@FXML
+	public void sql() {
+		
+	}
+	
+	@FXML
+	public void listm() {
+		
 	}
 }
