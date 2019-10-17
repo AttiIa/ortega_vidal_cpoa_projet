@@ -34,6 +34,7 @@ public class Mapping {
 		tarif.setText("");
 		description.setText("");
 		visuel.setText("");
+		affichage.setText("");
 	}
 	
 	@FXML
