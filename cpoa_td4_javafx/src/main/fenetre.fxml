@@ -50,7 +50,7 @@
       </GridPane>
       <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="98.0" prefWidth="600.0" rowValignment="BASELINE">
          <children>
-            <Button fx:id="creer" mnemonicParsing="false" onAction="#create" onMouseClicked="#create" text="Creer" />
+            <Button fx:id="creer" mnemonicParsing="false" onAction="#create" text="Creer" />
             <RadioButton fx:id="mysql" mnemonicParsing="false" onAction="#sql" text="MySQL">
                <FlowPane.margin>
                   <Insets left="50.0" right="50.0" top="50.0" />

@@ -53,20 +53,13 @@ public class Mapping implements Initializable {
 			}
 	    }   
 	
-	public void Init() {
-		titre.setText("");
-		tarif.setText("");
-		description.setText("");
-		visuel.setText("");
-		affichage.setText("");
-	}
-	
 	@FXML
 	public void create() {
+		
 		Periodicite period = libelle.getValue();
 		
 		if ((id_revue.getText().isEmpty()) || (titre.getText().isEmpty()) || (description.getText().isEmpty()) || (tarif.getText().isEmpty()) 
-				|| (visuel.getText().isEmpty()) || (period == null) || (id_revue.getText().isEmpty()) || (mysql==null&&list==null)){
+				|| (visuel.getText().isEmpty()) || (period == null) || (id_revue.getText().isEmpty()) || ((mysql==null) && (list==null))){
 			affichage.setTextFill(Color.web("red"));
 			this.affichage.setText("Les champs ne sont pas tous valides");
 		}
@@ -80,7 +73,6 @@ public class Mapping implements Initializable {
 				daos = DAOFactory.getDAOFactory(Persistance.ListeMemoire);
 			}
 			try {
-				
 				double txt_tarif = Double.parseDouble(tarif.getText());
 				affichage.setTextFill(Color.web("black"));
 				affichage.setText(toString());
@@ -89,11 +81,11 @@ public class Mapping implements Initializable {
 				String txt_description = description.getText();
 				String txt_visuel = visuel.getText();
 				Revue rev = new Revue(txt_revue, txt_titre, txt_description, txt_tarif, txt_visuel, period.getId_periodicite());
-		        
-		        daos.getRevueDAO().create(rev);
-			} catch (Exception e) {
+		        daos.getRevueDAO().create(rev);  
+			} 
+			catch (Exception e) {
 				affichage.setTextFill(Color.web("red"));
-				affichage.setText(toString());
+				this.affichage.setText("Erreur lors de la creation");
 			}
 		}	
 	}
