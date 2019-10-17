@@ -38,7 +38,7 @@ public class Mapping implements Initializable {
 	
 	@Override
 	public String toString() {
-		return titre.getText() + ", " + tarif.getText() + /*", " + libelle.getText() +*/ ", " + description.getText() + ", " + visuel.getText();
+		return id_revue.getText() + ", " + titre.getText() + ", " + tarif.getText() + /*", " + libelle.getText() +*/ ", " + description.getText() + ", " + visuel.getText();
 	}
 	
 	 public void initialize(URL location, ResourceBundle resources) {
@@ -82,7 +82,7 @@ public class Mapping implements Initializable {
 			try {
 				
 				double txt_tarif = Double.parseDouble(tarif.getText());
-				affichage.setTextFill(Color.web("#000000"));
+				affichage.setTextFill(Color.web("black"));
 				affichage.setText(toString());
 				int txt_revue = Integer.parseInt(id_revue.getText());
 				String txt_titre = titre.getText();

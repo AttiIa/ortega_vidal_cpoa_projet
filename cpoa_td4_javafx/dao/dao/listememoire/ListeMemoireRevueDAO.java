@@ -21,6 +21,11 @@ public class ListeMemoireRevueDAO implements RevueDAO{
 	private ListeMemoireRevueDAO(){
 
 		this.donnees = new ArrayList<Revue>();
+		
+		this.donnees.add(new Revue(1, "Le monde", "journal du soir", 1.5, "lemonde.jpg", 0));
+		this.donnees.add(new Revue(2, "Charlie Hebdo", "journal satirique", 2, "charliehebdo.jpg", 0));
+		this.donnees.add(new Revue(3, "Spirou", "Humour et bandes dessinées, retrouvez tous les héros des éditions Dupuis", 2.2, "spirou.jpg", 0));         
+		this.donnees.add(new Revue(4, "Programmez", "Revue d'informatique orientée vers le développement d'applications", 3.5, "programmez.jpg", 0));
 	}
 	
 	@Override
