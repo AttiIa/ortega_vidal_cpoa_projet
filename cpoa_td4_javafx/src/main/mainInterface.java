@@ -23,9 +23,9 @@ public class mainInterface {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}      
 
 	public static void main(String[] args) {
-		launch(args);
+		start(args);
 	}
 }      
