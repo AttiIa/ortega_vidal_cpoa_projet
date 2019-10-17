@@ -16,19 +16,15 @@ public class Mapping implements Initializable {
 	//@FXML
 	private TextField id_revue;
 	@FXML
-	private TextField titre;
-	
+	private TextField titre;	
 	@FXML
 	private TextField tarif;
 	@FXML
-	private ComboBox<Periodicite> libelle;
-	
+	private ComboBox<Periodicite> libelle;	
 	@FXML
-	private TextArea description;
-	
+	private TextArea description;	
 	@FXML
-	private TextField visuel;
-	
+	private TextField visuel;	
 	@FXML
 	private Button creer;
 	@FXML
@@ -74,7 +70,15 @@ public class Mapping implements Initializable {
 		}
 		
 		else {	
+			DAOFactory daos = null;
+			if(mysql != null) {
+				daos = DAOFactory.getDAOFactory(Persistance.MySQL);
+			}
+			else if(list != null){
+				daos = DAOFactory.getDAOFactory(Persistance.ListeMemoire);
+			}
 			try {
+				
 				double txt_tarif = Double.parseDouble(tarif.getText());
 				affichage.setTextFill(Color.web("#000000"));
 				affichage.setText(toString());
@@ -83,15 +87,13 @@ public class Mapping implements Initializable {
 				String txt_description = description.getText();
 				String txt_visuel = visuel.getText();
 				Revue rev = new Revue(txt_revue, txt_titre, txt_description, txt_tarif, txt_visuel, period.getId_periodicite());
-		        DAOFactory daos = DAOFactory.getDAOFactory(Persistance.MySQL);
+		        
 		        daos.getRevueDAO().create(rev);
-				}
-				catch (Exception e) {
+			} catch (Exception e) {
 				affichage.setTextFill(Color.web("red"));
 				affichage.setText(toString());
-				}
+			}
 		//this.affichage.setText("appuie sur bouton");
+		}	
 	}
-	
-	
-}}
+}
