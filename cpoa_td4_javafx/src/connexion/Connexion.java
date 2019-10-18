@@ -18,7 +18,7 @@ public class Connexion{
 		}
 		return connexion;
 	}	
-	
+	 
 	public Connection creeConnexion(){
 		Properties accesBdd1 = new Properties();
         try {

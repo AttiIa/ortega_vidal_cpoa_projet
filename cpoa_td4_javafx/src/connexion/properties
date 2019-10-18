@@ -7,4 +7,4 @@
  <entry key="pass">31803976</entry>
  <entry key="port">3306</entry>
 <entry key="url">jdbc:mysql://devbdd.iutmetz.univ-lorraine.fr:3306/vidal27u_cpoa?serverTimezone=Europe/Paris</entry>
-</properties>
+</properties> 
