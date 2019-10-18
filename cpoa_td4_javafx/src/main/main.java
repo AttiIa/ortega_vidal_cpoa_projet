@@ -21,7 +21,7 @@ public class main {
 	static Boolean update=false;
 	
 
-	public static void main(String[] args) {
+	public void main(String[] args) {
 																//Debut du programmme
 		DAOFactory daos = null;
 		

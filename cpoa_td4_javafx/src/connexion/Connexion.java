@@ -22,7 +22,7 @@ public class Connexion{
 	public Connection creeConnexion(){
 		Properties accesBdd1 = new Properties();
         try {
-            InputStream source = getClass().getResourceAsStream("/Properties");
+            InputStream source = getClass().getResourceAsStream("properties");
             accesBdd1.loadFromXML(source);
 
         } catch (IOException e) {

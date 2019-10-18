@@ -1,5 +1,6 @@
 package main;
 
+import java.io.IOException;
 import java.net.URL;
 
 import javafx.application.Application;
@@ -9,10 +10,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class mainInterface extends Application{
+public class mainInterface extends Application {
 	@Override
-	public void start(Stage primaryStage) {
-		try {
+	public void start(Stage primaryStage) throws IOException {
+
 			URL fxmlURL = getClass().getResource("fenetre.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Node root = fxmlLoader.load();
@@ -21,9 +22,7 @@ public class mainInterface extends Application{
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Gestion des revues");
 			primaryStage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
 	}         
 
 	public static void main(String[] args) {

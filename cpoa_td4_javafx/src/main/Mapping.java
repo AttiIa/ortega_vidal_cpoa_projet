@@ -48,7 +48,7 @@ public class Mapping implements Initializable {
 	        try {
 				this.libelle.setItems(FXCollections.observableArrayList(dao.getPeriodiciteDAO().findAll()));
 			} catch (Exception e) {
-				System.out.println("Problème à l'initialisation ");
+				System.out.println("Probl�me � l'initialisation ");
 				e.printStackTrace();
 			}
 	    }   
@@ -89,4 +89,5 @@ public class Mapping implements Initializable {
 			}
 		}	
 	}
+
 }
