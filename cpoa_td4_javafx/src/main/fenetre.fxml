@@ -57,12 +57,12 @@
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="597.0">
                <children>
-                  <RadioButton fx:id="mysql" mnemonicParsing="false" onAction="#sql" prefHeight="17.0" prefWidth="77.0" text="MySQL">
+                  <RadioButton fx:id="mysql" mnemonicParsing="false" prefHeight="17.0" prefWidth="77.0" text="MySQL">
                      <toggleGroup>
                         <ToggleGroup fx:id="daos" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="list" mnemonicParsing="false" onAction="#listm" prefHeight="17.0" prefWidth="277.0" text="ListeMémoire" toggleGroup="$daos" />
+                  <RadioButton fx:id="list" mnemonicParsing="false" prefHeight="17.0" prefWidth="277.0" text="ListeMémoire" toggleGroup="$daos" />
                   <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefHeight="25.0" prefWidth="76.0" text="Créer" />
                </children>
             </HBox>
