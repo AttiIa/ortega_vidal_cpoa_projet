@@ -32,6 +32,14 @@ public class Mapping implements Initializable {
 	private RadioButton mysql;
 	@FXML
 	private RadioButton list;
+	@FXML
+	private Button modifier;
+	@FXML
+	private Button supprimer;
+	@FXML
+	private Button retour;
+	@FXML
+	private TableView<Revue> tblRevue;
 
 	
 	@Override
@@ -86,5 +94,11 @@ public class Mapping implements Initializable {
 			} 
 		}	
 	}
+	@FXML
+	public void update() {}
+	@FXML
+	public void delete() {}
+	@FXML
+	public void back() {}
 
 }
