@@ -19,6 +19,17 @@ public class Revue {
 		this.id_periodicite = id_periodicite;
 	}
 	
+	public Revue(String titre, String description, double tarif_numero, String visuel,
+			int id_periodicite) {
+		super();
+		this.id_revue = -1;
+		this.titre = titre;
+		this.description = description;
+		this.tarif_numero = tarif_numero;
+		this.visuel = visuel;
+		this.id_periodicite = id_periodicite;
+	}
+	
 	public Revue() {}
 
 	public int getId_revue() {

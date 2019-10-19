@@ -15,6 +15,14 @@ public class Abonnement {
 			this.date_debut = date_debut;
 			this.date_fin = date_fin;
 		}
+		
+		public Abonnement(int id_revue, String date_debut, String date_fin) {
+			super();
+			this.id_client = -1;
+			this.id_revue = id_revue;
+			this.date_debut = date_debut;
+			this.date_fin = date_fin;
+		}
 
 
 		public Abonnement() {}

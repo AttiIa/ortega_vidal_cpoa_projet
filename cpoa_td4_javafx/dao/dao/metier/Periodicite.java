@@ -9,6 +9,12 @@ public class Periodicite {
 		this.id_periodicite = id_periodicite;
 		this.libelle = libelle;
 	}
+	
+	public Periodicite(String libelle) {
+		super();
+		this.id_periodicite = -1;
+		this.libelle = libelle;
+	}
 
 	public Periodicite() {}
 
