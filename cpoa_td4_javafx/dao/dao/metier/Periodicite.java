@@ -15,7 +15,7 @@ public class Periodicite {
 		this.id_periodicite = -1;
 		this.libelle = libelle;
 	}
-
+  
 	public Periodicite() {}
 
 	public int getId_periodicite() {

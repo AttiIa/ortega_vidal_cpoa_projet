@@ -17,7 +17,7 @@ public abstract class DAOFactory {
 		}
 
 		return daoF;
-	}
+	} 
 
 	public abstract PeriodiciteDAO getPeriodiciteDAO();
 
