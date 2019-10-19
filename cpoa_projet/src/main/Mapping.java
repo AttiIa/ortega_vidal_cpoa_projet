@@ -21,6 +21,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
+<<<<<<< HEAD
+=======
+import javafx.stage.Window;
+import javafx.scene.control.*;
+>>>>>>> branch 'master' of https://github.com/AttiIa/ortega_vidal_cpoa_projet.git
 
 public class Mapping implements Initializable {
 
@@ -50,6 +55,8 @@ public class Mapping implements Initializable {
 	private Button retour;
 	@FXML
 	private TableView<Revue> tblRevue;
+	
+	private Window vue;
 
 	public void tblRevue() {
 		this.tblRevue = new TableView<>();
@@ -86,7 +93,17 @@ public class Mapping implements Initializable {
 
 	public void initialize(URL location, ResourceBundle resources) {
 
+<<<<<<< HEAD
 		DAOFactory dao = DAOFactory.getDAOFactory(Persistance.ListeMemoire);
+=======
+	        try {
+				this.libelle.setItems(FXCollections.observableArrayList(dao.getPeriodiciteDAO().findAll()));
+			} catch (Exception e) {
+				System.out.println("Probleme a l'initialisation ");
+				e.printStackTrace();
+			}
+	    }   
+>>>>>>> branch 'master' of https://github.com/AttiIa/ortega_vidal_cpoa_projet.git
 	
 		try {
 			this.libelle.setItems(FXCollections.observableArrayList(dao.getPeriodiciteDAO().findAll()));
@@ -101,11 +118,26 @@ public class Mapping implements Initializable {
 	public void create() {
 
 		Periodicite period = libelle.getValue();
+<<<<<<< HEAD
 
 		if ((titre.getText().isEmpty()) || (description.getText().isEmpty()) || (tarif.getText().isEmpty())
 				|| (visuel.getText().isEmpty()) || (period == null) || ((mysql == null) && (list == null))) {
 			affichage.setTextFill(Color.web("red"));
 			this.affichage.setText("Les champs ne sont pas tous valides");
+=======
+		
+		if ((titre.getText().isEmpty()) || (description.getText().isEmpty()) || (tarif.getText().isEmpty()) 
+				|| (visuel.getText().isEmpty()) || (period == null) || ((mysql==null) && (list==null))){
+		
+			//String erreur="";
+			Alert alert=new Alert(Alert.AlertType.ERROR);
+			alert.initOwner(this.vue);
+			alert.setTitle("Erreur lors de la saisie");
+			alert.setHeaderText("Un ou plusieurs champs sont mal remplis.");
+			//alert.setContentText(erreur);
+			alert.showAndWait();
+
+>>>>>>> branch 'master' of https://github.com/AttiIa/ortega_vidal_cpoa_projet.git
 		}
 
 		else {
@@ -134,14 +166,37 @@ public class Mapping implements Initializable {
 
 	@FXML
 	public void update() {
+<<<<<<< HEAD
 	}
 
+=======
+		
+	}
+>>>>>>> branch 'master' of https://github.com/AttiIa/ortega_vidal_cpoa_projet.git
 	@FXML
 	public void delete() {
+<<<<<<< HEAD
 	}
 
+=======
+		DAOFactory daos = DAOFactory.getDAOFactory(Persistance.MySQL);
+		try {
+			
+	        daos.getRevueDAO().delete(tblRevue.getSelectionModel().getSelectedItem());  
+		} 
+		catch (Exception e) {
+			affichage.setTextFill(Color.web("red"));
+			this.affichage.setText("Erreur lors de la suppression");
+		} 
+		
+	}
+>>>>>>> branch 'master' of https://github.com/AttiIa/ortega_vidal_cpoa_projet.git
 	@FXML
 	public void back() {
+<<<<<<< HEAD
+=======
+		
+>>>>>>> branch 'master' of https://github.com/AttiIa/ortega_vidal_cpoa_projet.git
 	}
 
 }
