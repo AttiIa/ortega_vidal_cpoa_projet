@@ -32,11 +32,10 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 			
 			int comp=d_deb.compareTo(d_fin);
 			if(comp<0) {
-			PreparedStatement requete = laConnexion.prepareStatement("insert into Abonnement (id_client, id_revue, date_debut, date_fin)" + "VALUES (?, ?, ?, ?)");
-			requete.setInt(1, abonnement.getId_client());
-			requete.setInt(2, abonnement.getId_revue());
-			requete.setDate(3, d_deb);
-			requete.setDate(4, d_fin);
+			PreparedStatement requete = laConnexion.prepareStatement("insert into Abonnement (id_revue, date_debut, date_fin)" + "VALUES (?, ?, ?)");
+			requete.setInt(1, abonnement.getId_revue());
+			requete.setDate(2, d_deb);
+			requete.setDate(3, d_fin);
 			
 			requete.executeUpdate();
 			

@@ -26,15 +26,14 @@ public class MySQLClientDAO implements ClientDAO{
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
 
-			PreparedStatement requete = laConnexion.prepareStatement("insert into Client (id_client, nom, prenom, no_rue, voie, code_postal, ville, pays)" + "VALUES (?, ?, ?, ? , ?, ?, ?, ?)");
-			requete.setInt(1, client.getId_client());
-			requete.setString(2, client.getNom());
-			requete.setString(3, client.getPrenom());
-			requete.setString(4, client.getNo_rue());
-			requete.setString(5, client.getVoie());
-			requete.setString(6, client.getCode_postal());
-			requete.setString(7, client.getVille());
-			requete.setString(8, client.getPays());
+			PreparedStatement requete = laConnexion.prepareStatement("insert into Client (nom, prenom, no_rue, voie, code_postal, ville, pays)" + "VALUES (?, ?, ? , ?, ?, ?, ?)");
+			requete.setString(1, client.getNom());
+			requete.setString(2, client.getPrenom());
+			requete.setString(3, client.getNo_rue());
+			requete.setString(4, client.getVoie());
+			requete.setString(5, client.getCode_postal());
+			requete.setString(6, client.getVille());
+			requete.setString(7, client.getPays());
 			
 			requete.executeUpdate();
 			
