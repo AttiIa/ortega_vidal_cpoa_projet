@@ -10,7 +10,9 @@ import javafx.fxml.Initializable;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.paint.Color;
+import javafx.stage.Window;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 
 public class Mapping implements Initializable {
 	
@@ -40,6 +42,8 @@ public class Mapping implements Initializable {
 	private Button retour;
 	@FXML
 	private TableView<Revue> tblRevue;
+	
+	private Window vue;
 
 	
 	@Override
@@ -54,7 +58,7 @@ public class Mapping implements Initializable {
 	        try {
 				this.libelle.setItems(FXCollections.observableArrayList(dao.getPeriodiciteDAO().findAll()));
 			} catch (Exception e) {
-				System.out.println("Probl�me � l'initialisation ");
+				System.out.println("Probleme a l'initialisation ");
 				e.printStackTrace();
 			}
 	    }   
@@ -66,8 +70,16 @@ public class Mapping implements Initializable {
 		
 		if ((titre.getText().isEmpty()) || (description.getText().isEmpty()) || (tarif.getText().isEmpty()) 
 				|| (visuel.getText().isEmpty()) || (period == null) || ((mysql==null) && (list==null))){
-			affichage.setTextFill(Color.web("red"));
-			this.affichage.setText("Les champs ne sont pas tous valides");
+			//affichage.setTextFill(Color.web("red"));
+			
+			//String erreur="";
+			Alert alert=new Alert(Alert.AlertType.ERROR);
+			alert.initOwner(this.vue);
+			alert.setTitle("Erreur lors de la saisie");
+			alert.setHeaderText("Un ou plusieurs champs sont mal remplis.");
+			//alert.setContentText(erreur);
+			alert.showAndWait();
+
 		}
 		
 		else {	
