@@ -12,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.scene.paint.Color;
 import javafx.stage.Window;
 import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
 
 public class Mapping implements Initializable {
 	
@@ -70,8 +69,7 @@ public class Mapping implements Initializable {
 		
 		if ((titre.getText().isEmpty()) || (description.getText().isEmpty()) || (tarif.getText().isEmpty()) 
 				|| (visuel.getText().isEmpty()) || (period == null) || ((mysql==null) && (list==null))){
-			//affichage.setTextFill(Color.web("red"));
-			
+		
 			//String erreur="";
 			Alert alert=new Alert(Alert.AlertType.ERROR);
 			alert.initOwner(this.vue);
@@ -107,10 +105,25 @@ public class Mapping implements Initializable {
 		}	
 	}
 	@FXML
-	public void update() {}
+	public void update() {
+		
+	}
 	@FXML
-	public void delete() {}
+	public void delete() {
+		DAOFactory daos = DAOFactory.getDAOFactory(Persistance.MySQL);
+		try {
+			
+	        daos.getRevueDAO().delete(tblRevue.getSelectionModel().getSelectedItem());  
+		} 
+		catch (Exception e) {
+			affichage.setTextFill(Color.web("red"));
+			this.affichage.setText("Erreur lors de la suppression");
+		} 
+		
+	}
 	@FXML
-	public void back() {}
+	public void back() {
+		
+	}
 
 }
