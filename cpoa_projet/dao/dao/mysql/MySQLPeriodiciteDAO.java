@@ -27,9 +27,8 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
 
-			PreparedStatement requete = laConnexion.prepareStatement("insert into Periodicite (id_periodicite, libelle)" + "VALUES (?, ?)");
-			requete.setInt(1, periodicite.getId_periodicite());
-			requete.setString(2, periodicite.getLibelle());
+			PreparedStatement requete = laConnexion.prepareStatement("insert into Periodicite (libelle)" + "VALUES (?)");
+			requete.setString(1, periodicite.getLibelle());
 		
 			requete.executeUpdate();
 			

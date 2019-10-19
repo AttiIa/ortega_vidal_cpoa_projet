@@ -26,13 +26,12 @@ public class MySQLRevueDAO implements RevueDAO{
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
 
-			PreparedStatement requete = laConnexion.prepareStatement("insert into Revue (id_revue, titre, description, tarif_numero, visuel, id_periodicite)" + "VALUES (?, ?, ?, ?, ?, ?)");
-			requete.setInt(1, revue.getId_revue());
-			requete.setString(2, revue.getTitre());
-			requete.setString(3, revue.getDescription());
-			requete.setDouble(4, revue.getTarif_numero());
-			requete.setString(5, revue.getVisuel());
-			requete.setInt(6, revue.getId_periodicite());
+			PreparedStatement requete = laConnexion.prepareStatement("insert into Revue (titre, description, tarif_numero, visuel, id_periodicite)" + "VALUES (?, ?, ?, ?, ?)");
+			requete.setString(1, revue.getTitre());
+			requete.setString(2, revue.getDescription());
+			requete.setDouble(3, revue.getTarif_numero());
+			requete.setString(4, revue.getVisuel());
+			requete.setInt(5, revue.getId_periodicite());
 		
 			requete.executeUpdate();
 			
