@@ -32,8 +32,6 @@ public class Mapping implements Initializable {
 	private RadioButton mysql;
 	@FXML
 	private RadioButton list;
-	@FXML
-	private TextField id_revue;
 
 	
 	@Override
@@ -58,8 +56,8 @@ public class Mapping implements Initializable {
 		
 		Periodicite period = libelle.getValue();
 		
-		if ((id_revue.getText().isEmpty()) || (titre.getText().isEmpty()) || (description.getText().isEmpty()) || (tarif.getText().isEmpty()) 
-				|| (visuel.getText().isEmpty()) || (period == null) || (id_revue.getText().isEmpty()) || ((mysql==null) && (list==null))){
+		if ((titre.getText().isEmpty()) || (description.getText().isEmpty()) || (tarif.getText().isEmpty()) 
+				|| (visuel.getText().isEmpty()) || (period == null) || ((mysql==null) && (list==null))){
 			affichage.setTextFill(Color.web("red"));
 			this.affichage.setText("Les champs ne sont pas tous valides");
 		}
@@ -76,12 +74,11 @@ public class Mapping implements Initializable {
 				double txt_tarif = Double.parseDouble(tarif.getText());
 				affichage.setTextFill(Color.web("black"));
 				affichage.setText(toString());
-				int txt_revue = Integer.parseInt(id_revue.getText());
 				String txt_titre = titre.getText();
 				String txt_description = description.getText();
 				String txt_visuel = visuel.getText();
-				Revue rev = new Revue(txt_revue, txt_titre, txt_description, txt_tarif, txt_visuel, period.getId_periodicite());
-		        daos.getRevueDAO().create(rev);  
+				
+		        daos.getRevueDAO().create(new Revue(txt_titre, txt_description, txt_tarif, txt_visuel, period.getId_periodicite()));  
 			} 
 			catch (Exception e) {
 				affichage.setTextFill(Color.web("red"));
