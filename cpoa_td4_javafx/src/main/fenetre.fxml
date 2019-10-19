@@ -29,7 +29,7 @@
             <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-         <children>
+         <children> 
             <Label text="Titre:" GridPane.halignment="RIGHT" />
             <TextField fx:id="titre" maxWidth="-Infinity" prefHeight="26.0" prefWidth="219.0" GridPane.columnIndex="1" />
             <Label text="Description:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP" />

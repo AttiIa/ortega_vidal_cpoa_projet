@@ -83,7 +83,7 @@ public class Mapping implements Initializable {
 			catch (Exception e) {
 				affichage.setTextFill(Color.web("red"));
 				this.affichage.setText("Erreur lors de la creation");
-			}
+			} 
 		}	
 	}
 
