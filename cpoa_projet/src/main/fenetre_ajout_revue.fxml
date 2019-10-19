@@ -75,13 +75,13 @@
       <HBox alignment="CENTER" prefHeight="289.0" prefWidth="600.0">
          <children>
             <TableView fx:id="tblRevue" prefHeight="286.0" prefWidth="828.0">
-              <columns>
-                <TableColumn prefWidth="69.0" text="id_revue" />
-                <TableColumn prefWidth="142.0" text="Titre" />
-                  <TableColumn prefWidth="285.0" text="Description" />
-                  <TableColumn minWidth="0.0" prefWidth="59.0" text="Tarif" />
-                  <TableColumn prefWidth="148.0" text="Périodicité" />
-                  <TableColumn prefWidth="124.0" text="Visuel" />
+              <<columns>
+                <TableColumn fx:id="id_revue" prefWidth="69.0" text="id_revue" />
+                <TableColumn fx:id="colTitre" prefWidth="142.0" text="Titre" />
+                  <TableColumn fx:id="colDescription" prefWidth="285.0" text="Description" />
+                  <TableColumn fx:id="colTarif" minWidth="0.0" prefWidth="59.0" text="Tarif" />
+                  <TableColumn fx:id="colPeriodicite" prefWidth="148.0" text="Periodicite" />
+                  <TableColumn fx:id="colVisuel" prefWidth="124.0" text="Visuel" />
               </columns>
             </TableView>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
