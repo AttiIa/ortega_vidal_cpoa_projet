@@ -17,7 +17,7 @@ public class mainInterface extends Application {
 			URL fxmlURL = getClass().getResource("fenetre_ajout_revue.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Node root = fxmlLoader.load();
-			Scene scene = new Scene((VBox) root, 931, 812);
+			Scene scene = new Scene((VBox) root, 1000, 812);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Gestion des revues");
