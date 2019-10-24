@@ -60,11 +60,11 @@ public class Mapping implements Initializable {
 	public TableView<Revue> tblRevue() {
 
 		TableColumn<Revue, String> colIdRevue = new TableColumn<>("id_revue");
-		TableColumn<Revue, String> colTitre = new TableColumn<>("colTitre");
-		TableColumn<Revue, String> colDescription = new TableColumn<>("colDescription");
-		TableColumn<Revue, String> colTarif = new TableColumn<>("colTarif");
-		TableColumn<Revue, String> colPeriodicite = new TableColumn<>("colPeriodicite");
-		TableColumn<Revue, String> colVisuel = new TableColumn<>("colVisuel");
+		TableColumn<Revue, String> colTitre = new TableColumn<>("Titre");
+		TableColumn<Revue, String> colDescription = new TableColumn<>("Description");
+		TableColumn<Revue, String> colTarif = new TableColumn<>("Tarif");
+		TableColumn<Revue, String> colPeriodicite = new TableColumn<>("Periodicite");
+		TableColumn<Revue, String> colVisuel = new TableColumn<>("Visuel");
 
 		colIdRevue.setCellValueFactory(new PropertyValueFactory<Revue, String>("id_revue"));
 		colTitre.setCellValueFactory(new PropertyValueFactory<Revue, String>("titre"));
@@ -123,7 +123,7 @@ public class Mapping implements Initializable {
 			alert.setHeaderText("Un ou plusieurs champs sont mal remplis.");
 			//alert.setContentText(erreur);
 			alert.showAndWait();
-
+		
 
 		}
 
@@ -144,11 +144,19 @@ public class Mapping implements Initializable {
 
 				daos.getRevueDAO().create(
 						new Revue(txt_titre, txt_description, txt_tarif, txt_visuel, period.getId_periodicite()));
+				tblRevue.refresh();
 			} catch (Exception e) {
 				affichage.setTextFill(Color.web("red"));
 				this.affichage.setText("Erreur lors de la creation");
 			}
 		}
+		
+		List<Revue> revues = DAOFactory.getDAOFactory(Persistance.MySQL).getRevueDAO().findAll();
+		
+		this.tblRevue.getItems().addAll(revues);
+		System.out.println(this.tblRevue.getItems().size());
+	
+		
 	}
 
 	@FXML
@@ -160,8 +168,6 @@ public class Mapping implements Initializable {
 	
 	@FXML
 	public void delete() {
-
-	
 
 
 		DAOFactory daos = DAOFactory.getDAOFactory(Persistance.MySQL);
