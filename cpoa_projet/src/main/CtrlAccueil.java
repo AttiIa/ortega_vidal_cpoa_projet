@@ -14,16 +14,17 @@ import dao.mysql.MySQLAbonnementDAO;
 import dao.mysql.MySQLClientDAO;
 import dao.mysql.MySQLPeriodiciteDAO;
 import dao.mysql.MySQLRevueDAO;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class CtrlAccueil implements Initializable {
 	@FXML
@@ -38,6 +39,8 @@ public class CtrlAccueil implements Initializable {
 	private Button Periodicite;
 	@FXML
 	private Button Revue;
+	@FXML
+	private Window vue;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -58,7 +61,21 @@ public class CtrlAccueil implements Initializable {
 
 		@FXML
 		public void Revue() throws IOException {
-			
+			DAOFactory daos = null;
+			if (mysql.isSelected()) {
+				daos = DAOFactory.getDAOFactory(Persistance.MySQL);
+			} 
+			else if (list.isSelected()) {
+				daos = DAOFactory.getDAOFactory(Persistance.ListeMemoire);
+			}
+			else {
+				Alert alert=new Alert(Alert.AlertType.ERROR);
+				alert.initOwner(this.vue);
+				alert.setTitle("Erreur : aucune persistance selectionnée");
+				//alert.setContentText(erreur);
+				alert.showAndWait();
+			}
+			if (daos!= null ) {
 			Stage stage = new Stage();
 			
 			URL fxmlURL = getClass().getResource("fenetre_ajout_revue.fxml");
@@ -70,7 +87,9 @@ public class CtrlAccueil implements Initializable {
 			stage.setScene(scene);
 			stage.setTitle("Gestion des revues");
 			stage.show();
-
+			}
+			
+			
 	}      
 	
 }
