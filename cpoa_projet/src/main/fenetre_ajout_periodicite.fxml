@@ -35,19 +35,9 @@
          </VBox.margin>
       </GridPane>
       <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="90.0" prefWidth="600.0" rowValignment="BASELINE">
-         <children>
-            <HBox alignment="CENTER" prefHeight="73.0" prefWidth="597.0">
-               <children>
-                  <RadioButton fx:id="mysql" mnemonicParsing="false" prefHeight="17.0" prefWidth="77.0" text="MySQL">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="daos" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton fx:id="list" mnemonicParsing="false" prefHeight="17.0" prefWidth="277.0" text="ListeMémoire" toggleGroup="$daos" />
+         <children>                  
                   <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefHeight="25.0" prefWidth="76.0" text="Créer" />
-               </children>
-            </HBox>
-         </children>
+           </children>
       </FlowPane>
       <FlowPane alignment="CENTER" prefHeight="57.0" prefWidth="600.0">
          <children>
