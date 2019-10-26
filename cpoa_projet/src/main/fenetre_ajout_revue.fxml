@@ -4,11 +4,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="753.0" prefWidth="994.0" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Mapping">
+<VBox prefHeight="753.0" prefWidth="994.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Mapping">
    <children>
       <GridPane prefHeight="320.0" prefWidth="962.0">
         <columnConstraints>
@@ -53,17 +51,7 @@
       </GridPane>
       <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="90.0" prefWidth="600.0" rowValignment="BASELINE">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="597.0">
-               <children>
-                  <RadioButton fx:id="mysql" mnemonicParsing="false" prefHeight="17.0" prefWidth="77.0" text="MySQL">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="daos" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton fx:id="list" mnemonicParsing="false" prefHeight="17.0" prefWidth="277.0" text="ListeMémoire" toggleGroup="$daos" />
-                  <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefHeight="25.0" prefWidth="76.0" text="Créer" />
-               </children>
-            </HBox>
+            <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefHeight="25.0" prefWidth="76.0" text="Créer" />
          </children>
       </FlowPane>
       <FlowPane alignment="CENTER" prefHeight="36.0" prefWidth="829.0">
