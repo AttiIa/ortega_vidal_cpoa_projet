@@ -6,6 +6,10 @@ import java.util.ResourceBundle;
 
 import dao.factory.DAOFactory;
 import dao.factory.Persistance;
+import dao.interfaces.AbonnementDAO;
+import dao.interfaces.ClientDAO;
+import dao.interfaces.PeriodiciteDAO;
+import dao.interfaces.RevueDAO;
 import dao.listememoire.ListeMemoireAbonnementDAO;
 import dao.listememoire.ListeMemoireClientDAO;
 import dao.listememoire.ListeMemoirePeriodiciteDAO;
@@ -27,6 +31,12 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 public class CtrlAccueil implements Initializable {
+	
+	public static ClientDAO daocl;
+	public static PeriodiciteDAO daoper;
+	public static RevueDAO daorev;
+	public static AbonnementDAO daoabo;
+	
 	@FXML
 	private RadioButton mysql;
 	@FXML
@@ -44,39 +54,32 @@ public class CtrlAccueil implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ListeMemoireRevueDAO daorevli = ListeMemoireRevueDAO.getInstance();
-		ListeMemoireAbonnementDAO daoaboli = ListeMemoireAbonnementDAO.getInstance();
-		ListeMemoireClientDAO daoclili = ListeMemoireClientDAO.getInstance();
-		ListeMemoirePeriodiciteDAO daoperioli = ListeMemoirePeriodiciteDAO.getInstance();
 		
-		MySQLAbonnementDAO daoabosql = MySQLAbonnementDAO.getInstance();
-		MySQLRevueDAO daorevsql = MySQLRevueDAO.getInstance();
-		MySQLClientDAO daoclisql = 		MySQLClientDAO.getInstance();
-		MySQLPeriodiciteDAO daoperiosql = 		MySQLPeriodiciteDAO.getInstance();
 	
-	}
-	
-	
-	
+	}	
 
-		@FXML
-		public void Revue() throws IOException {
-			DAOFactory daos = null;
-			if (mysql.isSelected()) {
-				daos = DAOFactory.getDAOFactory(Persistance.MySQL);
-			} 
-			else if (list.isSelected()) {
-				daos = DAOFactory.getDAOFactory(Persistance.ListeMemoire);
-			}
-			else {
-				Alert alert=new Alert(Alert.AlertType.ERROR);
-				alert.initOwner(this.vue);
-				alert.setTitle("Erreur : aucune persistance selectionnée");
-				//alert.setContentText(erreur);
-				alert.showAndWait();
-			}
-			if (daos!= null ) {
-			Stage stage = new Stage();
+	@FXML
+	public void Revue() throws IOException {
+		if (mysql.isSelected()) {
+			daorev = DAOFactory.getDAOFactory(Persistance.MySQL).getRevueDAO();
+			daoper = DAOFactory.getDAOFactory(Persistance.MySQL).getPeriodiciteDAO();
+		} 
+		else if (list.isSelected()) {
+			daorev = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getRevueDAO();
+			daoper = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getPeriodiciteDAO();
+		}
+		else {
+			Alert alert=new Alert(Alert.AlertType.ERROR);
+			alert.initOwner(this.vue);
+			alert.setTitle("Erreur : aucune persistance selectionnée");
+			alert.showAndWait();
+		}		
+		
+		
+		if (daorev!=null) {
+			Stage stage =(Stage) Revue.getScene().getWindow();
+			stage.close();
+			Stage stage1 = new Stage();
 			
 			URL fxmlURL = getClass().getResource("fenetre_ajout_revue.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
@@ -84,12 +87,10 @@ public class CtrlAccueil implements Initializable {
 			Scene scene = new Scene((VBox) root, 1000, 812);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
-			stage.setScene(scene);
-			stage.setTitle("Gestion des revues");
-			stage.show();
-			}
-			
-			
+			stage1.setScene(scene);
+			stage1.setTitle("Gestion des revues");
+			stage1.show();
+		}					
 	}      
 	
 }

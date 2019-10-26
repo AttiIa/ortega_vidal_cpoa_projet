@@ -20,6 +20,7 @@ import javafx.scene.control.*;
 
 public class Mapping implements Initializable {
 	
+	private DAOFactory daos; 
 	private boolean b_create=false;
 	private boolean b_update=false;
 	
@@ -74,7 +75,9 @@ public class Mapping implements Initializable {
 
 		this.tblRevue.getColumns().setAll(colIdRevue, colTitre, colDescription, colTarif, colPeriodicite, colVisuel);
 
-		List<Revue> revues = DAOFactory.getDAOFactory(Persistance.MySQL).getRevueDAO().findAll();
+		List<Revue> revues = CtrlAccueil.daorev.findAll();
+		
+		//List<Revue> revues = DAOFactory.getDAOFactory(Persistance.MySQL).getRevueDAO().findAll();
 
 		this.tblRevue.getItems().addAll(revues);
 		return tblRevue;
@@ -87,11 +90,9 @@ public class Mapping implements Initializable {
 	}
 
 	public void initialize(URL location, ResourceBundle resources) {
-
-		DAOFactory dao = DAOFactory.getDAOFactory(Persistance.ListeMemoire);
  	
 		try {
-			this.libelle.setItems(FXCollections.observableArrayList(dao.getPeriodiciteDAO().findAll()));
+			this.libelle.setItems(FXCollections.observableArrayList(CtrlAccueil.daoper.findAll()));
 			tblRevue();
 		} catch (Exception e) {
 			Alert alert=new Alert(Alert.AlertType.ERROR);
@@ -109,7 +110,7 @@ public class Mapping implements Initializable {
 		Periodicite period = libelle.getValue();
 
 		if ((titre.getText().isEmpty()) || (description.getText().isEmpty()) || (tarif.getText().isEmpty())
-				|| (visuel.getText().isEmpty()) || (period == null) || ((mysql == null) && (list == null))) {
+				|| (visuel.getText().isEmpty()) || (period == null)) {
 			affichage.setTextFill(Color.web("red"));
 			this.affichage.setText("Les champs ne sont pas tous valides");
 
@@ -123,16 +124,6 @@ public class Mapping implements Initializable {
 		}
 
 		else if(b_create){
-			DAOFactory daos = null;
-			if (mysql.isSelected()) daos = DAOFactory.getDAOFactory(Persistance.MySQL);
-			else if (list.isSelected())	daos = DAOFactory.getDAOFactory(Persistance.ListeMemoire);
-			else {
-				Alert alert=new Alert(Alert.AlertType.ERROR);
-				alert.initOwner(this.vue);
-				alert.setTitle("Erreur : aucune persistance selectionnée");
-				alert.showAndWait();
-			}
-			
 			try {
 				double txt_tarif = Double.parseDouble(tarif.getText());
 				String txt_titre = titre.getText();
@@ -153,15 +144,6 @@ public class Mapping implements Initializable {
 			}
 		}
 		else if(b_update) {
-			DAOFactory daos = null;
-			if (mysql.isSelected()) daos = DAOFactory.getDAOFactory(Persistance.MySQL);
-			else if (list.isSelected())	daos = DAOFactory.getDAOFactory(Persistance.ListeMemoire);
-			else {
-				Alert alert=new Alert(Alert.AlertType.ERROR);
-				alert.initOwner(this.vue);
-				alert.setTitle("Erreur : aucune persistance selectionnée");
-				alert.showAndWait();
-			}
 			try {
 				double txt_tarif = Double.parseDouble(tarif.getText());
 				String txt_titre = titre.getText();
@@ -237,7 +219,6 @@ public class Mapping implements Initializable {
 	
 	@FXML
 	public void delete() {
-		DAOFactory daos = DAOFactory.getDAOFactory(Persistance.MySQL);
 		try {			
 	        daos.getRevueDAO().delete(tblRevue.getSelectionModel().getSelectedItem());  
 	        List<Revue> revues = DAOFactory.getDAOFactory(Persistance.MySQL).getRevueDAO().findAll();
@@ -259,12 +240,5 @@ public class Mapping implements Initializable {
 	public void back() {
 		
 		
-	}
-	
-	
-	
-	
-	
-	
-	
+	}	
 }
