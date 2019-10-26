@@ -78,9 +78,6 @@ public class Mapping implements Initializable {
 		List<Revue> revues = DAOFactory.getDAOFactory(Persistance.MySQL).getRevueDAO().findAll();
 
 		this.tblRevue.getItems().addAll(revues);
-		System.out.println(this.tblRevue.getItems().size());
-		
-	
 		return tblRevue;
 
 	}
@@ -91,7 +88,6 @@ public class Mapping implements Initializable {
 	}
 
 	public void initialize(URL location, ResourceBundle resources) {
-
 
 		DAOFactory dao = DAOFactory.getDAOFactory(Persistance.ListeMemoire);
  	
@@ -131,23 +127,35 @@ public class Mapping implements Initializable {
 			DAOFactory daos = null;
 			if (mysql.isSelected()) {
 				daos = DAOFactory.getDAOFactory(Persistance.MySQL);
-			} else if (list.isSelected()) {
+			} 
+			else if (list.isSelected()) {
 				daos = DAOFactory.getDAOFactory(Persistance.ListeMemoire);
 			}
+			else {
+				Alert alert=new Alert(Alert.AlertType.ERROR);
+				alert.initOwner(this.vue);
+				alert.setTitle("Erreur : aucune persistance selectionnée");
+				//alert.setContentText(erreur);
+				alert.showAndWait();
+			}
+			
 			try {
 				double txt_tarif = Double.parseDouble(tarif.getText());
-				affichage.setTextFill(Color.web("black"));
-				affichage.setText(toString());
 				String txt_titre = titre.getText();
 				String txt_description = description.getText();
 				String txt_visuel = visuel.getText();
+				affichage.setTextFill(Color.web("black"));
+				affichage.setText(toString());
 
 				daos.getRevueDAO().create(
 						new Revue(txt_titre, txt_description, txt_tarif, txt_visuel, period.getId_periodicite()));
-				tblRevue.refresh();
 			} catch (Exception e) {
-				affichage.setTextFill(Color.web("red"));
-				this.affichage.setText("Erreur lors de la creation");
+				Alert alert=new Alert(Alert.AlertType.ERROR);
+				alert.initOwner(this.vue);
+				alert.setTitle("La creation a echouee");
+				alert.setHeaderText("Un probleme est survenue lors de la creation de votre Revue");
+				//alert.setContentText(erreur);
+				alert.showAndWait();
 			}
 		}
 		
@@ -184,8 +192,7 @@ public class Mapping implements Initializable {
 
 	@FXML
 	public void back() {
-
-
+		
 	}
 
 }
