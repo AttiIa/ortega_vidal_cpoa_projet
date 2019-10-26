@@ -14,17 +14,17 @@ public class mainInterface extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 
-			URL fxmlURL = getClass().getResource("fenetre_ajout_revue.fxml");
+			URL fxmlURL = getClass().getResource("fenetre.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Node root = fxmlLoader.load();
-			Scene scene = new Scene((VBox) root, 1000, 812);
+			Scene scene = new Scene((VBox) root, 500, 250);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Gestion des revues");
 			primaryStage.show();
 
-	}         
-
+	}      
+	
 	public static void main(String[] args) {
 		launch(args);
 	}

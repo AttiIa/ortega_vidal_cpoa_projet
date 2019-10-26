@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="234.0" prefWidth="498.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Mapping">
+<VBox prefHeight="234.0" prefWidth="498.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlAccueil">
    <children>
       <HBox prefHeight="33.0" prefWidth="600.0">
          <children>
-            <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="76.0" text="MySQL">
+            <RadioButton fx:id="mysql" mnemonicParsing="false" prefHeight="18.0" prefWidth="76.0" text="MySQL">
                <toggleGroup>
                   <ToggleGroup fx:id="daos" />
                </toggleGroup>
@@ -20,7 +20,7 @@
                   <Insets left="50.0" top="10.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" text="Liste memoire" toggleGroup="$daos">
+            <RadioButton fx:id="list" mnemonicParsing="false" text="Liste memoire" toggleGroup="$daos">
                <HBox.margin>
                   <Insets left="100.0" top="10.0" />
                </HBox.margin>
@@ -44,7 +44,7 @@
                   <Insets right="45.0" top="100.0" />
                </FlowPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Revue">
+            <Button fx:id="Revue" mnemonicParsing="false" onAction="#Revue" text="Revue">
                <FlowPane.margin>
                   <Insets top="100.0" />
                </FlowPane.margin>

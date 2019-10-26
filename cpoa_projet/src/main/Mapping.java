@@ -21,7 +21,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
-
 import javafx.stage.Window;
 import javafx.scene.control.*;
 
@@ -43,10 +42,6 @@ public class Mapping implements Initializable {
 	@FXML
 	private Label affichage;
 	@FXML
-	private RadioButton mysql;
-	@FXML
-	private RadioButton list;
-	@FXML
 	private Button modifier;
 	@FXML
 	private Button supprimer;
@@ -56,6 +51,8 @@ public class Mapping implements Initializable {
 	private TableView<Revue> tblRevue;
 	@FXML
 	private Window vue;
+	@FXML
+	private Window accueil;
 
 	public TableView<Revue> tblRevue() {
 
@@ -196,6 +193,13 @@ public class Mapping implements Initializable {
 	@FXML
 	public void back() {
 		
+		
 	}
-
+	
+	
+	
+	
+	
+	
+	
 }
