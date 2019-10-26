@@ -182,6 +182,9 @@ public class Mapping implements Initializable {
 		try {
 			
 	        daos.getRevueDAO().delete(tblRevue.getSelectionModel().getSelectedItem());  
+	        List<Revue> revues = DAOFactory.getDAOFactory(Persistance.MySQL).getRevueDAO().findAll();
+			tblRevue.getItems().clear();
+			this.tblRevue.getItems().addAll(revues);
 		} 
 		catch (Exception e) {
 			affichage.setTextFill(Color.web("red"));
