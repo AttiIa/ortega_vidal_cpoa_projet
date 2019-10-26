@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="753.0" prefWidth="994.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Mapping">
+<VBox prefHeight="753.0" prefWidth="994.0" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Mapping">
    <children>
       <GridPane prefHeight="320.0" prefWidth="962.0">
         <columnConstraints>
