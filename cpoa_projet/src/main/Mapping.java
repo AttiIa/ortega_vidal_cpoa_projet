@@ -95,8 +95,12 @@ public class Mapping implements Initializable {
 			this.libelle.setItems(FXCollections.observableArrayList(dao.getPeriodiciteDAO().findAll()));
 			tblRevue();
 		} catch (Exception e) {
-			System.out.println("Probleme a l'initialisation ");
-			e.printStackTrace();
+			Alert alert=new Alert(Alert.AlertType.ERROR);
+			alert.initOwner(this.vue);
+			alert.setTitle("Probleme a l'initialisation");
+			alert.setHeaderText("Un probleme est survenue lors de l'initialisation de vos Revues");
+			alert.setContentText(e.toString());
+			alert.showAndWait();
 		}
 	}
 
@@ -111,13 +115,10 @@ public class Mapping implements Initializable {
 			affichage.setTextFill(Color.web("red"));
 			this.affichage.setText("Les champs ne sont pas tous valides");
 
-			
-			//String erreur="";
 			Alert alert=new Alert(Alert.AlertType.ERROR);
 			alert.initOwner(this.vue);
 			alert.setTitle("Erreur lors de la saisie");
 			alert.setHeaderText("Un ou plusieurs champs sont mal remplis.");
-			//alert.setContentText(erreur);
 			alert.showAndWait();
 		
 
@@ -135,7 +136,6 @@ public class Mapping implements Initializable {
 				Alert alert=new Alert(Alert.AlertType.ERROR);
 				alert.initOwner(this.vue);
 				alert.setTitle("Erreur : aucune persistance selectionnée");
-				//alert.setContentText(erreur);
 				alert.showAndWait();
 			}
 			
@@ -154,7 +154,7 @@ public class Mapping implements Initializable {
 				alert.initOwner(this.vue);
 				alert.setTitle("La creation a echouee");
 				alert.setHeaderText("Un probleme est survenue lors de la creation de votre Revue");
-				//alert.setContentText(erreur);
+				alert.setContentText(e.toString());
 				alert.showAndWait();
 			}
 		}
@@ -184,8 +184,12 @@ public class Mapping implements Initializable {
 	        daos.getRevueDAO().delete(tblRevue.getSelectionModel().getSelectedItem());  
 		} 
 		catch (Exception e) {
-			affichage.setTextFill(Color.web("red"));
-			this.affichage.setText("Erreur lors de la suppression");
+			Alert alert=new Alert(Alert.AlertType.ERROR);
+			alert.initOwner(this.vue);
+			alert.setTitle("La suppression a echouee");
+			alert.setHeaderText("Un probleme est survenue lors de la suppression de votre Revue");
+			alert.setContentText(e.toString());
+			alert.showAndWait();
 		} 
 		
 	}
