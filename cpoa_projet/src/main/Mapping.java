@@ -161,7 +161,7 @@ public class Mapping implements Initializable {
 		
 		List<Revue> revues = DAOFactory.getDAOFactory(Persistance.MySQL).getRevueDAO().findAll();
 		tblRevue.getItems().clear();
-		this.tblRevue.getItems().addAll(revues);
+		this.tblRevue.getItems().addAll(revues); 
 		
 	
 		
