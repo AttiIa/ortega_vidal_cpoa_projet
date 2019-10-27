@@ -27,12 +27,6 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 
 	@Override
 	public boolean create(Abonnement abonnement) {
-
-		abonnement.setId_client(3);
-		while (this.donnees.contains(abonnement)) {
-
-			abonnement.setId_client(abonnement.getId_client() + 1);
-		}
 		boolean ok = this.donnees.add(abonnement);
 		
 		return ok;

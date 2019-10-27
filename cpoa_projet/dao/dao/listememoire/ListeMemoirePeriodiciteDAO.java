@@ -23,21 +23,23 @@ public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 
 		this.donnees = new ArrayList<Periodicite>();
 		
-		this.donnees.add( new Periodicite( 1, "Quotidien"));
-		this.donnees.add( new Periodicite( 2, "Hebdomadaire"));
-		this.donnees.add( new Periodicite( 3, "Mensuel"));
-		this.donnees.add( new Periodicite( 4, "Bimestriel"));
-		this.donnees.add( new Periodicite( 5, "Trimestriel"));
+		this.donnees.add(new Periodicite(1, "Quotidien"));
+		this.donnees.add(new Periodicite(2, "Hebdomadaire"));
+		this.donnees.add(new Periodicite(3, "Mensuel"));
+		this.donnees.add(new Periodicite(4, "Bimestriel"));
+		this.donnees.add(new Periodicite(5, "Trimestriel"));
 	}
 
 
 	@Override
 	public boolean create(Periodicite periodicite){
+		int i=1;
 
-		periodicite.setId_periodicite(3);
+		periodicite.setId_periodicite(i);
 		
-		while (this.donnees.contains(periodicite)){
+		while(i<=this.donnees.size()){
 			periodicite.setId_periodicite(periodicite.getId_periodicite() + 1);
+			i++;
 		}
 		boolean ok = this.donnees.add(periodicite);
 		return ok;
