@@ -10,14 +10,7 @@ import dao.interfaces.AbonnementDAO;
 import dao.interfaces.ClientDAO;
 import dao.interfaces.PeriodiciteDAO;
 import dao.interfaces.RevueDAO;
-import dao.listememoire.ListeMemoireAbonnementDAO;
-import dao.listememoire.ListeMemoireClientDAO;
-import dao.listememoire.ListeMemoirePeriodiciteDAO;
-import dao.listememoire.ListeMemoireRevueDAO;
-import dao.mysql.MySQLAbonnementDAO;
-import dao.mysql.MySQLClientDAO;
-import dao.mysql.MySQLPeriodiciteDAO;
-import dao.mysql.MySQLRevueDAO;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -71,7 +64,7 @@ public class CtrlAccueil implements Initializable {
 		else {
 			Alert alert=new Alert(Alert.AlertType.ERROR);
 			alert.initOwner(this.vue);
-			alert.setTitle("Erreur : aucune persistance selectionnée");
+			alert.setTitle("Erreur : aucune persistance selectionnee");
 			alert.showAndWait();
 		}		
 		
@@ -84,7 +77,7 @@ public class CtrlAccueil implements Initializable {
 			URL fxmlURL = getClass().getResource("fenetre_ajout_revue.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Node root = fxmlLoader.load();
-			Scene scene = new Scene((VBox) root, 1000, 812);
+			Scene scene = new Scene((VBox) root, 994.0, 623.0);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
 			stage1.setScene(scene);

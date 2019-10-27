@@ -17,10 +17,10 @@ public class mainInterface extends Application {
 			URL fxmlURL = getClass().getResource("fenetre.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Node root = fxmlLoader.load();
-			Scene scene = new Scene((VBox) root, 500, 250);
+			Scene scene = new Scene((VBox) root, 498.0, 112.0);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Gestion des revues");
+			primaryStage.setTitle("Accueil");
 			primaryStage.show();
 
 	}      
