@@ -68,7 +68,6 @@ public class CtrlAccueil implements Initializable {
 			alert.showAndWait();
 		}		
 		
-		
 		if (daorev!=null) {
 			Stage stage =(Stage) Revue.getScene().getWindow();
 			stage.close();
@@ -84,6 +83,47 @@ public class CtrlAccueil implements Initializable {
 			stage1.setTitle("Gestion des revues");
 			stage1.show();
 		}					
-	}      
+	}
 	
+	@FXML
+	public void Periodicite() throws IOException {
+		if (mysql.isSelected()) {
+			daoper = DAOFactory.getDAOFactory(Persistance.MySQL).getPeriodiciteDAO();
+		} 
+		else if (list.isSelected()) {
+			daoper = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getPeriodiciteDAO();
+		}
+		else {
+			Alert alert=new Alert(Alert.AlertType.ERROR);
+			alert.initOwner(this.vue);
+			alert.setTitle("Erreur : aucune persistance selectionnee");
+			alert.showAndWait();
+		}		
+		
+		if (daoper!=null) {
+			Stage stage =(Stage) Periodicite.getScene().getWindow();
+			stage.close();
+			Stage stage1 = new Stage();
+			
+			URL fxmlURL = getClass().getResource("fenetre_ajout_periodicite.fxml");
+			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+			Node root = fxmlLoader.load();
+			Scene scene = new Scene((VBox) root, 600.0, 281.0);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			
+			stage1.setScene(scene);
+			stage1.setTitle("Gestion des Periodicite");
+			stage1.show();
+		}
+	}
+	
+	@FXML
+	public void Client() throws IOException {
+		
+	}
+	
+	@FXML
+	public void Abonnement() throws IOException {
+		
+	}
 }
