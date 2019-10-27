@@ -14,12 +14,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="623.0" prefWidth="994.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlRevue">
+<VBox maxWidth="850.0" prefHeight="623.0" prefWidth="994.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlRevue">
    <children>
-      <GridPane fx:id="form" disable="true" prefHeight="320.0" prefWidth="962.0">
+      <GridPane fx:id="form" disable="true" maxWidth="850.0" prefHeight="320.0" prefWidth="962.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="114.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="830.0" minWidth="10.0" prefWidth="830.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="84.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="830.0" minWidth="10.0" prefWidth="766.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
@@ -29,59 +29,81 @@
             <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children> 
-            <Label text="Titre:" GridPane.halignment="RIGHT" />
+            <Label text="Titre:" GridPane.halignment="RIGHT">
+               <padding>
+                  <Insets right="10.0" />
+               </padding></Label>
             <TextField fx:id="titre" maxWidth="-Infinity" prefHeight="26.0" prefWidth="219.0" GridPane.columnIndex="1" />
-            <Label text="Description:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-            <TextArea fx:id="description" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="87.0" prefWidth="567.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Tarif:" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <Label text="Description:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <padding>
+                  <Insets right="10.0" />
+               </padding></Label>
+            <TextArea fx:id="description" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="87.0" prefWidth="556.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Tarif:" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+               <padding>
+                  <Insets right="10.0" />
+               </padding></Label>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <TextField fx:id="tarif" maxWidth="-Infinity" prefHeight="25.0" prefWidth="48.0" />
                   <Label alignment="BASELINE_RIGHT" prefHeight="24.0" prefWidth="13.0" text="€" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <Label text="Périodicité:" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-            <ComboBox fx:id="libelle" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="Visuel:" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Label text="Périodicité:" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+               <padding>
+                  <Insets right="10.0" />
+               </padding></Label>
+            <ComboBox fx:id="periode" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Visuel:" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <padding>
+                  <Insets right="10.0" />
+               </padding></Label>
             <TextField fx:id="visuel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
          <VBox.margin>
             <Insets />
          </VBox.margin>
       </GridPane>
-      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="32.0" prefWidth="994.0" rowValignment="BASELINE">
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" maxWidth="850.0" prefHeight="32.0" prefWidth="994.0" rowValignment="BASELINE">
          <children>
-            <Button fx:id="valide" disable="true" mnemonicParsing="false" onAction="#valide" text="Valider" />
+            <Button fx:id="valider" disable="true" mnemonicParsing="false" onAction="#valider" prefWidth="70.0" text="Valider" />
          </children>
       </FlowPane>
-      <FlowPane alignment="CENTER" prefHeight="36.0" prefWidth="829.0">
+      <FlowPane alignment="CENTER" maxWidth="850.0" prefHeight="36.0" prefWidth="829.0">
          <children>
             <Label fx:id="affichage" alignment="CENTER" prefHeight="29.0" prefWidth="597.0" />
          </children>
       </FlowPane>
-      <VBox alignment="CENTER" prefHeight="231.0" prefWidth="994.0">
+      <VBox alignment="CENTER" maxWidth="850.0" prefHeight="231.0" prefWidth="947.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="192.0" prefWidth="829.0">
+            <HBox alignment="CENTER" maxWidth="850.0" prefHeight="192.0" prefWidth="850.0">
                <children>
                   <TableView fx:id="tblRevue" prefHeight="192.0" prefWidth="699.0" />
-                  <Button fx:id="modifier" mnemonicParsing="false" onAction="#update" prefHeight="26.0" prefWidth="74.0" text="modifier">
+                  <VBox prefHeight="192.0" prefWidth="75.0">
+                     <children>
+                        <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefHeight="26.0" prefWidth="75.0" text="Créer">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="supprimer" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="75.0" text="Supprimer">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="modifier" mnemonicParsing="false" onAction="#update" prefHeight="26.0" prefWidth="75.0" text="Modifier">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
                      <HBox.margin>
-                        <Insets left="10.0" />
+                        <Insets left="30.0" />
                      </HBox.margin>
-                  </Button>
-                  <Button fx:id="supprimer" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="85.0" text="supprimer">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefHeight="26.0" prefWidth="57.0" text="Créer">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </Button>
+                  </VBox>
                </children>
             </HBox>
-            <Button fx:id="retour" mnemonicParsing="false" onAction="#back" text="retour">
+            <Button fx:id="retour" mnemonicParsing="false" onAction="#retour" prefWidth="70.0" text="Retour">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
