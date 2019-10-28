@@ -119,11 +119,69 @@ public class CtrlAccueil implements Initializable {
 	
 	@FXML
 	public void Client() throws IOException {
+		if (mysql.isSelected()) {
+			daocl = DAOFactory.getDAOFactory(Persistance.MySQL).getClientDAO();
+		} 
+		else if (list.isSelected()) {
+			daocl = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getClientDAO();
+		}
+		else {
+			Alert alert=new Alert(Alert.AlertType.ERROR);
+			alert.initOwner(this.vue);
+			alert.setTitle("Erreur : aucune persistance selectionnee");
+			alert.showAndWait();
+		}		
 		
+		if (daocl!=null) {
+			Stage stage =(Stage) Client.getScene().getWindow();
+			stage.close();
+			Stage stage1 = new Stage();
+			
+			URL fxmlURL = getClass().getResource("fenetre_ajout_client.fxml");
+			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+			Node root = fxmlLoader.load();
+			Scene scene = new Scene((VBox) root, 674.0, 600.0);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			
+			stage1.setScene(scene);
+			stage1.setTitle("Gestion des Clients");
+			stage1.show();
+		}
 	}
 	
 	@FXML
 	public void Abonnement() throws IOException {
+		if (mysql.isSelected()) {
+			daoabo = DAOFactory.getDAOFactory(Persistance.MySQL).getAbonnementDAO();
+			daocl = DAOFactory.getDAOFactory(Persistance.MySQL).getClientDAO();
+			daorev = DAOFactory.getDAOFactory(Persistance.MySQL).getRevueDAO();
+		} 
+		else if (list.isSelected()) {
+			daoabo = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getAbonnementDAO();
+			daocl = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getClientDAO();
+			daorev = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getRevueDAO();
+		}
+		else {
+			Alert alert=new Alert(Alert.AlertType.ERROR);
+			alert.initOwner(this.vue);
+			alert.setTitle("Erreur : aucune persistance selectionnee");
+			alert.showAndWait();
+		}		
 		
+		if (daoabo!=null) {
+			Stage stage =(Stage) Abonnement.getScene().getWindow();
+			stage.close();
+			Stage stage1 = new Stage();
+			
+			URL fxmlURL = getClass().getResource("fenetre_ajout_abonnement.fxml");
+			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+			Node root = fxmlLoader.load();
+			Scene scene = new Scene((VBox) root, 674.0, 600.0);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			
+			stage1.setScene(scene);
+			stage1.setTitle("Gestion des Abonnements");
+			stage1.show();
+		}
 	}
 }

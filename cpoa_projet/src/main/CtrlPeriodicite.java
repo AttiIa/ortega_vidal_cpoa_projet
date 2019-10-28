@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import dao.metier.Periodicite;
-import dao.metier.Revue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
