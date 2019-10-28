@@ -23,6 +23,7 @@ import javafx.scene.control.*;
 public class CtrlPeriodicite implements Initializable{
 	
 	private boolean b_create;
+	private boolean b_delete;
 	private boolean b_update;
 
 	@FXML
@@ -66,7 +67,10 @@ public class CtrlPeriodicite implements Initializable{
 	
 	@Override
 	public String toString() {
-		return "Ajout de : " + libelle.getText();
+		if(b_create) return "Ajout de : " + libelle.getText();
+		else if(b_delete) return "Suppression de : " + tblPeriodicite.getSelectionModel().getSelectedItem().getLibelle();
+		else if(b_update) return "Modifiction de : " + libelle.getText();
+		else return "";
 	}
 
 	public void initialize(URL location, ResourceBundle resources) {
@@ -153,6 +157,7 @@ public class CtrlPeriodicite implements Initializable{
 	@FXML
 	public void delete(){
 		try {
+			b_delete=true;
 			CtrlAccueil.daoper.delete(tblPeriodicite.getSelectionModel().getSelectedItem());  
 	        List<Periodicite> period = CtrlAccueil.daoper.findAll();
 	        tblPeriodicite.getItems().clear();

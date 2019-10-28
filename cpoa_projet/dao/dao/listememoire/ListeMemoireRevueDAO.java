@@ -60,17 +60,17 @@ public class ListeMemoireRevueDAO implements RevueDAO{
 	
 	@Override
 	public boolean update(Revue revue){
+		int i=1;
+		boolean ok=false;
 		
-		int idx = this.donnees.indexOf(revue);
-		
-		if (idx == -1){
-			throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
-		} 
-		else{			
-			this.donnees.set(idx, revue);
+		while (i<=this.donnees.size()) {
+			if(revue.getId_revue() == i) {
+				this.donnees.set(i-1, revue);
+				ok=true;
+			}
+			i++;
 		}
-		
-		return true;
+		return ok;
 	}
 	
 	@Override

@@ -63,17 +63,17 @@ public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 
 	@Override
 	public boolean update(Periodicite periodicite){
+		int i=1;
+		boolean ok=false;
 		
-		int idx = this.donnees.indexOf(periodicite);
-		
-		if (idx == -1){
-			throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
-		} 
-		else{			
-			this.donnees.set(idx, periodicite);
+		while (i<=this.donnees.size()) {
+			if(periodicite.getId_periodicite() == i) {
+				this.donnees.set(i-1, periodicite);
+				ok=true;
+			}
+			i++;
 		}
-		
-		return true;
+		return ok;
 	}
 
 	  @Override

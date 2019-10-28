@@ -56,17 +56,17 @@ public class ListeMemoireClientDAO implements ClientDAO{
 	
 	@Override
 	public boolean update(Client client){
+		int i=1;
+		boolean ok=false;
 		
-		int idx = this.donnees.indexOf(client);
-		
-		if (idx == -1){
-			throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
-		} 
-		else{			
-			this.donnees.set(idx, client);
+		while (i<=this.donnees.size()) {
+			if(client.getId_client() == i) {
+				this.donnees.set(i-1, client);
+				ok=true;
+			}
+			i++;
 		}
-		
-		return true;
+		return ok;
 	}
 	
 	@Override
