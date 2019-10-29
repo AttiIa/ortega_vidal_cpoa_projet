@@ -38,7 +38,7 @@ public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 		periodicite.setId_periodicite(i);
 		
 		while(i<=this.donnees.size()){
-			periodicite.setId_periodicite(periodicite.getId_periodicite() + 1);
+			periodicite.setId_periodicite(this.donnees.get(i).getId_periodicite() + 1);
 			i++;
 		}
 		boolean ok = this.donnees.add(periodicite);

@@ -35,7 +35,7 @@ public class ListeMemoireRevueDAO implements RevueDAO{
 		revue.setId_revue(i);
 		
 		while (i<=this.donnees.size()){
-			revue.setId_revue(revue.getId_revue() + 1);
+			revue.setId_revue(this.donnees.get(i).getId_revue() + 1);
 			i++;
 		}		
 		boolean ok = this.donnees.add(revue);

@@ -29,12 +29,12 @@ public class ListeMemoireClientDAO implements ClientDAO{
 	
 	@Override
 	public boolean create(Client client){
-		int i=1;
+		int i=0;
 
 		client.setId_client(1);
 		
 		while (i<this.donnees.size()){
-			client.setId_client(client.getId_client() + 1);
+			client.setId_client(this.donnees.get(i).getId_client() + 1);
 			i++;
 		}		
 		boolean ok = this.donnees.add(client);
