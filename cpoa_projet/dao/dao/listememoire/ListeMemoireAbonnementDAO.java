@@ -50,17 +50,21 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 	
 	@Override
 	public boolean update(Abonnement abonnement){
+		int i=1;
+		int j=1;
+		boolean ok=false;
 		
-		int idx = this.donnees.indexOf(abonnement);
-		
-		if (idx == -1){
-			throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
-		} 
-		else{			
-			this.donnees.set(idx, abonnement);
+		while (i<=this.donnees.size()) {
+			while(j<=this.donnees.size()) {
+				if(abonnement.getId_client() == i && abonnement.getId_revue() == j) {
+					this.donnees.set(i-1, abonnement);
+					ok=true;
+				}
+				j++;
+			}			
+			i++;
 		}
-		
-		return true;
+		return ok;
 	}
 	
 	@Override

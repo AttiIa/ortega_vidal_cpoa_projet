@@ -142,11 +142,13 @@ public class CtrlClient implements Initializable{
 				String txt_cde = cde.getText();
 				String txt_ville = ville.getText();
 				String txt_pays = pays.getText();
-				affichage.setText(toString());
 
 				CtrlAccueil.daocli.create(new Client(txt_nom, txt_prenom, txt_no_rue, txt_voie, txt_cde, txt_ville, txt_pays ));
+				affichage.setText(toString());
+
 			} 
 			catch (Exception e) {
+				affichage.setText("");
 				Alert alert=new Alert(Alert.AlertType.ERROR);
 				alert.initOwner(vue);
 				alert.setTitle("La creation a echouee");
@@ -165,11 +167,12 @@ public class CtrlClient implements Initializable{
 				String txt_cde = cde.getText();
 				String txt_ville = ville.getText();
 				String txt_pays = pays.getText();
-				affichage.setText(toString());
 
 				CtrlAccueil.daocli.update(new Client(tblClient.getSelectionModel().getSelectedItem().getId_client(),txt_nom, txt_prenom, txt_no_rue, txt_voie, txt_cde, txt_ville, txt_pays ));
+				affichage.setText(toString());
 			} 
 			catch (Exception e) {
+				affichage.setText("");
 				Alert alert=new Alert(Alert.AlertType.ERROR);
 				alert.initOwner(vue);
 				alert.setTitle("La modification a echouee");
@@ -199,7 +202,6 @@ public class CtrlClient implements Initializable{
 		voie.setText("");
 		cde.setText("");
 		ville.setText("");
-		//libelle.setValue();
 		pays.setText("");
 		
 		b_create=true;
@@ -218,6 +220,7 @@ public class CtrlClient implements Initializable{
 	        tblClient.getItems().addAll(clients);
 		} 
 		catch (Exception e) {
+			affichage.setText("");
 			Alert alert=new Alert(Alert.AlertType.ERROR);
 			alert.initOwner(vue);
 			alert.setTitle("Un probleme est survenue lors de la suppression de votre client");
@@ -231,7 +234,6 @@ public class CtrlClient implements Initializable{
 	public void update() {
 		try {			
 			Client client=tblClient.getSelectionModel().getSelectedItem();
-			//Periodicite period = libelle.getValue();
 						
 			nom.setText(client.getNom());
 			prenom.setText(client.getPrenom());
@@ -239,7 +241,6 @@ public class CtrlClient implements Initializable{
 			voie.setText(client.getVoie());
 			cde.setText(client.getCode_postal());
 			ville.setText(client.getVille());
-			//libelle.setValue();
 			pays.setText(client.getPays());
 			
 			form.setDisable(false);
@@ -250,6 +251,7 @@ public class CtrlClient implements Initializable{
 			b_update=true;
 		}
 		catch (Exception e) {
+			affichage.setText("");
 			Alert alert=new Alert(Alert.AlertType.ERROR);
 			alert.initOwner(vue);
 			alert.setTitle("Un probleme est survenue lors de la modification de votre Client");
@@ -265,7 +267,7 @@ public class CtrlClient implements Initializable{
 		stage.close();
 		Stage stage1 = new Stage();
 		
-		URL fxmlURL = getClass().getResource("fenetre.fxml");
+		URL fxmlURL = getClass().getResource("fenetres/fenetre.fxml");
 		FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 		Node root = fxmlLoader.load();
 		Scene scene = new Scene((VBox) root, 498.0, 112.0);

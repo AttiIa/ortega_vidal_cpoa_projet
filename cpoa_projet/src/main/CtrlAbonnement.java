@@ -129,12 +129,11 @@ public class CtrlAbonnement implements Initializable{
 				String txt_date_deb = date_deb.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				String txt_date_fin = date_fin.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				
-				affichage.setText(txt_date_deb);
-
 				CtrlAccueil.daoabo.create(new Abonnement(idcli.getId_client() ,idrev.getId_revue(), txt_date_deb, txt_date_fin));
 				affichage.setText(toString());
 			} 
 			catch (Exception e) {
+				affichage.setText("");
 				Alert alert=new Alert(Alert.AlertType.ERROR);
 				alert.initOwner(vue);
 				alert.setTitle("La creation a echouee");
@@ -148,12 +147,14 @@ public class CtrlAbonnement implements Initializable{
 			try {
 				String txt_date_deb = date_deb.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				String txt_date_fin = date_fin.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-				affichage.setText(toString());
 
 				CtrlAccueil.daoabo.update(
-						new Abonnement(tblAbonnement.getSelectionModel().getSelectedItem().getId_client(), idrev.getId_revue(), txt_date_deb, txt_date_fin));
+						new Abonnement(idcli.getId_client(), idrev.getId_revue(), txt_date_deb, txt_date_fin));
+				affichage.setText(toString());
+
 			} 
 			catch (Exception e) {
+				affichage.setText("");
 				Alert alert=new Alert(Alert.AlertType.ERROR);
 				alert.initOwner(vue);
 				alert.setTitle("La modification a echouee");
@@ -177,12 +178,11 @@ public class CtrlAbonnement implements Initializable{
 		form.setDisable(false);
 		valider.setDisable(false);
 		
+		id_client.setValue(null);
+		id_revue.setValue(null);
 		date_deb.setPromptText("");
 		date_fin.setPromptText("");
 	
-		//libelle.setValue();
-
-		
 		b_create=true;
 		b_delete=false;
 		b_update=false;
@@ -193,12 +193,13 @@ public class CtrlAbonnement implements Initializable{
 		try {
 			b_delete=true;
 			CtrlAccueil.daoabo.delete(tblAbonnement.getSelectionModel().getSelectedItem()); 
-			affichage.setText(toString());;
+			affichage.setText(toString());
 	        List<Abonnement> abos = CtrlAccueil.daoabo.findAll();
 	        tblAbonnement.getItems().clear();
 	        tblAbonnement.getItems().addAll(abos);
 		} 
 		catch (Exception e) {
+			affichage.setText("");
 			Alert alert=new Alert(Alert.AlertType.ERROR);
 			alert.initOwner(vue);
 			alert.setTitle("Un probleme est survenue lors de la suppression de votre Abonnement");
@@ -212,12 +213,14 @@ public class CtrlAbonnement implements Initializable{
 	public void update() {
 		try {			
 			Abonnement abo=tblAbonnement.getSelectionModel().getSelectedItem();
-			//Periodicite period = libelle.getValue();
-						
+
+			id_client.setValue(CtrlAccueil.daocli.getById(abo.getId_client()));
+			id_revue.setValue(CtrlAccueil.daorev.getById(abo.getId_revue()));
 			date_deb.setPromptText(abo.getDate_debut());
 			date_fin.setPromptText(abo.getDate_fin());
 			
-			
+			id_revue.setDisable(true);
+			id_client.setDisable(true);
 			form.setDisable(false);
 			valider.setDisable(false);
 			
@@ -241,7 +244,7 @@ public class CtrlAbonnement implements Initializable{
 		stage.close();
 		Stage stage1 = new Stage();
 		
-		URL fxmlURL = getClass().getResource("fenetre.fxml");
+		URL fxmlURL = getClass().getResource("fenetres/fenetre.fxml");
 		FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 		Node root = fxmlLoader.load();
 		Scene scene = new Scene((VBox) root, 498.0, 112.0);

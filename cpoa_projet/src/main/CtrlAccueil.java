@@ -46,8 +46,7 @@ public class CtrlAccueil implements Initializable {
 	private Window vue;
 	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		
+	public void initialize(URL location, ResourceBundle resources) {		
 	
 	}	
 
@@ -73,7 +72,7 @@ public class CtrlAccueil implements Initializable {
 			stage.close();
 			Stage stage1 = new Stage();
 			
-			URL fxmlURL = getClass().getResource("fenetre_ajout_revue.fxml");
+			URL fxmlURL = getClass().getResource("fenetres/fenetre_ajout_revue.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Node root = fxmlLoader.load();
 			Scene scene = new Scene((VBox) root, 994.0, 623.0);
@@ -105,7 +104,7 @@ public class CtrlAccueil implements Initializable {
 			stage.close();
 			Stage stage1 = new Stage();
 			
-			URL fxmlURL = getClass().getResource("fenetre_ajout_periodicite.fxml");
+			URL fxmlURL = getClass().getResource("fenetres/fenetre_ajout_periodicite.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Node root = fxmlLoader.load();
 			Scene scene = new Scene((VBox) root, 600.0, 281.0);
@@ -137,7 +136,7 @@ public class CtrlAccueil implements Initializable {
 			stage.close();
 			Stage stage1 = new Stage();
 			
-			URL fxmlURL = getClass().getResource("fenetre_ajout_client.fxml");
+			URL fxmlURL = getClass().getResource("fenetres/fenetre_ajout_client.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Node root = fxmlLoader.load();
 			Scene scene = new Scene((VBox) root, 674.0, 600.0);
@@ -173,7 +172,7 @@ public class CtrlAccueil implements Initializable {
 			stage.close();
 			Stage stage1 = new Stage();
 			
-			URL fxmlURL = getClass().getResource("fenetre_ajout_abonnement.fxml");
+			URL fxmlURL = getClass().getResource("fenetres/fenetre_ajout_abonnement.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Node root = fxmlLoader.load();
 			Scene scene = new Scene((VBox) root, 674.0, 600.0);

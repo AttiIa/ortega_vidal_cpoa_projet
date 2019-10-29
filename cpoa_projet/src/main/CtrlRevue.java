@@ -182,7 +182,7 @@ public class CtrlRevue implements Initializable {
 		titre.setText("");
 		description.setText("");
 		tarif.setText("");
-		//libelle.setValue();
+		periode.setValue(null);
 		visuel.setText("");
 		
 		b_create=true;
@@ -214,12 +214,11 @@ public class CtrlRevue implements Initializable {
 	public void update() {
 		try {			
 			Revue revue=tblRevue.getSelectionModel().getSelectedItem();
-			//Periodicite period = libelle.getValue();
 						
 			titre.setText(revue.getTitre());
 			description.setText(revue.getDescription());
 			tarif.setText(String.valueOf(revue.getTarif_numero()));
-			//libelle.setValue();
+			periode.setValue(CtrlAccueil.daoper.getById(revue.getId_periodicite()));
 			visuel.setText(revue.getVisuel());
 			
 			form.setDisable(false);
@@ -245,7 +244,7 @@ public class CtrlRevue implements Initializable {
 		stage.close();
 		Stage stage1 = new Stage();
 		
-		URL fxmlURL = getClass().getResource("fenetre.fxml");
+		URL fxmlURL = getClass().getResource("fenetres/fenetre.fxml");
 		FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 		Node root = fxmlLoader.load();
 		Scene scene = new Scene((VBox) root, 498.0, 112.0);

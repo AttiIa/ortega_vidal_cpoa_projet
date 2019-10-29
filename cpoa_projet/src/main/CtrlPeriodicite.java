@@ -106,6 +106,7 @@ public class CtrlPeriodicite implements Initializable{
 
 				CtrlAccueil.daoper.create(new Periodicite(txt_libelle));
 			} catch (Exception e) {
+				affichage.setText("");
 				Alert alert=new Alert(Alert.AlertType.ERROR);
 				alert.initOwner(vue);
 				alert.setTitle("La creation a echouee");
@@ -123,6 +124,7 @@ public class CtrlPeriodicite implements Initializable{
 
 				CtrlAccueil.daoper.update(new Periodicite(tblPeriodicite.getSelectionModel().getSelectedItem().getId_periodicite(), txt_libelle));
 			} catch (Exception e) {
+				affichage.setText("");
 				Alert alert=new Alert(Alert.AlertType.ERROR);
 				alert.initOwner(vue);
 				alert.setTitle("La modification a echouee");
@@ -163,6 +165,7 @@ public class CtrlPeriodicite implements Initializable{
 	        tblPeriodicite.getItems().addAll(period);			
 		}
 		catch (Exception e) {
+			affichage.setText("");
 			Alert alert=new Alert(Alert.AlertType.ERROR);
 			alert.initOwner(vue);
 			alert.setTitle("Un probleme est survenue lors de la suppression de votre Periode");
@@ -188,6 +191,7 @@ public class CtrlPeriodicite implements Initializable{
 			
 		}
 		catch (Exception e) {
+			affichage.setText("");
 			Alert alert=new Alert(Alert.AlertType.ERROR);
 			alert.initOwner(vue);
 			alert.setTitle("Un probleme est survenue lors de la modification de votre Periode");
@@ -204,7 +208,7 @@ public class CtrlPeriodicite implements Initializable{
 		stage.close();
 		Stage stage1 = new Stage();
 		
-		URL fxmlURL = getClass().getResource("fenetre.fxml");
+		URL fxmlURL = getClass().getResource("fenetres/fenetre.fxml");
 		FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 		Node root = fxmlLoader.load();
 		Scene scene = new Scene((VBox) root, 498.0, 112.0);

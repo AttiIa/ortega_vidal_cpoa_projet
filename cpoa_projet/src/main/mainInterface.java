@@ -14,7 +14,7 @@ public class mainInterface extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 
-			URL fxmlURL = getClass().getResource("fenetre.fxml");
+			URL fxmlURL = getClass().getResource("fenetres/fenetre.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Node root = fxmlLoader.load();
 			Scene scene = new Scene((VBox) root, 498.0, 112.0);
