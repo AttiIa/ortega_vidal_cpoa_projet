@@ -2,6 +2,7 @@ package main;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -112,7 +113,7 @@ public class CtrlAbonnement implements Initializable{
 		Client idcli = id_client.getValue();
 		Revue idrev = id_revue.getValue();
 		
-		if ((idcli == null) || (idrev == null) || (date_deb.getPromptText().isEmpty()) || (date_fin.getPromptText().isEmpty())) {			
+		if ((idcli == null) || (idrev == null) || (date_deb.getChronology()==null) || (date_fin.getChronology()==null)) {			
 			affichage.setTextFill(Color.web("red"));
 			affichage.setText("Les champs ne sont pas tous valides");
 
@@ -125,11 +126,13 @@ public class CtrlAbonnement implements Initializable{
 		else if(b_create) {
 			
 			try {				
-				String txt_date_deb = date_deb.getPromptText();
-				String txt_date_fin = date_fin.getPromptText();
-				affichage.setText(toString());
+				String txt_date_deb = date_deb.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				String txt_date_fin = date_fin.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				
+				affichage.setText(txt_date_deb);
 
-				CtrlAccueil.daoabo.create(new Abonnement(idcli.getId_client(),idrev.getId_revue(), txt_date_deb, txt_date_fin));
+				CtrlAccueil.daoabo.create(new Abonnement(idcli.getId_client() ,idrev.getId_revue(), txt_date_deb, txt_date_fin));
+				affichage.setText(toString());
 			} 
 			catch (Exception e) {
 				Alert alert=new Alert(Alert.AlertType.ERROR);
@@ -143,8 +146,8 @@ public class CtrlAbonnement implements Initializable{
 		
 		else if(b_update) {
 			try {
-				String txt_date_deb = date_deb.getPromptText();
-				String txt_date_fin = date_fin.getPromptText();
+				String txt_date_deb = date_deb.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				String txt_date_fin = date_fin.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				affichage.setText(toString());
 
 				CtrlAccueil.daoabo.update(
@@ -212,7 +215,7 @@ public class CtrlAbonnement implements Initializable{
 			//Periodicite period = libelle.getValue();
 						
 			date_deb.setPromptText(abo.getDate_debut());
-			date_deb.setPromptText(abo.getDate_fin());
+			date_fin.setPromptText(abo.getDate_fin());
 			
 			
 			form.setDisable(false);
