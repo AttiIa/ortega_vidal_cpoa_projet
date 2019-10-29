@@ -5,6 +5,7 @@ import java.util.List;
 
 import dao.interfaces.ClientDAO;
 import dao.metier.Client;
+import dao.metier.Periodicite;
 
 public class ListeMemoireClientDAO implements ClientDAO{
 	private static ListeMemoireClientDAO instance;
@@ -22,6 +23,8 @@ public class ListeMemoireClientDAO implements ClientDAO{
 	private ListeMemoireClientDAO(){
 
 		this.donnees = new ArrayList<Client>();
+		
+		this.donnees.add(new Client(1, "Vidal", "Thomas", "4", "Rue Paul Doumer", "10150", "Pont-Sainte-Marie", "France"));
 	}
 	
 	@Override

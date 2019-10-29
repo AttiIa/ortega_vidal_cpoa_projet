@@ -2,6 +2,8 @@ package main;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -125,7 +127,7 @@ public class CtrlAbonnement implements Initializable{
 		}
 		else if(b_create) {
 			
-			try {				
+			try {
 				String txt_date_deb = date_deb.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				String txt_date_fin = date_fin.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				
@@ -140,7 +142,7 @@ public class CtrlAbonnement implements Initializable{
 				alert.setHeaderText("Un probleme est survenue lors de la creation de votre Abonnement");
 				alert.setContentText(e.toString());
 				alert.showAndWait();
-			}			
+			}
 		}
 		
 		else if(b_update) {
@@ -175,13 +177,15 @@ public class CtrlAbonnement implements Initializable{
 	
 	@FXML
 	public void create() {
+		id_revue.setDisable(false);
+		id_client.setDisable(false);
 		form.setDisable(false);
 		valider.setDisable(false);
 		
 		id_client.setValue(null);
 		id_revue.setValue(null);
-		date_deb.setPromptText("");
-		date_fin.setPromptText("");
+		date_deb.setValue(null);;
+		date_fin.setValue(null);
 	
 		b_create=true;
 		b_delete=false;
@@ -212,12 +216,17 @@ public class CtrlAbonnement implements Initializable{
 	@FXML
 	public void update() {
 		try {			
-			Abonnement abo=tblAbonnement.getSelectionModel().getSelectedItem();
+			Abonnement abo = tblAbonnement.getSelectionModel().getSelectedItem();
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			
+			LocalDate date_d = LocalDate.parse(abo.getDate_debut(), formatter);
+			LocalDate date_f = LocalDate.parse(abo.getDate_fin(), formatter);
 
 			id_client.setValue(CtrlAccueil.daocli.getById(abo.getId_client()));
 			id_revue.setValue(CtrlAccueil.daorev.getById(abo.getId_revue()));
-			date_deb.setPromptText(abo.getDate_debut());
-			date_fin.setPromptText(abo.getDate_fin());
+			date_deb.setValue(date_d);
+			date_fin.setValue(date_f);
 			
 			id_revue.setDisable(true);
 			id_client.setDisable(true);

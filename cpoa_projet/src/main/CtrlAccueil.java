@@ -62,8 +62,9 @@ public class CtrlAccueil implements Initializable {
 		}
 		else {
 			Alert alert=new Alert(Alert.AlertType.ERROR);
-			alert.initOwner(this.vue);
-			alert.setTitle("Erreur : aucune persistance selectionnee");
+			alert.initOwner(vue);
+			alert.setTitle("Erreur lors de l'acces a Revue");
+			alert.setHeaderText("Aucune persistance selectionnee");
 			alert.showAndWait();
 		}		
 		
@@ -94,8 +95,9 @@ public class CtrlAccueil implements Initializable {
 		}
 		else {
 			Alert alert=new Alert(Alert.AlertType.ERROR);
-			alert.initOwner(this.vue);
-			alert.setTitle("Erreur : aucune persistance selectionnee");
+			alert.initOwner(vue);
+			alert.setTitle("Erreur lors de l'acces a Periode");
+			alert.setHeaderText("Aucune persistance selectionnee");
 			alert.showAndWait();
 		}		
 		
@@ -126,8 +128,9 @@ public class CtrlAccueil implements Initializable {
 		}
 		else {
 			Alert alert=new Alert(Alert.AlertType.ERROR);
-			alert.initOwner(this.vue);
-			alert.setTitle("Erreur : aucune persistance selectionnee");
+			alert.initOwner(vue);
+			alert.setTitle("Erreur lors de l'acces a Client");
+			alert.setHeaderText("Aucune persistance selectionnee");
 			alert.showAndWait();
 		}		
 		
@@ -162,8 +165,9 @@ public class CtrlAccueil implements Initializable {
 		}
 		else {
 			Alert alert=new Alert(Alert.AlertType.ERROR);
-			alert.initOwner(this.vue);
-			alert.setTitle("Erreur : aucune persistance selectionnee");
+			alert.initOwner(vue);
+			alert.setTitle("Erreur lors de l'acces a Abonnement");
+			alert.setHeaderText("Aucune persistance selectionnee");
 			alert.showAndWait();
 		}		
 		
