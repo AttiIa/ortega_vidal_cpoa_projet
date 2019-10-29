@@ -33,11 +33,11 @@ public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 
 	@Override
 	public boolean create(Periodicite periodicite){
-		int i=1;
+		int i=0;
 
-		periodicite.setId_periodicite(i);
+		periodicite.setId_periodicite(1);
 		
-		while(i<=this.donnees.size()){
+		while(i<this.donnees.size()){
 			periodicite.setId_periodicite(this.donnees.get(i).getId_periodicite() + 1);
 			i++;
 		}

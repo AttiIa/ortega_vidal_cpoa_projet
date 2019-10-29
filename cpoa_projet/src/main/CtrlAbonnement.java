@@ -2,7 +2,6 @@ package main;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -111,7 +110,7 @@ public class CtrlAbonnement implements Initializable{
 	}
 	
 	@FXML
-	public void valider(){
+	public void valider() throws IOException {
 		Client idcli = id_client.getValue();
 		Revue idrev = id_revue.getValue();
 		
@@ -176,7 +175,7 @@ public class CtrlAbonnement implements Initializable{
 	}
 	
 	@FXML
-	public void create() {
+	public void create() throws IOException {
 		id_revue.setDisable(false);
 		id_client.setDisable(false);
 		form.setDisable(false);
@@ -193,7 +192,7 @@ public class CtrlAbonnement implements Initializable{
 	}
 	
 	@FXML
-	public void delete() {
+	public void delete() throws IOException {
 		try {
 			b_delete=true;
 			CtrlAccueil.daoabo.delete(tblAbonnement.getSelectionModel().getSelectedItem()); 
@@ -214,7 +213,7 @@ public class CtrlAbonnement implements Initializable{
 	}
 	
 	@FXML
-	public void update() {
+	public void update() throws IOException {
 		try {			
 			Abonnement abo = tblAbonnement.getSelectionModel().getSelectedItem();
 			

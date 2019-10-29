@@ -1,5 +1,7 @@
 package dao.listememoire;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +24,30 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 	private ListeMemoireAbonnementDAO() {
 
 		this.donnees = new ArrayList<Abonnement>();
+		
+		this.donnees.add(new Abonnement(1, 2, "2019-09-18", "2019-11-21"));
 
 	}
 
 	@Override
 	public boolean create(Abonnement abonnement) {
-		boolean ok = this.donnees.add(abonnement);
+		int i=0;
+		boolean ok=true;
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		
+		LocalDate date_d = LocalDate.parse(abonnement.getDate_debut(), formatter);
+		LocalDate date_f = LocalDate.parse(abonnement.getDate_fin(), formatter);		
+		int comp=date_d.compareTo(date_f);
+		
+		if(comp>0) ok=false;		
+		else while(i<this.donnees.size()) {
+			if(this.donnees.get(i).getId_client() == abonnement.getId_client() &&
+					this.donnees.get(i).getId_revue() == abonnement.getId_revue()) ok=false;
+				i++;
+		}
+		
+		if(ok) this.donnees.add(abonnement);
 		
 		return ok;
 	}
