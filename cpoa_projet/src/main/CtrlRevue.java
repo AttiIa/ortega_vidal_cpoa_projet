@@ -97,7 +97,8 @@ public class CtrlRevue implements Initializable {
 		try {
 			periode.setItems(FXCollections.observableArrayList(CtrlAccueil.daoper.findAll()));
 			tblRevue();
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			Alert alert=new Alert(Alert.AlertType.ERROR);
 			alert.initOwner(vue);
 			alert.setTitle("Probleme a l'initialisation");

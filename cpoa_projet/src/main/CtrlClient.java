@@ -90,7 +90,7 @@ public class CtrlClient implements Initializable{
 
 		tblClient.getColumns().setAll(colIdClient, colNom, colPrenom, colNoRue, colVoie, colCdePostal, colVille, colPays );
 
-		List<Client> clients = CtrlAccueil.daocl.findAll();
+		List<Client> clients = CtrlAccueil.daocli.findAll();
 		
 		tblClient.getItems().addAll(clients);
 		return tblClient;
@@ -103,13 +103,13 @@ public class CtrlClient implements Initializable{
 		else if(b_delete) return "Suppression de : " + nom.getText() +" "+ prenom.getText();
 		else if(b_update) return "Modifiction de : "+ nom.getText() +" "+ prenom.getText();
 		else return "";
-	}
-	
+	}	
 
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
 			tblClient();
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			Alert alert=new Alert(Alert.AlertType.ERROR);
 			alert.initOwner(vue);
 			alert.setTitle("Probleme a l'initialisation");
@@ -144,8 +144,9 @@ public class CtrlClient implements Initializable{
 				String txt_pays = pays.getText();
 				affichage.setText(toString());
 
-				CtrlAccueil.daocl.create(new Client(txt_nom, txt_prenom, txt_no_rue, txt_voie, txt_cde, txt_ville, txt_pays ));
-			} catch (Exception e) {
+				CtrlAccueil.daocli.create(new Client(txt_nom, txt_prenom, txt_no_rue, txt_voie, txt_cde, txt_ville, txt_pays ));
+			} 
+			catch (Exception e) {
 				Alert alert=new Alert(Alert.AlertType.ERROR);
 				alert.initOwner(vue);
 				alert.setTitle("La creation a echouee");
@@ -166,8 +167,9 @@ public class CtrlClient implements Initializable{
 				String txt_pays = pays.getText();
 				affichage.setText(toString());
 
-				CtrlAccueil.daocl.update(new Client(tblClient.getSelectionModel().getSelectedItem().getId_client(),txt_nom, txt_prenom, txt_no_rue, txt_voie, txt_cde, txt_ville, txt_pays ));
-			} catch (Exception e) {
+				CtrlAccueil.daocli.update(new Client(tblClient.getSelectionModel().getSelectedItem().getId_client(),txt_nom, txt_prenom, txt_no_rue, txt_voie, txt_cde, txt_ville, txt_pays ));
+			} 
+			catch (Exception e) {
 				Alert alert=new Alert(Alert.AlertType.ERROR);
 				alert.initOwner(vue);
 				alert.setTitle("La modification a echouee");
@@ -178,13 +180,14 @@ public class CtrlClient implements Initializable{
 		}
 		b_create=false;
 		b_update=false;
-		List<Client> client = CtrlAccueil.daocl.findAll();
+		List<Client> client = CtrlAccueil.daocli.findAll();
 		tblClient.getItems().clear();
 		tblClient.getItems().addAll(client); 
 		
 		form.setDisable(true);
 		valider.setDisable(true);		
 	}
+	
 	@FXML
 	public void create() {
 		form.setDisable(false);
@@ -202,14 +205,15 @@ public class CtrlClient implements Initializable{
 		b_create=true;
 		b_delete=false;
 		b_update=false;
-	}	
+	}
+	
 	@FXML
 	public void delete() {
 		try {
 			b_delete=true;
-			CtrlAccueil.daocl.delete(tblClient.getSelectionModel().getSelectedItem()); 
+			CtrlAccueil.daocli.delete(tblClient.getSelectionModel().getSelectedItem()); 
 			affichage.setText(toString());;
-	        List<Client> clients = CtrlAccueil.daocl.findAll();
+	        List<Client> clients = CtrlAccueil.daocli.findAll();
 	        tblClient.getItems().clear();
 	        tblClient.getItems().addAll(clients);
 		} 
@@ -223,6 +227,7 @@ public class CtrlClient implements Initializable{
 		}		
 	}
 	
+	@FXML
 	public void update() {
 		try {			
 			Client client=tblClient.getSelectionModel().getSelectedItem();

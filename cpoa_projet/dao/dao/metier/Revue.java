@@ -82,8 +82,7 @@ public class Revue {
 
 	@Override
 	public String toString() {
-		return "Revue [id_revue=" + id_revue + ", titre=" + titre + ", description=" + description + ", tarif_numero="
-				+ tarif_numero + ", visuel=" + visuel + ", id_periodicite=" + id_periodicite + "]";
+		return titre;
 	}
 	
 	@Override

@@ -25,7 +25,7 @@ import javafx.stage.Window;
 
 public class CtrlAccueil implements Initializable {
 	
-	public static ClientDAO daocl;
+	public static ClientDAO daocli;
 	public static PeriodiciteDAO daoper;
 	public static RevueDAO daorev;
 	public static AbonnementDAO daoabo;
@@ -120,10 +120,10 @@ public class CtrlAccueil implements Initializable {
 	@FXML
 	public void Client() throws IOException {
 		if (mysql.isSelected()) {
-			daocl = DAOFactory.getDAOFactory(Persistance.MySQL).getClientDAO();
+			daocli = DAOFactory.getDAOFactory(Persistance.MySQL).getClientDAO();
 		} 
 		else if (list.isSelected()) {
-			daocl = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getClientDAO();
+			daocli = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getClientDAO();
 		}
 		else {
 			Alert alert=new Alert(Alert.AlertType.ERROR);
@@ -132,7 +132,7 @@ public class CtrlAccueil implements Initializable {
 			alert.showAndWait();
 		}		
 		
-		if (daocl!=null) {
+		if (daocli!=null) {
 			Stage stage =(Stage) Client.getScene().getWindow();
 			stage.close();
 			Stage stage1 = new Stage();
@@ -153,12 +153,12 @@ public class CtrlAccueil implements Initializable {
 	public void Abonnement() throws IOException {
 		if (mysql.isSelected()) {
 			daoabo = DAOFactory.getDAOFactory(Persistance.MySQL).getAbonnementDAO();
-			daocl = DAOFactory.getDAOFactory(Persistance.MySQL).getClientDAO();
+			daocli = DAOFactory.getDAOFactory(Persistance.MySQL).getClientDAO();
 			daorev = DAOFactory.getDAOFactory(Persistance.MySQL).getRevueDAO();
 		} 
 		else if (list.isSelected()) {
 			daoabo = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getAbonnementDAO();
-			daocl = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getClientDAO();
+			daocli = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getClientDAO();
 			daorev = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getRevueDAO();
 		}
 		else {

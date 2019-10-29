@@ -7,11 +7,11 @@ import java.util.ResourceBundle;
 
 import dao.metier.Abonnement;
 import dao.metier.Client;
-import dao.metier.Periodicite;
 import dao.metier.Revue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -21,7 +21,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -29,10 +28,12 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class CtrlAbonnement {
+public class CtrlAbonnement implements Initializable{
+	
 	private boolean b_create=false;
 	private boolean b_update=false;
 	private boolean b_delete=false;
+	
 	@FXML
 	private ComboBox<Client> id_client;
 	@FXML
@@ -66,14 +67,13 @@ public class CtrlAbonnement {
 
 		TableColumn<Abonnement, String> colIdClient = new TableColumn<>("id_client");
 		TableColumn<Abonnement, String> colIdRevue = new TableColumn<>("id_revue");
-		TableColumn<Abonnement, String> colDate_Deb = new TableColumn<>("Date de Début");
-		TableColumn<Abonnement, String> colDate_Fin = new TableColumn<>("Date de Fin");
+		TableColumn<Abonnement, String> colDate_Deb = new TableColumn<>("date_debut");
+		TableColumn<Abonnement, String> colDate_Fin = new TableColumn<>("date_fin");
 		
 		colIdClient.setCellValueFactory(new PropertyValueFactory<Abonnement, String>("id_client"));
 		colIdRevue.setCellValueFactory(new PropertyValueFactory<Abonnement, String>("id_revue"));
-		colDate_Deb.setCellValueFactory(new PropertyValueFactory<Abonnement, String>("date_deb"));
-		colDate_Fin.setCellValueFactory(new PropertyValueFactory<Abonnement, String>("date_fin"));
-		
+		colDate_Deb.setCellValueFactory(new PropertyValueFactory<Abonnement, String>("date_debut"));
+		colDate_Fin.setCellValueFactory(new PropertyValueFactory<Abonnement, String>("date_fin"));		
 
 		tblAbonnement.getColumns().setAll(colIdClient, colIdRevue, colDate_Deb, colDate_Fin);
 
@@ -82,19 +82,22 @@ public class CtrlAbonnement {
 		tblAbonnement.getItems().addAll(abonnements);
 		return tblAbonnement;
 	}
-	//@Override
-	/*public String toString() {
-		if(b_create) return "Ajout de : " + id_client.getInt(Int) +" "+ id_revue.getText();
-		else if(b_delete) return "Suppression de : " + id_client.getText() +" "+ id_revue.getText();
-		else if(b_update) return "Modifiction de : "+ id_client.getText() +" "+ id_revue.getText();
+	
+	@Override
+	public String toString() {
+		if(b_create) return "Ajout de : " + id_client.getSelectionModel().getSelectedItem().getNom() +" "+ id_revue.getSelectionModel().getSelectedItem().getTitre();
+		else if(b_delete) return "Suppression de : " + id_client.getSelectionModel().getSelectedItem().getNom() +" "+ id_revue.getSelectionModel().getSelectedItem().getTitre();
+		else if(b_update) return "Modifiction de : "+ id_client.getSelectionModel().getSelectedItem().getNom() +" "+ id_revue.getSelectionModel().getSelectedItem().getTitre();
 		else return "";
-	}*/
+	}
+	
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
-			id_client.setItems(FXCollections.observableArrayList(CtrlAccueil.daocl.findAll()));
 			id_revue.setItems(FXCollections.observableArrayList(CtrlAccueil.daorev.findAll()));
+			id_client.setItems(FXCollections.observableArrayList(CtrlAccueil.daocli.findAll()));
 			tblAbonnement();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			Alert alert=new Alert(Alert.AlertType.ERROR);
 			alert.initOwner(vue);
 			alert.setTitle("Probleme a l'initialisation");
@@ -103,10 +106,12 @@ public class CtrlAbonnement {
 			alert.showAndWait();
 		}
 	}
+	
 	@FXML
 	public void valider(){
 		Client idcli = id_client.getValue();
 		Revue idrev = id_revue.getValue();
+		
 		if ((idcli == null) || (idrev == null) || (date_deb.getPromptText().isEmpty()) || (date_fin.getPromptText().isEmpty())) {			
 			affichage.setTextFill(Color.web("red"));
 			affichage.setText("Les champs ne sont pas tous valides");
@@ -118,14 +123,15 @@ public class CtrlAbonnement {
 			alert.showAndWait();
 		}
 		else if(b_create) {
-			try {
-				
+			
+			try {				
 				String txt_date_deb = date_deb.getPromptText();
 				String txt_date_fin = date_fin.getPromptText();
 				affichage.setText(toString());
 
 				CtrlAccueil.daoabo.create(new Abonnement(idcli.getId_client(),idrev.getId_revue(), txt_date_deb, txt_date_fin));
-			} catch (Exception e) {
+			} 
+			catch (Exception e) {
 				Alert alert=new Alert(Alert.AlertType.ERROR);
 				alert.initOwner(vue);
 				alert.setTitle("La creation a echouee");
@@ -142,8 +148,9 @@ public class CtrlAbonnement {
 				affichage.setText(toString());
 
 				CtrlAccueil.daoabo.update(
-						new Abonnement(tblAbonnement.getSelectionModel().getSelectedItem(),idcli.getId_client(),idrev.getId_revue(), txt_date_deb, txt_date_fin));
-			} catch (Exception e) {
+						new Abonnement(tblAbonnement.getSelectionModel().getSelectedItem().getId_client(), idrev.getId_revue(), txt_date_deb, txt_date_fin));
+			} 
+			catch (Exception e) {
 				Alert alert=new Alert(Alert.AlertType.ERROR);
 				alert.initOwner(vue);
 				alert.setTitle("La modification a echouee");
@@ -161,6 +168,7 @@ public class CtrlAbonnement {
 		form.setDisable(true);
 		valider.setDisable(true);		
 	}
+	
 	@FXML
 	public void create() {
 		form.setDisable(false);
@@ -176,6 +184,7 @@ public class CtrlAbonnement {
 		b_delete=false;
 		b_update=false;
 	}
+	
 	@FXML
 	public void delete() {
 		try {
@@ -195,6 +204,7 @@ public class CtrlAbonnement {
 			alert.showAndWait();
 		}		
 	}
+	
 	@FXML
 	public void update() {
 		try {			
@@ -221,6 +231,7 @@ public class CtrlAbonnement {
 			alert.showAndWait();
 		}
 	}
+	
 	@FXML
 	public void retour() throws IOException{
 		Stage stage =(Stage) retour.getScene().getWindow();
@@ -237,4 +248,4 @@ public class CtrlAbonnement {
 		stage1.setTitle("Accueil");
 		stage1.show();		
 	}	
-	}
+}
