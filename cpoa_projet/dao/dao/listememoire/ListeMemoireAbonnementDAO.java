@@ -70,17 +70,21 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 	
 	@Override
 	public boolean update(Abonnement abonnement){
-		int i=1;
-		int j=1;
+		int i=0;
 		boolean ok=false;
 		
-		while (i<=this.donnees.size()) {
-			while(j<=this.donnees.size()) {
-				if(abonnement.getId_client() == i && abonnement.getId_revue() == j) {
-					this.donnees.set(i-1, abonnement);
-					ok=true;
-				}
-				j++;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		
+		LocalDate date_d = LocalDate.parse(abonnement.getDate_debut(), formatter);
+		LocalDate date_f = LocalDate.parse(abonnement.getDate_fin(), formatter);		
+		int comp=date_d.compareTo(date_f);
+		
+		if(comp>0) ok=false;		
+		else while (i<this.donnees.size()) {
+			if(this.donnees.get(i).getId_client() == abonnement.getId_client() &&
+					this.donnees.get(i).getId_revue() == abonnement.getId_revue()) {
+				this.donnees.set(i, abonnement);
+				ok=true;
 			}			
 			i++;
 		}
