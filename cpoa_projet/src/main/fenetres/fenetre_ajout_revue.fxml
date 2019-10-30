@@ -14,12 +14,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxWidth="875.0" prefHeight="623.0" prefWidth="875.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlRevue">
+<VBox alignment="CENTER" maxWidth="875.0" prefHeight="623.0" prefWidth="875.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlRevue">
    <children>
-      <GridPane fx:id="form" disable="true" maxWidth="850.0" prefHeight="320.0" prefWidth="962.0">
+      <GridPane fx:id="form" alignment="CENTER" disable="true" maxWidth="850.0" prefHeight="320.0" prefWidth="962.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="84.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="830.0" minWidth="10.0" prefWidth="766.0" />
+          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="830.0" minWidth="10.0" prefWidth="766.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />

@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="281.0" prefWidth="625.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlPeriodicite">
+<VBox alignment="CENTER" prefHeight="281.0" prefWidth="625.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlPeriodicite">
    <children>
-      <GridPane fx:id="form" disable="true" prefHeight="69.0" prefWidth="600.0">
+      <GridPane fx:id="form" alignment="CENTER" disable="true" maxWidth="850.0" prefHeight="69.0" prefWidth="962.0" style="-fx-alignment: center;" styleClass="background">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="504.0" minWidth="10.0" prefWidth="479.0" />
@@ -36,19 +36,19 @@
             <Insets />
          </VBox.margin>
       </GridPane>
-      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="90.0" prefWidth="600.0" rowValignment="BASELINE">
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="90.0" prefWidth="600.0" rowValignment="BASELINE" styleClass="background">
          <children>                  
                   <Button fx:id="valider" disable="true" mnemonicParsing="false" onAction="#valider" prefHeight="25.0" prefWidth="70.0" text="Valider" />
            </children>
       </FlowPane>
-      <FlowPane alignment="CENTER" prefHeight="25.0" prefWidth="600.0">
+      <FlowPane alignment="CENTER" prefHeight="25.0" prefWidth="600.0" styleClass="background">
          <children>
             <Label fx:id="affichage" alignment="CENTER" prefHeight="25.0" prefWidth="600.0" />
          </children>
       </FlowPane>
-      <VBox prefHeight="147.0" prefWidth="600.0">
+      <VBox prefHeight="112.0" prefWidth="602.0" styleClass="background">
          <children>
-            <HBox prefHeight="117.0" prefWidth="600.0">
+            <HBox alignment="CENTER" prefHeight="112.0" prefWidth="578.0">
                <children>
                   <TableView fx:id="tblPeriodicite" prefHeight="112.0" prefWidth="483.0" styleClass="tableau">
                      <opaqueInsets>
@@ -80,7 +80,7 @@
             </HBox>
          </children>
       </VBox>
-      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="90.0" prefWidth="600.0" rowValignment="BASELINE">
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="90.0" prefWidth="600.0" rowValignment="BASELINE" styleClass="background">
          <children>
             <Button fx:id="retour" mnemonicParsing="false" onAction="#retour" prefHeight="25.0" prefWidth="70.0" text="Retour" />
          </children>

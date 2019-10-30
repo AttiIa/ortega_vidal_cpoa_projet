@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="600.0" prefWidth="705.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlClient">
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="705.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlClient">
    <children>
-      <GridPane fx:id="form" disable="true" prefHeight="270.0" prefWidth="600.0">
+      <GridPane fx:id="form" alignment="CENTER" disable="true" maxWidth="850.0" prefHeight="270.0" prefWidth="962.0" styleClass="background">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="504.0" minWidth="10.0" prefWidth="479.0" />
@@ -48,19 +48,19 @@
             <Insets />
          </VBox.margin>
       </GridPane>
-      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="47.0" prefWidth="600.0" rowValignment="BASELINE">
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="47.0" prefWidth="600.0">
          <children>                  
                   <Button fx:id="valider" disable="true" mnemonicParsing="false" onAction="#valider" prefHeight="25.0" prefWidth="70.0" text="Valider" />
            </children>
       </FlowPane>
-      <FlowPane alignment="CENTER" prefHeight="25.0" prefWidth="600.0">
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="25.0" prefWidth="600.0">
          <children>
             <Label fx:id="affichage" alignment="CENTER" prefHeight="25.0" prefWidth="600.0" />
          </children>
       </FlowPane>
-      <VBox prefHeight="216.0" prefWidth="674.0">
+      <VBox alignment="CENTER" prefHeight="216.0" prefWidth="674.0">
          <children>
-            <HBox prefHeight="215.0" prefWidth="674.0">
+            <HBox alignment="CENTER" prefHeight="215.0" prefWidth="674.0">
                <children>
                   <TableView fx:id="tblClient" prefHeight="149.0" prefWidth="561.0" styleClass="tableau">
                      <opaqueInsets>
@@ -70,7 +70,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </TableView>
-                  <VBox prefHeight="215.0" prefWidth="92.0">
+                  <VBox alignment="CENTER" prefHeight="215.0" prefWidth="92.0">
                      <children>
                         <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefWidth="75.0" text="Creer">
                            <VBox.margin>

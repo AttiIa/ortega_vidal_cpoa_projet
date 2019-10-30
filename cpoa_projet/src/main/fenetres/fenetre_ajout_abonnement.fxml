@@ -16,7 +16,7 @@
 
 <VBox prefHeight="600.0" prefWidth="705.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlAbonnement">
    <children>
-      <GridPane fx:id="form" disable="true" prefHeight="270.0" prefWidth="600.0">
+      <GridPane fx:id="form" disable="true" maxWidth="850.0" prefHeight="270.0" prefWidth="962.0" styleClass="background">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="504.0" minWidth="10.0" prefWidth="479.0" />
@@ -41,17 +41,17 @@
             <Insets />
          </VBox.margin>
       </GridPane>
-      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="47.0" prefWidth="600.0" rowValignment="BASELINE">
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="47.0" prefWidth="600.0" rowValignment="BASELINE" styleClass="background">
          <children>                  
                   <Button fx:id="valider" disable="true" mnemonicParsing="false" onAction="#valider" prefHeight="25.0" prefWidth="70.0" text="Valider" />
            </children>
       </FlowPane>
-      <FlowPane alignment="CENTER" prefHeight="25.0" prefWidth="600.0">
+      <FlowPane alignment="CENTER" prefHeight="25.0" prefWidth="600.0" styleClass="background">
          <children>
             <Label fx:id="affichage" alignment="CENTER" prefHeight="25.0" prefWidth="600.0" />
          </children>
       </FlowPane>
-      <VBox prefHeight="216.0" prefWidth="674.0">
+      <VBox prefHeight="216.0" prefWidth="674.0" styleClass="background">
          <children>
             <HBox prefHeight="215.0" prefWidth="674.0">
                <children>
@@ -90,7 +90,7 @@
             </HBox>
          </children>
       </VBox>
-      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="37.0" prefWidth="600.0" rowValignment="BASELINE">
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="37.0" prefWidth="600.0" rowValignment="BASELINE" styleClass="background">
          <children>
             <Button fx:id="retour" mnemonicParsing="false" onAction="#retour" prefHeight="25.0" prefWidth="70.0" text="Retour" />
          </children>
