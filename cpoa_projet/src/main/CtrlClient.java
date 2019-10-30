@@ -56,6 +56,8 @@ public class CtrlClient implements Initializable{
 	@FXML
 	private Button supprimer;
 	@FXML
+	private Button btn_abo;
+	@FXML
 	private Button valider;
 	@FXML
 	private Button retour;
@@ -230,6 +232,8 @@ public class CtrlClient implements Initializable{
 			alert.showAndWait();
 		}		
 	}
+	@FXML
+	public void abonnement() {}
 	
 	@FXML
 	public void update() {
