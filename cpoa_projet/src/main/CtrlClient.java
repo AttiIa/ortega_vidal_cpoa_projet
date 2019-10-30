@@ -31,6 +31,7 @@ public class CtrlClient implements Initializable{
 	private boolean b_create;
 	private boolean b_delete;
 	private boolean b_update;
+	public static int id_cli;
 	
 	
 	@FXML
@@ -232,8 +233,25 @@ public class CtrlClient implements Initializable{
 			alert.showAndWait();
 		}		
 	}
+	
 	@FXML
-	public void abonnement() {}
+	public void abonnement() throws IOException {
+		id_cli = tblClient.getSelectionModel().getSelectedItem().getId_client();
+		
+		Stage stage =(Stage) retour.getScene().getWindow();
+		stage.close();
+		Stage stage1 = new Stage();
+		
+		URL fxmlURL = getClass().getResource("fenetres/fenetre_Abo.fxml");
+		FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+		Node root = fxmlLoader.load();
+		Scene scene = new Scene((VBox) root, 498.0, 112.0);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		
+		stage1.setScene(scene);
+		stage1.setTitle("Abonnement de " + tblClient.getSelectionModel().getSelectedItem().getNom() + " " + tblClient.getSelectionModel().getSelectedItem().getPrenom());
+		stage1.show();	
+	}
 	
 	@FXML
 	public void update() {
@@ -280,6 +298,6 @@ public class CtrlClient implements Initializable{
 		
 		stage1.setScene(scene);
 		stage1.setTitle("Accueil");
-		stage1.show();		
+		stage1.show();
 	}	
 }
