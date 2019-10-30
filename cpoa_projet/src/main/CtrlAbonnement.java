@@ -2,11 +2,16 @@ package main;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import connexion.Connexion;
 import dao.metier.Abonnement;
 import dao.metier.Client;
 import dao.metier.Revue;
@@ -18,6 +23,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -56,6 +62,8 @@ public class CtrlAbonnement implements Initializable{
 	private Button valider;
 	@FXML
 	private Button retour;
+	@FXML
+	private CheckBox en_cours;
 	@FXML
 	private GridPane form;
 	@FXML
@@ -110,7 +118,7 @@ public class CtrlAbonnement implements Initializable{
 	}
 	
 	@FXML
-	public void valider() throws IOException {
+	public void valider() {
 		Client idcli = id_client.getValue();
 		Revue idrev = id_revue.getValue();
 		
@@ -175,7 +183,7 @@ public class CtrlAbonnement implements Initializable{
 	}
 	
 	@FXML
-	public void create() throws IOException {
+	public void create() {
 		id_revue.setDisable(false);
 		id_client.setDisable(false);
 		form.setDisable(false);
@@ -192,7 +200,7 @@ public class CtrlAbonnement implements Initializable{
 	}
 	
 	@FXML
-	public void delete() throws IOException {
+	public void delete() {
 		try {
 			b_delete=true;
 			CtrlAccueil.daoabo.delete(tblAbonnement.getSelectionModel().getSelectedItem()); 
@@ -213,7 +221,7 @@ public class CtrlAbonnement implements Initializable{
 	}
 	
 	@FXML
-	public void update() throws IOException {
+	public void update() {
 		try {			
 			Abonnement abo = tblAbonnement.getSelectionModel().getSelectedItem();
 			
@@ -243,6 +251,47 @@ public class CtrlAbonnement implements Initializable{
 			alert.setHeaderText("Aucun Abonnement selectionne");
 			alert.setContentText(e.toString());
 			alert.showAndWait();
+		}
+	}
+	
+	@FXML
+	public void en_cours() {
+		try {
+			if(en_cours.isSelected()) {
+				List<Abonnement> abonnements = new ArrayList<>();
+				Connection laConnexion = Connexion.getInstance().creeConnexion();
+			
+				PreparedStatement requete = 
+						laConnexion.prepareStatement("SELECT * FROM Abonnement WHERE date_debut<=NOW() AND date_fin>=NOW()");
+			
+				ResultSet res = requete.executeQuery();
+			
+				while (res.next()) {
+					abonnements.add(new Abonnement(
+							res.getInt("id_client"),
+							res.getInt("id_revue"),
+							res.getString("date_debut"),
+							res.getString("date_fin")
+							));
+				}
+				tblAbonnement.getItems().clear();
+				tblAbonnement.getItems().addAll(abonnements);
+			
+				if (requete != null)
+					requete.close();
+			
+				if (res != null)
+					res.close();
+			}
+			else {
+				List<Abonnement> abonnements = CtrlAccueil.daoabo.findAll();
+				
+				tblAbonnement.getItems().clear();
+				tblAbonnement.getItems().addAll(abonnements);
+			}
+		}
+		catch (Exception e) {
+			
 		}
 	}
 	
