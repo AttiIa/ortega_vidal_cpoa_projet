@@ -2,6 +2,7 @@ package main;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -39,7 +40,8 @@ public class CtrlAbo implements Initializable{
 
 		tblAbo.getColumns().setAll(colIdClient, colIdRevue, colDate_Deb, colDate_Fin);
 
-		List<Abonnement> abonnements = CtrlAccueil.daoabo.findAll();
+		List<Abonnement> abonnements = new ArrayList<Abonnement>();
+		abonnements.add(CtrlAccueil.daoabo.getById(CtrlClient.id_cli));
 		
 		tblAbo.getItems().addAll(abonnements);
 		return tblAbo;
@@ -56,14 +58,14 @@ public class CtrlAbo implements Initializable{
 		stage.close();
 		Stage stage1 = new Stage();
 		
-		URL fxmlURL = getClass().getResource("fenetres/fenetre.fxml");
+		URL fxmlURL = getClass().getResource("fenetres/fenetre_ajout_client.fxml");
 		FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 		Node root = fxmlLoader.load();
-		Scene scene = new Scene((VBox) root, 498.0, 112.0);
+		Scene scene = new Scene((VBox) root, 674.0, 600.0);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
 		stage1.setScene(scene);
-		stage1.setTitle("Accueil");
+		stage1.setTitle("Gestion des Clients");
 		stage1.show();
 	}
 }

@@ -236,7 +236,7 @@ public class CtrlClient implements Initializable{
 	
 	@FXML
 	public void abonnement() throws IOException {
-		//id_cli = tblClient.getSelectionModel().getSelectedItem().getId_client();
+		id_cli = tblClient.getSelectionModel().getSelectedItem().getId_client();
 		
 		Stage stage =(Stage) btn_abo.getScene().getWindow();
 		stage.close();
