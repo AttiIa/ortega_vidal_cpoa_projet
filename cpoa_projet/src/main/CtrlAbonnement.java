@@ -5,9 +5,12 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -257,35 +260,26 @@ public class CtrlAbonnement implements Initializable{
 	@FXML
 	public void en_cours() {
 		try {
+			List<Abonnement> abo = new ArrayList<Abonnement>();
+			
 			if(en_cours.isSelected()) {
-				List<Abonnement> abonnements = new ArrayList<>();
-				Connection laConnexion = Connexion.getInstance().creeConnexion();
-			
-				PreparedStatement requete = 
-						laConnexion.prepareStatement("SELECT * FROM Abonnement WHERE date_debut<=NOW() AND date_fin>=NOW()");
-			
-				ResultSet res = requete.executeQuery();
-			
-				while (res.next()) {
-					abonnements.add(new Abonnement(
-							res.getInt("id_client"),
-							res.getInt("id_revue"),
-							res.getString("date_debut"),
-							res.getString("date_fin")
-							));
+				int i=0;
+				Date date = new Date();
+								
+				while(i<tblAbonnement.getItems().size()) {
+					Date date_d = SimpleDateFormat("yyyy-MM-dd").parse(tblAbonnement.getItems().get(i).getDate_debut());
+					Date date_f = SimpleDateFormat("yyyy-MM-dd").parse(tblAbonnement.getItems().get(i).getDate_fin());
+					if(date_d.compareTo(date)<=0 && date_f.compareTo(date)>=0) {
+						abo.add(tblAbonnement.getItems().get(i));
+					}
+					i++;
 				}
 				tblAbonnement.getItems().clear();
-				tblAbonnement.getItems().addAll(abonnements);
-			
-				if (requete != null)
-					requete.close();
-			
-				if (res != null)
-					res.close();
+				tblAbonnement.getItems().addAll(abo);
 			}
 			else {
 				List<Abonnement> abonnements = CtrlAccueil.daoabo.findAll();
-				
+
 				tblAbonnement.getItems().clear();
 				tblAbonnement.getItems().addAll(abonnements);
 			}
@@ -295,6 +289,11 @@ public class CtrlAbonnement implements Initializable{
 		}
 	}
 	
+	private DateFormat SimpleDateFormat(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	@FXML
 	public void retour() throws IOException{
 		Stage stage =(Stage) retour.getScene().getWindow();
