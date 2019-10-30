@@ -86,7 +86,7 @@
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin></Button>
-                        <Button fx:id="btn_abo" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#abonnement" text="Abonnement">
+                        <Button fx:id="btn_abo" alignment="CENTER" mnemonicParsing="false" onAction="#abonnement" text="Abonnement">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>

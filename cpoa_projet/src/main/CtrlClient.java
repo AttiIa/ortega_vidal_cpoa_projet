@@ -236,9 +236,9 @@ public class CtrlClient implements Initializable{
 	
 	@FXML
 	public void abonnement() throws IOException {
-		id_cli = tblClient.getSelectionModel().getSelectedItem().getId_client();
+		//id_cli = tblClient.getSelectionModel().getSelectedItem().getId_client();
 		
-		Stage stage =(Stage) retour.getScene().getWindow();
+		Stage stage =(Stage) btn_abo.getScene().getWindow();
 		stage.close();
 		Stage stage1 = new Stage();
 		
@@ -249,7 +249,7 @@ public class CtrlClient implements Initializable{
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
 		stage1.setScene(scene);
-		stage1.setTitle("Abonnement de " + tblClient.getSelectionModel().getSelectedItem().getNom() + " " + tblClient.getSelectionModel().getSelectedItem().getPrenom());
+		stage1.setTitle("Abo");
 		stage1.show();	
 	}
 	
