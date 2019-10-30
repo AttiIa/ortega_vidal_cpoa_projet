@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxWidth="850.0" prefHeight="623.0" prefWidth="994.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlRevue">
+<VBox maxWidth="875.0" prefHeight="623.0" prefWidth="875.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlRevue">
    <children>
       <GridPane fx:id="form" disable="true" maxWidth="850.0" prefHeight="320.0" prefWidth="962.0">
         <columnConstraints>
@@ -78,15 +78,15 @@
          <children>
             <HBox alignment="CENTER" maxWidth="850.0" prefHeight="192.0" prefWidth="850.0">
                <children>
-                  <TableView fx:id="tblRevue" prefHeight="192.0" prefWidth="699.0" />
-                  <VBox prefHeight="192.0" prefWidth="75.0">
+                  <TableView fx:id="tblRevue" prefHeight="192.0" prefWidth="699.0" styleClass="tableau" />
+                  <VBox prefHeight="192.0" prefWidth="89.0">
                      <children>
                         <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefHeight="26.0" prefWidth="75.0" text="Créer">
                            <VBox.margin>
                               <Insets top="30.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="supprimer" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="75.0" text="Supprimer">
+                        <Button fx:id="supprimer" mnemonicParsing="false" onAction="#delete" prefHeight="27.0" prefWidth="85.0" text="Supprimer">
                            <VBox.margin>
                               <Insets top="30.0" />
                            </VBox.margin>

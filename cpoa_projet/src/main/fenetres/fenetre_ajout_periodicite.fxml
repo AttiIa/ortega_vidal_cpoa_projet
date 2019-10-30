@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="281.0" prefWidth="600.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlPeriodicite">
+<VBox prefHeight="281.0" prefWidth="625.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlPeriodicite">
    <children>
       <GridPane fx:id="form" disable="true" prefHeight="69.0" prefWidth="600.0">
         <columnConstraints>
@@ -50,7 +50,7 @@
          <children>
             <HBox prefHeight="117.0" prefWidth="600.0">
                <children>
-                  <TableView fx:id="tblPeriodicite" prefHeight="112.0" prefWidth="483.0">
+                  <TableView fx:id="tblPeriodicite" prefHeight="112.0" prefWidth="483.0" styleClass="tableau">
                      <opaqueInsets>
                         <Insets left="10.0" />
                      </opaqueInsets>
@@ -58,14 +58,14 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </TableView>
-                  <VBox prefHeight="117.0" prefWidth="75.0">
+                  <VBox prefHeight="112.0" prefWidth="88.0">
                      <children>
                         <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefWidth="75.0" text="Creer">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="supprimer" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="75.0" text="Supprimer">
+                        <Button fx:id="supprimer" mnemonicParsing="false" onAction="#delete" prefHeight="27.0" prefWidth="85.0" text="Supprimer">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
