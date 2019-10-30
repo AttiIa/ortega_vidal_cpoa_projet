@@ -122,9 +122,11 @@ public class CtrlAccueil implements Initializable {
 	public void Client() throws IOException {
 		if (mysql.isSelected()) {
 			daocli = DAOFactory.getDAOFactory(Persistance.MySQL).getClientDAO();
+			daoabo = DAOFactory.getDAOFactory(Persistance.MySQL).getAbonnementDAO();
 		} 
 		else if (list.isSelected()) {
 			daocli = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getClientDAO();
+			daoabo = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getAbonnementDAO();
 		}
 		else {
 			Alert alert=new Alert(Alert.AlertType.ERROR);
