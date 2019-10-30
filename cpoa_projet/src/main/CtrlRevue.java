@@ -249,30 +249,28 @@ public class CtrlRevue implements Initializable {
 	
 	@FXML
 	public void recherche() {
-		if(recherche_titre.getText()=="" && recherche_tarif.getText()==""){
-			Alert alert=new Alert(Alert.AlertType.ERROR);
-			alert.initOwner(vue);
-			alert.setTitle("Un probleme est survenue lors de la recherche de vos Revues");
-			alert.setHeaderText("Les champs de recherche sont vides!");
-			alert.showAndWait();
+		if(recherche_titre.getText().isEmpty() && recherche_tarif.getText().isEmpty()){
+			tblRevue.getItems().clear();
+			List<Revue> rev = CtrlAccueil.daorev.findAll();
+			tblRevue.getItems().addAll(rev);
 		}
 		
-		else if(recherche_titre.getText()=="" && recherche_tarif.getText()!="") {
+		else if(recherche_titre.getText().isEmpty() && !recherche_tarif.getText().isEmpty()) {
 			
 		}
 		
-		else if(recherche_titre.getText()!="" && recherche_tarif.getText()=="") {
+		else if(!recherche_titre.getText().isEmpty() && recherche_tarif.getText().isEmpty()) {
 			try {
 				List<Revue> rev = new ArrayList<Revue>();
 				
 				int i=0;
 								
-				/*while(i<tblRevue.getItems().size()) {
-					if(tblRevue.getItems().get(i).getTitre()==recherche_titre.getText()) {
+				while(i<tblRevue.getItems().size()) {
+					if(tblRevue.getItems().get(i).getTitre() == recherche_titre.getText()) {
 						rev.add(tblRevue.getItems().get(i));
 					}
 					i++;
-				}*/
+				}
 				tblRevue.getItems().clear();
 				tblRevue.getItems().addAll(rev);
 			}
@@ -281,7 +279,7 @@ public class CtrlRevue implements Initializable {
 			}
 		}
 		
-		else if(recherche_titre.getText()!="" && recherche_tarif.getText()!="") {
+		else if(!recherche_titre.getText().isEmpty() && !recherche_tarif.getText().isEmpty()) {
 			
 		}
 	}
