@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="600.0" prefWidth="705.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlClient">
+<VBox alignment="CENTER" prefHeight="636.0" prefWidth="705.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlClient">
    <children>
-      <GridPane fx:id="form" alignment="CENTER" disable="true" maxWidth="850.0" prefHeight="270.0" prefWidth="962.0" styleClass="background">
+      <GridPane fx:id="form" alignment="CENTER" disable="true" prefHeight="363.0" prefWidth="705.0" styleClass="background">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="504.0" minWidth="10.0" prefWidth="479.0" />
@@ -58,11 +58,11 @@
             <Label fx:id="affichage" alignment="CENTER" prefHeight="25.0" prefWidth="600.0" />
          </children>
       </FlowPane>
-      <VBox alignment="CENTER" prefHeight="216.0" prefWidth="674.0">
+      <VBox alignment="CENTER" prefHeight="161.0" prefWidth="705.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="215.0" prefWidth="674.0">
+            <HBox alignment="CENTER" prefHeight="151.0" prefWidth="705.0">
                <children>
-                  <TableView fx:id="tblClient" prefHeight="149.0" prefWidth="561.0" styleClass="tableau">
+                  <TableView fx:id="tblClient" prefHeight="147.0" prefWidth="561.0" styleClass="tableau">
                      <opaqueInsets>
                         <Insets left="10.0" />
                      </opaqueInsets>
@@ -82,7 +82,15 @@
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="modifier" mnemonicParsing="false" onAction="#update" prefWidth="75.0" text="Modifier" />
+                        <Button fx:id="modifier" mnemonicParsing="false" onAction="#update" prefWidth="75.0" text="Modifier">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin></Button>
+                        <Button fx:id="btn_abo" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#abonnement" text="Abonnement">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
                      </children>
                      <HBox.margin>
                         <Insets left="20.0" />
