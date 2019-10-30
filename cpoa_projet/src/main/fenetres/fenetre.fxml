@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="112.0" prefWidth="498.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlAccueil">
+<VBox prefHeight="112.0" prefWidth="498.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlAccueil">
    <children>
       <HBox prefHeight="33.0" prefWidth="600.0">
          <children>
-            <RadioButton fx:id="mysql" mnemonicParsing="false" prefHeight="18.0" prefWidth="76.0" text="MySQL">
+            <RadioButton fx:id="mysql" mnemonicParsing="false" prefHeight="28.0" prefWidth="93.0" styleClass="button" text="MySQL">
                <toggleGroup>
                   <ToggleGroup fx:id="daos" />
                </toggleGroup>
@@ -19,7 +19,7 @@
                   <Insets left="50.0" top="10.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton fx:id="list" mnemonicParsing="false" text="Liste memoire" toggleGroup="$daos">
+            <RadioButton fx:id="list" mnemonicParsing="false" styleClass="button" text="Liste memoire" toggleGroup="$daos">
                <HBox.margin>
                   <Insets left="100.0" top="10.0" />
                </HBox.margin>
