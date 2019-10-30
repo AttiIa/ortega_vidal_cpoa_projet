@@ -18,6 +18,8 @@ public interface AbonnementDAO extends IDAO<Abonnement> {
 	@Override
 	Abonnement getById(int id);
 	
+	ArrayList<Abonnement> getById_client(int id);
+	
 	Abonnement getById(int id1, int id2);
 
 	@Override

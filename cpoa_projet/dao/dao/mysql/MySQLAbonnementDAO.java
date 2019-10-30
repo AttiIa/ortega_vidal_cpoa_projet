@@ -125,6 +125,34 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 		return null;
 	}
 	
+	public ArrayList<Abonnement> getById_client(int id_client) {
+		ArrayList<Abonnement> abonnement = new ArrayList<>();
+		
+		try {
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
+
+			PreparedStatement requete = laConnexion.prepareStatement("select * from Abonnement where id_client = ?");
+			requete.setInt(1, id_client);
+			
+			ResultSet res = requete.executeQuery();
+			
+			while (res.next()) {
+				abonnement.add(new Abonnement(id_client, res.getInt("id_revue"), res.getString("date_debut"), res.getString("date_fin")));
+			}
+				
+				if (requete != null)
+					requete.close();
+				
+				if (res != null)
+					res.close();
+		}
+		catch(SQLException sqle){
+			System.out.println("Pb Abonnement.getById " + sqle.getMessage());
+		}
+		
+		return abonnement;
+	}
+	
 	public Abonnement getById(int id_client, int id_revue) {
 		Abonnement abonnement = null;
 		

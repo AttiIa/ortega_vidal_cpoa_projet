@@ -93,7 +93,40 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 	
 	@Override
 	public Abonnement getById(int id) {
-		return null;
+		Abonnement abo = new Abonnement();
+		boolean trouve = false;
+		int i = 0;
+		while (trouve == false && i < this.donnees.size()) {
+			if (this.donnees.get(i).getId_client() == id) {
+				abo = this.donnees.get(i);
+				trouve = true;
+			} else
+				i++;
+		}
+		if (!trouve) {
+			System.out.println("Pas d'abonnement avec cet id");
+			abo = null;
+		}
+		return abo;
+	}
+	
+	@Override
+	public ArrayList<Abonnement> getById_client(int id_client) {
+		ArrayList<Abonnement> abo = new ArrayList<>();
+		boolean trouve = false;
+		int i = 0;
+		while (trouve == false && i < this.donnees.size()) {
+			if (this.donnees.get(i).getId_client() == id_client) {
+				abo.add(this.donnees.get(i));
+				trouve = true;
+			} else
+				i++;
+		}
+		if (!trouve) {
+			System.out.println("Pas d'abonnement avec ces id");
+			abo = null;
+		}
+		return abo;
 	}
 	
 	 @Override

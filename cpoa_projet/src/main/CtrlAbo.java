@@ -12,12 +12,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class CtrlAbo implements Initializable{
 
@@ -25,6 +27,8 @@ public class CtrlAbo implements Initializable{
 	private TableView<Abonnement> tblAbo;
 	@FXML
 	private Button retour;
+	@FXML
+	private Window vue;
 	
 	public TableView<Abonnement> tblAbo() {
 
@@ -40,8 +44,7 @@ public class CtrlAbo implements Initializable{
 
 		tblAbo.getColumns().setAll(colIdClient, colIdRevue, colDate_Deb, colDate_Fin);
 
-		List<Abonnement> abonnements = new ArrayList<Abonnement>();
-		abonnements.add(CtrlAccueil.daoabo.getById(CtrlClient.id_cli));
+		List<Abonnement> abonnements = CtrlAccueil.daoabo.getById_client(CtrlClient.id_cli);
 		
 		tblAbo.getItems().addAll(abonnements);
 		return tblAbo;
@@ -49,7 +52,17 @@ public class CtrlAbo implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		tblAbo();
+		try {
+			tblAbo();
+		} 
+		catch (Exception e) {
+			Alert alert=new Alert(Alert.AlertType.ERROR);
+			alert.initOwner(vue);
+			alert.setTitle("Probleme a l'initialisation");
+			alert.setHeaderText("Un probleme est survenue lors de l'initialisation de vos Clients");
+			alert.setContentText(e.toString());
+			alert.showAndWait();
+		}
 	}
 	
 	@FXML

@@ -33,7 +33,6 @@ public class CtrlClient implements Initializable{
 	private boolean b_update;
 	public static int id_cli;
 	
-	
 	@FXML
 	private TextField nom;
 	@FXML
