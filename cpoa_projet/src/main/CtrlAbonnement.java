@@ -267,8 +267,8 @@ public class CtrlAbonnement implements Initializable{
 				Date date = new Date();
 								
 				while(i<tblAbonnement.getItems().size()) {
-					Date date_d = SimpleDateFormat("yyyy-MM-dd").parse(tblAbonnement.getItems().get(i).getDate_debut());
-					Date date_f = SimpleDateFormat("yyyy-MM-dd").parse(tblAbonnement.getItems().get(i).getDate_fin());
+					Date date_d = new SimpleDateFormat("yyyy-MM-dd").parse(tblAbonnement.getItems().get(i).getDate_debut());
+					Date date_f = new SimpleDateFormat("yyyy-MM-dd").parse(tblAbonnement.getItems().get(i).getDate_fin());
 					if(date_d.compareTo(date)<=0 && date_f.compareTo(date)>=0) {
 						abo.add(tblAbonnement.getItems().get(i));
 					}
@@ -287,11 +287,6 @@ public class CtrlAbonnement implements Initializable{
 		catch (Exception e) {
 			
 		}
-	}
-	
-	private DateFormat SimpleDateFormat(String string) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@FXML
