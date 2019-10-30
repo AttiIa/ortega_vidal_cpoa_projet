@@ -2,9 +2,12 @@ package main;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import dao.metier.Abonnement;
 import dao.metier.Periodicite;
 import dao.metier.Revue;
 import javafx.collections.FXCollections;
@@ -34,6 +37,10 @@ public class CtrlRevue implements Initializable {
 	@FXML
 	private TextField visuel;
 	@FXML
+	private TextField recherche_titre;
+	@FXML
+	private TextField recherche_tarif;
+	@FXML
 	private ComboBox<Periodicite> periode;
 	@FXML
 	private TextArea description;		
@@ -47,6 +54,8 @@ public class CtrlRevue implements Initializable {
 	private Button supprimer;
 	@FXML
 	private Button valider;
+	@FXML
+	private Button recherche;
 	@FXML
 	private Button retour;
 	@FXML
@@ -235,6 +244,45 @@ public class CtrlRevue implements Initializable {
 			alert.setHeaderText("Aucune Revue selectionnee");
 			alert.setContentText(e.toString());
 			alert.showAndWait();
+		}
+	}
+	
+	@FXML
+	public void recherche() {
+		if(recherche_titre.getText()=="" && recherche_tarif.getText()==""){
+			Alert alert=new Alert(Alert.AlertType.ERROR);
+			alert.initOwner(vue);
+			alert.setTitle("Un probleme est survenue lors de la recherche de vos Revues");
+			alert.setHeaderText("Les champs de recherche sont vides!");
+			alert.showAndWait();
+		}
+		
+		else if(recherche_titre.getText()=="" && recherche_tarif.getText()!="") {
+			
+		}
+		
+		else if(recherche_titre.getText()!="" && recherche_tarif.getText()=="") {
+			try {
+				List<Revue> rev = new ArrayList<Revue>();
+				
+				int i=0;
+								
+				/*while(i<tblRevue.getItems().size()) {
+					if(tblRevue.getItems().get(i).getTitre()==recherche_titre.getText()) {
+						rev.add(tblRevue.getItems().get(i));
+					}
+					i++;
+				}*/
+				tblRevue.getItems().clear();
+				tblRevue.getItems().addAll(rev);
+			}
+			catch (Exception e) {
+				
+			}
+		}
+		
+		else if(recherche_titre.getText()!="" && recherche_tarif.getText()!="") {
+			
 		}
 	}
 
