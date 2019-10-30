@@ -95,9 +95,9 @@ public class CtrlRevue implements Initializable {
 
 	@Override
 	public String toString() {
-		if(b_create) return "Ajout de : " + titre.getText() + " (" + tarif.getText() + "€)";
-		else if(b_delete) return "Suppression de : " + tblRevue.getSelectionModel().getSelectedItem().getTitre();
-		else if(b_update) return "Modifiction de : " + titre.getText();
+		if(b_create) return "Ajout de : " + titre.getText().trim() + " (" + tarif.getText().trim() + "€)";
+		else if(b_delete) return "Suppression de : " + tblRevue.getSelectionModel().getSelectedItem().getTitre().trim();
+		else if(b_update) return "Modifiction de : " + titre.getText().trim();
 		else return "";
 	}
 
@@ -133,10 +133,10 @@ public class CtrlRevue implements Initializable {
 
 		else if(b_create){
 			try {
-				double txt_tarif = Double.parseDouble(tarif.getText());
-				String txt_titre = titre.getText();
-				String txt_description = description.getText();
-				String txt_visuel = visuel.getText();
+				double txt_tarif = Double.parseDouble(tarif.getText().trim());
+				String txt_titre = titre.getText().trim();
+				String txt_description = description.getText().trim();
+				String txt_visuel = visuel.getText().trim();
 				affichage.setText(toString());
 
 				CtrlAccueil.daorev.create(
@@ -152,10 +152,10 @@ public class CtrlRevue implements Initializable {
 		}
 		else if(b_update) {
 			try {
-				double txt_tarif = Double.parseDouble(tarif.getText());
-				String txt_titre = titre.getText();
-				String txt_description = description.getText();
-				String txt_visuel = visuel.getText();
+				double txt_tarif = Double.parseDouble(tarif.getText().trim());
+				String txt_titre = titre.getText().trim();
+				String txt_description = description.getText().trim();
+				String txt_visuel = visuel.getText().trim();
 				affichage.setText(toString());
 
 				CtrlAccueil.daorev.update(
@@ -249,34 +249,61 @@ public class CtrlRevue implements Initializable {
 	
 	@FXML
 	public void recherche() {
-		if(recherche_titre.getText().isEmpty() && recherche_tarif.getText().isEmpty()){
-			tblRevue.getItems().clear();
-			List<Revue> rev = CtrlAccueil.daorev.findAll();
-			tblRevue.getItems().addAll(rev);
-		}
+		tblRevue.getItems().clear();
+		List<Revue> revues = CtrlAccueil.daorev.findAll();
+		tblRevue.getItems().addAll(revues);
 		
-		else if(recherche_titre.getText().isEmpty() && !recherche_tarif.getText().isEmpty()) {
-			
-		}
-		
-		else if(!recherche_titre.getText().isEmpty() && recherche_tarif.getText().isEmpty()) {
+		if(recherche_titre.getText().trim().isEmpty() && !recherche_tarif.getText().trim().isEmpty()) {
 			List<Revue> rev = new ArrayList<Revue>();
-				
+			
 			int i=0;
+			Double tarif = Double.parseDouble(recherche_tarif.getText().trim());
 								
 			while(i<tblRevue.getItems().size()) {
-				if(tblRevue.getItems().get(i).getTitre().trim() == recherche_titre.getText().trim()) {
+				Double tarif1 = tblRevue.getItems().get(i).getTarif_numero();
+				if(tarif1 <= tarif) {
 					rev.add(tblRevue.getItems().get(i));
 				}
 				i++;
 			}
-			affichage.setText(tblRevue.getItems().get(1).getTitre());
 			tblRevue.getItems().clear();
 			tblRevue.getItems().addAll(rev);
 		}
 		
-		else if(!recherche_titre.getText().isEmpty() && !recherche_tarif.getText().isEmpty()) {
+		else if(!recherche_titre.getText().trim().isEmpty() && recherche_tarif.getText().trim().isEmpty()) {
+			List<Revue> rev = new ArrayList<Revue>();
+				
+			int i=0;
+			String titre = recherche_titre.getText().trim();
+								
+			while(i<tblRevue.getItems().size()) {
+				String titre1 = tblRevue.getItems().get(i).getTitre().trim();
+				if(titre1.compareTo(titre) == 0) {
+					rev.add(tblRevue.getItems().get(i));
+				}
+				i++;
+			}
+			tblRevue.getItems().clear();
+			tblRevue.getItems().addAll(rev);
+		}
+		
+		else if(!recherche_titre.getText().trim().isEmpty() && !recherche_tarif.getText().trim().isEmpty()) {
+			List<Revue> rev = new ArrayList<Revue>();
 			
+			int i=0;
+			String titre = recherche_titre.getText().trim();
+			Double tarif = Double.parseDouble(recherche_tarif.getText().trim());
+								
+			while(i<tblRevue.getItems().size()) {
+				String titre1 = tblRevue.getItems().get(i).getTitre().trim();
+				Double tarif1 = tblRevue.getItems().get(i).getTarif_numero();
+				if(titre1.compareTo(titre) == 0 && tarif1 <= tarif) {
+					rev.add(tblRevue.getItems().get(i));
+				}
+				i++;
+			}
+			tblRevue.getItems().clear();
+			tblRevue.getItems().addAll(rev);
 		}
 	}
 

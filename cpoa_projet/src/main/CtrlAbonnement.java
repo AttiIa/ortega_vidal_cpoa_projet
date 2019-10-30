@@ -98,9 +98,9 @@ public class CtrlAbonnement implements Initializable{
 	
 	@Override
 	public String toString() {
-		if(b_create) return "Ajout de : " + id_client.getSelectionModel().getSelectedItem().getNom() +" "+ id_revue.getSelectionModel().getSelectedItem().getTitre();
-		else if(b_delete) return "Suppression de : " + id_client.getSelectionModel().getSelectedItem().getNom() +" "+ id_revue.getSelectionModel().getSelectedItem().getTitre();
-		else if(b_update) return "Modifiction de : "+ id_client.getSelectionModel().getSelectedItem().getNom() +" "+ id_revue.getSelectionModel().getSelectedItem().getTitre();
+		if(b_create) return "Ajout de : " + id_client.getSelectionModel().getSelectedItem().getNom().trim() +" "+ id_revue.getSelectionModel().getSelectedItem().getTitre().trim();
+		else if(b_delete) return "Suppression de : " + id_client.getSelectionModel().getSelectedItem().getNom().trim() +" "+ id_revue.getSelectionModel().getSelectedItem().getTitre().trim();
+		else if(b_update) return "Modifiction de : "+ id_client.getSelectionModel().getSelectedItem().getNom().trim() +" "+ id_revue.getSelectionModel().getSelectedItem().getTitre().trim();
 		else return "";
 	}
 	
@@ -138,8 +138,8 @@ public class CtrlAbonnement implements Initializable{
 		else if(b_create) {
 			
 			try {
-				String txt_date_deb = date_deb.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-				String txt_date_fin = date_fin.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				String txt_date_deb = date_deb.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).trim();
+				String txt_date_fin = date_fin.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).trim();
 				
 				CtrlAccueil.daoabo.create(new Abonnement(idcli.getId_client() ,idrev.getId_revue(), txt_date_deb, txt_date_fin));
 				affichage.setText(toString());
@@ -157,8 +157,8 @@ public class CtrlAbonnement implements Initializable{
 		
 		else if(b_update) {
 			try {
-				String txt_date_deb = date_deb.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-				String txt_date_fin = date_fin.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				String txt_date_deb = date_deb.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).trim();
+				String txt_date_fin = date_fin.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).trim();
 
 				CtrlAccueil.daoabo.update(
 						new Abonnement(idcli.getId_client(), idrev.getId_revue(), txt_date_deb, txt_date_fin));

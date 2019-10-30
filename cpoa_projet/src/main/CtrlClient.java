@@ -99,9 +99,9 @@ public class CtrlClient implements Initializable{
 	
 	@Override
 	public String toString() {
-		if(b_create) return "Ajout de : " + nom.getText() +" "+ prenom.getText();
-		else if(b_delete) return "Suppression de : " + nom.getText() +" "+ prenom.getText();
-		else if(b_update) return "Modifiction de : "+ nom.getText() +" "+ prenom.getText();
+		if(b_create) return "Ajout de : " + nom.getText().trim() +" "+ prenom.getText().trim();
+		else if(b_delete) return "Suppression de : " + nom.getText().trim() +" "+ prenom.getText().trim();
+		else if(b_update) return "Modifiction de : "+ nom.getText().trim() +" "+ prenom.getText().trim();
 		else return "";
 	}	
 
@@ -136,13 +136,13 @@ public class CtrlClient implements Initializable{
 		
 		else if(b_create) {
 			try {
-				String txt_nom = nom.getText();
-				String txt_prenom = prenom.getText();
-				String txt_no_rue = no_rue.getText();
-				String txt_voie = voie.getText();
-				String txt_cde = cde.getText();
-				String txt_ville = ville.getText();
-				String txt_pays = pays.getText();
+				String txt_nom = nom.getText().trim();
+				String txt_prenom = prenom.getText().trim();
+				String txt_no_rue = no_rue.getText().trim();
+				String txt_voie = voie.getText().trim();
+				String txt_cde = cde.getText().trim();
+				String txt_ville = ville.getText().trim();
+				String txt_pays = pays.getText().trim();
 
 				CtrlAccueil.daocli.create(new Client(txt_nom, txt_prenom, txt_no_rue, txt_voie, txt_cde, txt_ville, txt_pays ));
 				affichage.setText(toString());
@@ -161,13 +161,13 @@ public class CtrlClient implements Initializable{
 		
 		else if(b_update) {
 			try {
-				String txt_nom = nom.getText();
-				String txt_prenom = prenom.getText();
-				String txt_no_rue = no_rue.getText();
-				String txt_voie = voie.getText();
-				String txt_cde = cde.getText();
-				String txt_ville = ville.getText();
-				String txt_pays = pays.getText();
+				String txt_nom = nom.getText().trim();
+				String txt_prenom = prenom.getText().trim();
+				String txt_no_rue = no_rue.getText().trim();
+				String txt_voie = voie.getText().trim();
+				String txt_cde = cde.getText().trim();
+				String txt_ville = ville.getText().trim();
+				String txt_pays = pays.getText().trim();
 
 				CtrlAccueil.daocli.update(new Client(tblClient.getSelectionModel().getSelectedItem().getId_client(),txt_nom, txt_prenom, txt_no_rue, txt_voie, txt_cde, txt_ville, txt_pays ));
 				affichage.setText(toString());
@@ -236,13 +236,13 @@ public class CtrlClient implements Initializable{
 		try {			
 			Client client=tblClient.getSelectionModel().getSelectedItem();
 						
-			nom.setText(client.getNom());
-			prenom.setText(client.getPrenom());
-			no_rue.setText(client.getNo_rue());
-			voie.setText(client.getVoie());
-			cde.setText(client.getCode_postal());
-			ville.setText(client.getVille());
-			pays.setText(client.getPays());
+			nom.setText(client.getNom().trim());
+			prenom.setText(client.getPrenom().trim());
+			no_rue.setText(client.getNo_rue().trim());
+			voie.setText(client.getVoie().trim());
+			cde.setText(client.getCode_postal().trim());
+			ville.setText(client.getVille().trim());
+			pays.setText(client.getPays().trim());
 			
 			form.setDisable(false);
 			valider.setDisable(false);

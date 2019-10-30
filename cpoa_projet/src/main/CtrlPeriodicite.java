@@ -66,9 +66,9 @@ public class CtrlPeriodicite implements Initializable{
 	
 	@Override
 	public String toString() {
-		if(b_create) return "Ajout de : " + libelle.getText();
+		if(b_create) return "Ajout de : " + libelle.getText().trim();
 		else if(b_delete) return "Suppression de : " + tblPeriodicite.getSelectionModel().getSelectedItem().getLibelle();
-		else if(b_update) return "Modifiction de : " + libelle.getText();
+		else if(b_update) return "Modifiction de : " + libelle.getText().trim();
 		else return "";
 	}
 
@@ -100,7 +100,7 @@ public class CtrlPeriodicite implements Initializable{
 		
 		else if(b_create) {
 			try {
-				String txt_libelle = libelle.getText();
+				String txt_libelle = libelle.getText().trim();
 				affichage.setTextFill(Color.web("black"));
 				affichage.setText(toString());
 
@@ -118,7 +118,7 @@ public class CtrlPeriodicite implements Initializable{
 		
 		else if(b_update) {
 			try {
-				String txt_libelle = libelle.getText();
+				String txt_libelle = libelle.getText().trim();
 				affichage.setTextFill(Color.web("black"));
 				affichage.setText(toString());
 
@@ -181,7 +181,7 @@ public class CtrlPeriodicite implements Initializable{
 		try {
 			Periodicite period = tblPeriodicite.getSelectionModel().getSelectedItem();
 			
-			libelle.setText(period.getLibelle());
+			libelle.setText(period.getLibelle().trim());
 			
 			form.setDisable(false);
 			valider.setDisable(false);
