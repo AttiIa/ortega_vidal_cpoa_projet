@@ -122,8 +122,8 @@ public class CtrlRevue implements Initializable {
 
 		Periodicite period = periode.getValue();
 
-		if ((titre.getText().isEmpty()) || (description.getText().isEmpty()) || (tarif.getText().isEmpty())
-				|| (visuel.getText().isEmpty()) || (period == null)) {
+		if ((titre.getText().trim().isEmpty()) || (description.getText().trim().isEmpty()) || (tarif.getText().trim().isEmpty())
+				|| (visuel.getText().trim().isEmpty()) || (period == null)) {
 			Alert alert=new Alert(Alert.AlertType.ERROR);
 			alert.initOwner(vue);
 			alert.setTitle("Erreur lors de la saisie");
@@ -260,23 +260,19 @@ public class CtrlRevue implements Initializable {
 		}
 		
 		else if(!recherche_titre.getText().isEmpty() && recherche_tarif.getText().isEmpty()) {
-			try {
-				List<Revue> rev = new ArrayList<Revue>();
+			List<Revue> rev = new ArrayList<Revue>();
 				
-				int i=0;
+			int i=0;
 								
-				while(i<tblRevue.getItems().size()) {
-					if(tblRevue.getItems().get(i).getTitre() == recherche_titre.getText()) {
-						rev.add(tblRevue.getItems().get(i));
-					}
-					i++;
+			while(i<tblRevue.getItems().size()) {
+				if(tblRevue.getItems().get(i).getTitre().trim() == recherche_titre.getText().trim()) {
+					rev.add(tblRevue.getItems().get(i));
 				}
-				tblRevue.getItems().clear();
-				tblRevue.getItems().addAll(rev);
+				i++;
 			}
-			catch (Exception e) {
-				
-			}
+			affichage.setText(tblRevue.getItems().get(1).getTitre());
+			tblRevue.getItems().clear();
+			tblRevue.getItems().addAll(rev);
 		}
 		
 		else if(!recherche_titre.getText().isEmpty() && !recherche_tarif.getText().isEmpty()) {

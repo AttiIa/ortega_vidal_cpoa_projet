@@ -121,8 +121,9 @@ public class CtrlClient implements Initializable{
 	
 	@FXML
 	public void valider(){
-		if ((nom.getText().isEmpty()) || (prenom.getText().isEmpty())
-				|| (no_rue.getText().isEmpty()) || (voie.getText().isEmpty()) || (cde.getText().isEmpty()) || (ville.getText().isEmpty()) || (pays.getText().isEmpty())) {			
+		if ((nom.getText().trim().isEmpty()) || (prenom.getText().trim().isEmpty())
+				|| (no_rue.getText().trim().isEmpty()) || (voie.getText().trim().isEmpty()) || (cde.getText().trim().isEmpty()) || 
+				(ville.getText().trim().isEmpty()) || (pays.getText().trim().isEmpty())) {			
 			affichage.setTextFill(Color.web("red"));
 			affichage.setText("Les champs ne sont pas tous valides");
 

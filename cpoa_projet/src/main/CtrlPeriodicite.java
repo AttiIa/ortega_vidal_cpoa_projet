@@ -87,7 +87,7 @@ public class CtrlPeriodicite implements Initializable{
 	
 	@FXML
 	public void valider(){
-		if (libelle.getText().isEmpty()) {			
+		if (libelle.getText().trim().isEmpty()) {			
 			affichage.setTextFill(Color.web("red"));
 			affichage.setText("Les champs ne sont pas tous valides");
 
