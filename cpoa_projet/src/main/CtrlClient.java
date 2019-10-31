@@ -239,36 +239,6 @@ public class CtrlClient implements Initializable{
 	}
 	
 	@FXML
-	public void abonnement() throws IOException {
-		try {
-			id_cli = tblClient.getSelectionModel().getSelectedItem().getId_client();
-			
-			Stage stage =(Stage) btn_abo.getScene().getWindow();
-			stage.close();
-			Stage stage1 = new Stage();
-			
-			URL fxmlURL = getClass().getResource("fenetres/fenetre_Abo.fxml");
-			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
-			Node root = fxmlLoader.load();
-			Scene scene = new Scene((VBox) root, 498.0, 112.0);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			
-			stage1.setScene(scene);
-			stage1.setTitle("Abonnements");
-			stage1.show();
-		} 
-		catch (Exception e) {
-			affichage.setText("");
-			Alert alert=new Alert(Alert.AlertType.ERROR);
-			alert.initOwner(vue);
-			alert.setTitle("Un probleme est survenue lors de l'affichage des abonnements de votre client");
-			alert.setHeaderText("Aucun Client selectionne");
-			alert.setContentText(e.toString());
-			alert.showAndWait();
-		}	
-	}
-	
-	@FXML
 	public void update() {
 		try {			
 			Client client=tblClient.getSelectionModel().getSelectedItem();
@@ -297,6 +267,36 @@ public class CtrlClient implements Initializable{
 			alert.setContentText(e.toString());
 			alert.showAndWait();
 		}
+	}
+	
+	@FXML
+	public void abonnement() throws IOException {
+		try {
+			id_cli = tblClient.getSelectionModel().getSelectedItem().getId_client();
+			
+			Stage stage =(Stage) btn_abo.getScene().getWindow();
+			stage.close();
+			Stage stage1 = new Stage();
+			
+			URL fxmlURL = getClass().getResource("fenetres/fenetre_Abo.fxml");
+			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+			Node root = fxmlLoader.load();
+			Scene scene = new Scene((VBox) root, 498.0, 112.0);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			
+			stage1.setScene(scene);
+			stage1.setTitle("Abonnements");
+			stage1.show();
+		} 
+		catch (Exception e) {
+			affichage.setText("");
+			Alert alert=new Alert(Alert.AlertType.ERROR);
+			alert.initOwner(vue);
+			alert.setTitle("Un probleme est survenue lors de l'affichage des abonnements de votre client");
+			alert.setHeaderText("Aucun Client selectionne");
+			alert.setContentText(e.toString());
+			alert.showAndWait();
+		}	
 	}
 	
 	@FXML
