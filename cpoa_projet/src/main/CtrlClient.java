@@ -2,12 +2,11 @@ package main;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import dao.metier.Client;
-
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -48,6 +47,10 @@ public class CtrlClient implements Initializable{
 	@FXML
 	private TextField pays;
 	@FXML
+	private TextField recherche_nom;
+	@FXML
+	private TextField recherche_prenom;
+	@FXML
 	private Label affichage;
 	@FXML
 	private Button creer;
@@ -59,6 +62,8 @@ public class CtrlClient implements Initializable{
 	private Button btn_abo;
 	@FXML
 	private Button valider;
+	@FXML
+	private Button recherche;
 	@FXML
 	private Button retour;
 	@FXML
@@ -291,6 +296,58 @@ public class CtrlClient implements Initializable{
 			alert.setHeaderText("Aucun Client selectionne");
 			alert.setContentText(e.toString());
 			alert.showAndWait();
+		}
+	}
+	
+	@FXML
+	public void recherche() {
+		tblClient.getItems().clear();
+		List<Client> clients = CtrlAccueil.daocli.findAll();
+		tblClient.getItems().addAll(clients);
+		
+		if(recherche_nom.getText().trim().isEmpty() && !recherche_prenom.getText().trim().isEmpty()) {
+			affichage.setText("");
+			Alert alert=new Alert(Alert.AlertType.ERROR);
+			alert.initOwner(vue);
+			alert.setTitle("Un probleme est survenue lors de la recherche de vos Clients");
+			alert.setHeaderText("Recherche par nom, ou par nom et prenom");
+			alert.showAndWait();
+		}
+		
+		else if(!recherche_nom.getText().trim().isEmpty() && recherche_prenom.getText().trim().isEmpty()) {
+			List<Client> cli = new ArrayList<Client>();
+				
+			int i=0;
+			String nom = recherche_nom.getText().trim();
+								
+			while(i<tblClient.getItems().size()) {
+				String nom1 = tblClient.getItems().get(i).getNom().trim();
+				if(nom1.compareTo(nom) == 0) {
+					cli.add(tblClient.getItems().get(i));
+				}
+				i++;
+			}
+			tblClient.getItems().clear();
+			tblClient.getItems().addAll(cli);
+		}
+		
+		else if(!recherche_nom.getText().trim().isEmpty() && !recherche_prenom.getText().trim().isEmpty()) {
+			List<Client> cli = new ArrayList<Client>();
+			
+			int i=0;
+			String nom = recherche_nom.getText().trim();
+			String prenom = recherche_prenom.getText().trim();
+								
+			while(i<tblClient.getItems().size()) {
+				String nom1 = tblClient.getItems().get(i).getNom().trim();
+				String prenom1 = tblClient.getItems().get(i).getPrenom().trim();
+				if(nom1.compareTo(nom) == 0 && prenom1.compareTo(prenom) == 0) {
+					cli.add(tblClient.getItems().get(i));
+				}
+				i++;
+			}
+			tblClient.getItems().clear();
+			tblClient.getItems().addAll(cli);
 		}
 	}
 	
