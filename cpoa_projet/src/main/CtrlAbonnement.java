@@ -2,10 +2,6 @@ package main;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -14,7 +10,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import connexion.Connexion;
 import dao.metier.Abonnement;
 import dao.metier.Client;
 import dao.metier.Revue;

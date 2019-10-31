@@ -123,10 +123,12 @@ public class CtrlAccueil implements Initializable {
 		if (mysql.isSelected()) {
 			daocli = DAOFactory.getDAOFactory(Persistance.MySQL).getClientDAO();
 			daoabo = DAOFactory.getDAOFactory(Persistance.MySQL).getAbonnementDAO();
+			daorev = DAOFactory.getDAOFactory(Persistance.MySQL).getRevueDAO();
 		} 
 		else if (list.isSelected()) {
 			daocli = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getClientDAO();
 			daoabo = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getAbonnementDAO();
+			daorev = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getRevueDAO();
 		}
 		else {
 			Alert alert=new Alert(Alert.AlertType.ERROR);
@@ -134,7 +136,7 @@ public class CtrlAccueil implements Initializable {
 			alert.setTitle("Erreur lors de l'acces a Client");
 			alert.setHeaderText("Aucune persistance selectionnee");
 			alert.showAndWait();
-		}		
+		}	
 		
 		if (daocli!=null) {
 			Stage stage =(Stage) Client.getScene().getWindow();
