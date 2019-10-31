@@ -313,7 +313,7 @@ public class CtrlRevue implements Initializable {
 			List<Revue> rev = new ArrayList<Revue>();
 			
 			int i=0;
-			Periodicite periods = cb_period.getValue();
+			int periods = cb_period.getValue().getId_periodicite();
 			while(i<tblRevue.getItems().size()) {
 				int period1 = tblRevue.getItems().get(i).getId_periodicite();
 				if(period1 == periods) {
@@ -325,7 +325,7 @@ public class CtrlRevue implements Initializable {
 			tblRevue.getItems().addAll(rev);
 		}
 		}
-	}
+	
 
 	@FXML
 	public void retour() throws IOException{
