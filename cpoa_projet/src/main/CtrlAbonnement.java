@@ -45,6 +45,10 @@ public class CtrlAbonnement implements Initializable{
 	@FXML
 	private ComboBox<Revue> id_revue;
 	@FXML
+	private ComboBox<Client> recherche_client;
+	@FXML
+	private ComboBox<Revue> recherche_revue;
+	@FXML
 	private DatePicker date_deb;
 	@FXML
 	private DatePicker date_fin;
@@ -58,6 +62,8 @@ public class CtrlAbonnement implements Initializable{
 	private Button supprimer;
 	@FXML
 	private Button valider;
+	@FXML
+	private Button recherche;
 	@FXML
 	private Button retour;
 	@FXML
@@ -103,6 +109,8 @@ public class CtrlAbonnement implements Initializable{
 		try {
 			id_revue.setItems(FXCollections.observableArrayList(CtrlAccueil.daorev.findAll()));
 			id_client.setItems(FXCollections.observableArrayList(CtrlAccueil.daocli.findAll()));
+			recherche_revue.setItems(FXCollections.observableArrayList(CtrlAccueil.daorev.findAll()));
+			recherche_client.setItems(FXCollections.observableArrayList(CtrlAccueil.daocli.findAll()));
 			tblAbonnement();
 		}
 		catch (Exception e) {
@@ -281,6 +289,75 @@ public class CtrlAbonnement implements Initializable{
 		}
 		catch (Exception e) {
 			
+		}
+	}
+	
+	@FXML
+	public void recherche() {
+		tblAbonnement.getItems().clear();
+		List<Abonnement> abonnement = CtrlAccueil.daoabo.findAll();
+		tblAbonnement.getItems().addAll(abonnement);
+		
+		if(recherche_revue.getValue()!=null && recherche_client.getValue()==null){
+			List<Abonnement> abo = new ArrayList<Abonnement>();
+			
+			int i=0;
+			int rev = recherche_revue.getValue().getId_revue();
+			
+			while(i<tblAbonnement.getItems().size()) {
+				int rev1 = tblAbonnement.getItems().get(i).getId_revue();
+				
+				if(rev1 == rev) {
+					abo.add(tblAbonnement.getItems().get(i));
+				}
+				i++;
+			}
+			tblAbonnement.getItems().clear();
+			tblAbonnement.getItems().addAll(abo);
+			recherche_revue.setValue(null);
+			recherche_client.setValue(null);
+		}
+		
+		else if(recherche_revue.getValue()==null && recherche_client.getValue()!=null){
+			List<Abonnement> abo = new ArrayList<Abonnement>();
+			
+			int i=0;
+			int cli = recherche_client.getValue().getId_client();
+			
+			while(i<tblAbonnement.getItems().size()) {
+				int cli1 = tblAbonnement.getItems().get(i).getId_client();
+				
+				if(cli1 == cli) {
+					abo.add(tblAbonnement.getItems().get(i));
+				}
+				i++;
+			}
+			tblAbonnement.getItems().clear();
+			tblAbonnement.getItems().addAll(abo);
+			recherche_revue.setValue(null);
+			recherche_client.setValue(null);
+		}
+		
+		else if(recherche_revue.getValue()!=null && recherche_client.getValue()!=null){
+			List<Abonnement> abo = new ArrayList<Abonnement>();
+			
+			int i=0;
+			int cli = recherche_client.getValue().getId_client();
+			int rev = recherche_revue.getValue().getId_revue();
+			
+			while(i<tblAbonnement.getItems().size()) {
+				int cli1 = tblAbonnement.getItems().get(i).getId_client();
+				int rev1 = recherche_revue.getItems().get(i).getId_revue();
+				
+				if(cli1==cli && rev==rev1) {
+					abo.add(tblAbonnement.getItems().get(i));
+				}
+				i++;
+			}
+			tblAbonnement.getItems().clear();
+			tblAbonnement.getItems().addAll(abo);
+			recherche_revue.setValue(null);
+			recherche_client.setValue(null);
 		}
 	}
 
