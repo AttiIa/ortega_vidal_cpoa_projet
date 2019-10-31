@@ -78,6 +78,8 @@ public class CtrlRevue implements Initializable {
 		TableColumn<Revue, String> colTarif = new TableColumn<>("Tarif");
 		TableColumn<Revue, String> colPeriodicite = new TableColumn<>("Periodicite");
 		TableColumn<Revue, String> colVisuel = new TableColumn<>("Visuel");
+		TableColumn<Revue, String> colAbo = new TableColumn<>("Abonnement en Cours");
+
 
 		colIdRevue.setCellValueFactory(new PropertyValueFactory<Revue, String>("id_revue"));
 		colTitre.setCellValueFactory(new PropertyValueFactory<Revue, String>("titre"));
@@ -85,8 +87,9 @@ public class CtrlRevue implements Initializable {
 		colTarif.setCellValueFactory(new PropertyValueFactory<Revue, String>("tarif_numero"));
 		colPeriodicite.setCellValueFactory(new PropertyValueFactory<Revue, String>("id_periodicite"));
 		colVisuel.setCellValueFactory(new PropertyValueFactory<Revue, String>("visuel"));
+		colAbo.setCellValueFactory(new PropertyValueFactory<Revue, String>("en_cours"));
 
-		tblRevue.getColumns().setAll(colIdRevue, colTitre, colDescription, colTarif, colPeriodicite, colVisuel);
+		tblRevue.getColumns().setAll(colIdRevue, colTitre, colDescription, colTarif, colPeriodicite, colVisuel, colAbo);
 
 		List<Revue> revues = CtrlAccueil.daorev.findAll();
 		
@@ -327,6 +330,7 @@ public class CtrlRevue implements Initializable {
 		}
 	}
 		
+	//public void en_cours() {}
 	
 
 	@FXML
