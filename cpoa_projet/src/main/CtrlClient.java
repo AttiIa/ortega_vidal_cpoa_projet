@@ -281,7 +281,7 @@ public class CtrlClient implements Initializable{
 			URL fxmlURL = getClass().getResource("fenetres/fenetre_Abo.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Node root = fxmlLoader.load();
-			Scene scene = new Scene((VBox) root, 498.0, 112.0);
+			Scene scene = new Scene((VBox) root, 625.0, 281.0);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
 			stage1.setScene(scene);
