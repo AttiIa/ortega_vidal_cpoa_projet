@@ -252,7 +252,6 @@ public class CtrlRevue implements Initializable {
 	
 	@FXML
 	public void recherche() {
-		try {
 		tblRevue.getItems().clear();
 		List<Revue> revues = CtrlAccueil.daorev.findAll();
 		tblRevue.getItems().addAll(revues);
@@ -310,7 +309,7 @@ public class CtrlRevue implements Initializable {
 			tblRevue.getItems().clear();
 			tblRevue.getItems().addAll(rev);
 		}
-		else if(!cb_period.getItems().isEmpty()){
+		else if(cb_period.getValue() != null){
 			List<Revue> rev = new ArrayList<Revue>();
 			
 			int i=0;
@@ -324,15 +323,9 @@ public class CtrlRevue implements Initializable {
 			}
 			tblRevue.getItems().clear();
 			tblRevue.getItems().addAll(rev);
-		}}
-	catch (Exception e) {
-			Alert alert=new Alert(Alert.AlertType.ERROR);
-			alert.initOwner(vue);
-			alert.setTitle("Un probleme est survenue lors de la recherche de votre Revue");
-			alert.setHeaderText("Aucune Revue selectionnee");
-			alert.setContentText(e.toString());
-			alert.showAndWait();
-		}}
+			cb_period.setValue(null);
+		}
+	}
 		
 	
 
