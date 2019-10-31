@@ -353,6 +353,10 @@ public class CtrlClient implements Initializable{
 	
 	@FXML
 	public void retour() throws IOException{
+		CtrlAccueil.daocli=null;
+		CtrlAccueil.daoabo=null;
+		CtrlAccueil.daorev=null;
+		
 		Stage stage =(Stage) retour.getScene().getWindow();
 		stage.close();
 		Stage stage1 = new Stage();

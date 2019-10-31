@@ -204,6 +204,8 @@ public class CtrlPeriodicite implements Initializable{
 	
 	@FXML
 	public void retour() throws IOException{
+		CtrlAccueil.daoper=null;
+		
 		Stage stage =(Stage) retour.getScene().getWindow();
 		stage.close();
 		Stage stage1 = new Stage();

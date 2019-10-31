@@ -363,6 +363,10 @@ public class CtrlAbonnement implements Initializable{
 
 	@FXML
 	public void retour() throws IOException{
+		CtrlAccueil.daoabo=null;
+		CtrlAccueil.daocli=null;
+		CtrlAccueil.daorev=null;
+		
 		Stage stage =(Stage) retour.getScene().getWindow();
 		stage.close();
 		Stage stage1 = new Stage();

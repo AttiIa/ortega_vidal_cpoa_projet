@@ -139,6 +139,8 @@ public class CtrlAbo implements Initializable{
 	
 	@FXML
 	public void retour() throws IOException{
+		CtrlClient.id_cli=0;
+		
 		Stage stage =(Stage) retour.getScene().getWindow();
 		stage.close();
 		Stage stage1 = new Stage();

@@ -3,11 +3,9 @@ package main;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import dao.metier.Abonnement;
 import dao.metier.Periodicite;
 import dao.metier.Revue;
 import javafx.collections.FXCollections;
@@ -330,11 +328,11 @@ public class CtrlRevue implements Initializable {
 		}
 	}
 		
-	//public void en_cours() {}
-	
-
 	@FXML
 	public void retour() throws IOException{
+		CtrlAccueil.daorev=null;
+		CtrlAccueil.daoper=null;
+		
 		Stage stage =(Stage) retour.getScene().getWindow();
 		stage.close();
 		Stage stage1 = new Stage();
