@@ -43,6 +43,8 @@ public class CtrlRevue implements Initializable {
 	@FXML
 	private ComboBox<Periodicite> periode;
 	@FXML
+	private ComboBox<Periodicite> cb_period;
+	@FXML
 	private TextArea description;		
 	@FXML
 	private Label affichage;
@@ -105,6 +107,7 @@ public class CtrlRevue implements Initializable {
  	
 		try {
 			periode.setItems(FXCollections.observableArrayList(CtrlAccueil.daoper.findAll()));
+			cb_period.setItems(FXCollections.observableArrayList(CtrlAccueil.daoper.findAll()));
 			tblRevue();
 		} 
 		catch (Exception e) {
