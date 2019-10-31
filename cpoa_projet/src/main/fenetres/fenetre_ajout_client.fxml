@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="636.0" prefWidth="705.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlClient">
+<VBox alignment="CENTER" prefHeight="636.0" prefWidth="758.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlClient">
    <children>
       <GridPane fx:id="form" alignment="CENTER" disable="true" prefHeight="363.0" prefWidth="705.0" styleClass="background">
         <columnConstraints>
@@ -58,7 +58,7 @@
             <Label fx:id="affichage" alignment="CENTER" prefHeight="25.0" prefWidth="600.0" />
          </children>
       </FlowPane>
-      <VBox alignment="CENTER" prefHeight="161.0" prefWidth="705.0">
+      <VBox alignment="CENTER" prefHeight="161.0" prefWidth="793.0">
          <children>
             <HBox alignment="CENTER" prefHeight="151.0" prefWidth="705.0">
                <children>
@@ -70,7 +70,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </TableView>
-                  <VBox alignment="CENTER" prefHeight="215.0" prefWidth="92.0">
+                  <VBox alignment="CENTER" prefHeight="151.0" prefWidth="122.0">
                      <children>
                         <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefWidth="75.0" text="Creer">
                            <VBox.margin>
@@ -86,7 +86,7 @@
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin></Button>
-                        <Button fx:id="btn_abo" alignment="CENTER" mnemonicParsing="false" onAction="#abonnement" text="Abonnement">
+                        <Button fx:id="btn_abo" alignment="CENTER" mnemonicParsing="false" onAction="#abonnement" prefHeight="27.0" prefWidth="102.0" text="Abonnement">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
