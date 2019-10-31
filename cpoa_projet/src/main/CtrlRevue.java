@@ -305,8 +305,25 @@ public class CtrlRevue implements Initializable {
 				}
 				i++;
 			}
+			
 			tblRevue.getItems().clear();
 			tblRevue.getItems().addAll(rev);
+		}
+		else if(!cb_period.getItems().isEmpty()){
+			List<Revue> rev = new ArrayList<Revue>();
+			
+			int i=0;
+			Periodicite periods = cb_period.getValue();
+			while(i<tblRevue.getItems().size()) {
+				int period1 = tblRevue.getItems().get(i).getId_periodicite();
+				if(period1 == periods) {
+					rev.add(tblRevue.getItems().get(i));
+				}
+				i++;
+			}
+			tblRevue.getItems().clear();
+			tblRevue.getItems().addAll(rev);
+		}
 		}
 	}
 
