@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxWidth="875.0" prefHeight="623.0" prefWidth="875.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlRevue">
+<VBox alignment="CENTER" maxWidth="900.0" prefHeight="623.0" prefWidth="900.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlRevue">
    <children>
-      <GridPane fx:id="form" alignment="CENTER" disable="true" maxWidth="850.0" prefHeight="320.0" prefWidth="962.0">
+      <GridPane fx:id="form" alignment="CENTER_RIGHT" disable="true" maxWidth="850.0" prefHeight="320.0" prefWidth="962.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="84.0" />
           <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="830.0" minWidth="10.0" prefWidth="766.0" />
@@ -29,36 +29,37 @@
             <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children> 
-            <Label text="Titre:" GridPane.halignment="RIGHT">
+            <Label text="Titre :" GridPane.halignment="RIGHT">
                <padding>
                   <Insets right="10.0" />
                </padding></Label>
             <TextField fx:id="titre" maxWidth="-Infinity" prefHeight="26.0" prefWidth="219.0" GridPane.columnIndex="1" />
-            <Label text="Description:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <Label text="Description :" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <padding>
                   <Insets right="10.0" />
                </padding></Label>
             <TextArea fx:id="description" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="87.0" prefWidth="556.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Tarif:" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
-               <padding>
-                  <Insets right="10.0" />
-               </padding></Label>
-            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <TextField fx:id="tarif" maxWidth="-Infinity" prefHeight="25.0" prefWidth="48.0" />
                   <Label alignment="BASELINE_RIGHT" prefHeight="24.0" prefWidth="13.0" text="€" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <Label text="Périodicité:" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+            <Label text="Périodicité :" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                <padding>
                   <Insets right="10.0" />
                </padding></Label>
             <ComboBox fx:id="periode" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="Visuel:" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+            <Label text="Visuel :" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <padding>
                   <Insets right="10.0" />
                </padding></Label>
             <TextField fx:id="visuel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Tarif :" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+            </Label>
          </children>
          <VBox.margin>
             <Insets />
@@ -74,31 +75,34 @@
             <Label fx:id="affichage" alignment="CENTER" prefHeight="29.0" prefWidth="597.0" />
          </children>
       </FlowPane>
-      <VBox alignment="CENTER" maxWidth="850.0" prefHeight="231.0" prefWidth="947.0">
+      <VBox alignment="CENTER" prefHeight="231.0" prefWidth="947.0">
          <children>
-            <HBox alignment="CENTER" maxWidth="850.0" prefHeight="192.0" prefWidth="850.0">
+            <HBox alignment="CENTER" prefHeight="192.0">
                <children>
-                  <TableView fx:id="tblRevue" prefHeight="192.0" prefWidth="699.0" styleClass="tableau" />
-                  <VBox alignment="CENTER" prefHeight="192.0" prefWidth="141.0">
+                  <TableView fx:id="tblRevue" prefHeight="192.0" prefWidth="795.0" styleClass="tableau">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin></TableView>
+                  <VBox alignment="CENTER" prefHeight="192.0" prefWidth="76.0">
                      <children>
-                        <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefHeight="27.0" prefWidth="86.0" text="Créer">
+                        <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefWidth="76.0" text="Créer">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="supprimer" mnemonicParsing="false" onAction="#delete" prefHeight="27.0" prefWidth="85.0" text="Supprimer">
+                        <Button fx:id="supprimer" mnemonicParsing="false" onAction="#delete" prefWidth="76.0" text="Supprimer">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="modifier" mnemonicParsing="false" onAction="#update" prefHeight="27.0" prefWidth="91.0" text="Modifier">
+                        <Button fx:id="modifier" mnemonicParsing="false" onAction="#update" prefWidth="76.0" text="Modifier">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
                      </children>
                      <HBox.margin>
-                        <Insets left="30.0" />
+                        <Insets left="10.0" right="10.0" />
                      </HBox.margin>
                   </VBox>
                </children>
@@ -107,20 +111,23 @@
       </VBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Périodicité:">
-               <padding>
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="73.0" text="Périodicité :">
+               <HBox.margin>
                   <Insets right="10.0" />
-               </padding>
+               </HBox.margin>
             </Label>
             <ComboBox fx:id="cb_period" prefWidth="150.0" />
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="CENTER_RIGHT" prefHeight="72.0" prefWidth="76.0">
                <children>
-                  <Label text="Titre">
+                  <Label text="Titre :">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets bottom="10.0" right="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Tarif" />
+                  <Label text="Tarif :">
+                     <VBox.margin>
+                        <Insets right="10.0" />
+                     </VBox.margin></Label>
                </children>
             </VBox>
             <VBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="199.0">
@@ -135,10 +142,13 @@
             </VBox>
             <Button fx:id="recherche" mnemonicParsing="false" onAction="#recherche" text="Recherche">
                <HBox.margin>
-                  <Insets left="10.0" right="40.0" />
+                  <Insets left="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="retour" mnemonicParsing="false" onAction="#retour" prefWidth="70.0" text="Retour" />
+            <Button fx:id="retour" mnemonicParsing="false" onAction="#retour" prefWidth="76.0" text="Retour">
+               <HBox.margin>
+                  <Insets left="225.0" right="10.0" />
+               </HBox.margin></Button>
          </children>
       </HBox>
    </children>

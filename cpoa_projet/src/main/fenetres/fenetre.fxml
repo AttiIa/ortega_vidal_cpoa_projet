@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="112.0" prefWidth="498.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlAccueil">
+<VBox alignment="CENTER" prefHeight="112.0" prefWidth="413.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlAccueil">
    <children>
       <HBox alignment="CENTER" prefHeight="33.0" prefWidth="600.0">
          <children>
-            <RadioButton fx:id="mysql" mnemonicParsing="false" prefHeight="28.0" prefWidth="93.0" styleClass="button" text="MySQL">
+            <RadioButton fx:id="mysql" mnemonicParsing="false" prefWidth="80.0" styleClass="button" text="MySQL">
                <toggleGroup>
                   <ToggleGroup fx:id="daos" />
                </toggleGroup>
@@ -19,7 +19,7 @@
                   <Insets left="50.0" top="10.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton fx:id="list" mnemonicParsing="false" styleClass="button" text="Liste memoire" toggleGroup="$daos">
+            <RadioButton fx:id="list" mnemonicParsing="false" prefWidth="116.0" styleClass="button" text="Liste memoire" toggleGroup="$daos">
                <HBox.margin>
                   <Insets left="100.0" top="10.0" />
                </HBox.margin>
@@ -28,24 +28,24 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="Periodicite" alignment="CENTER" mnemonicParsing="false" onAction="#Periodicite" text="Periodicite" textAlignment="CENTER">
+            <Button fx:id="Periodicite" alignment="CENTER" mnemonicParsing="false" onAction="#Periodicite" prefWidth="90.0" text="Periodicite" textAlignment="CENTER">
                <HBox.margin>
-                  <Insets left="50.0" />
+                  <Insets left="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="Client" mnemonicParsing="false" onAction="#Client" text="Client" textAlignment="CENTER">
+            <Button fx:id="Client" mnemonicParsing="false" onAction="#Client" prefWidth="90.0" text="Client" textAlignment="CENTER">
                <HBox.margin>
-                  <Insets left="50.0" />
+                  <Insets left="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="Abonnement" mnemonicParsing="false" onAction="#Abonnement" text="Abonnement" textAlignment="CENTER">
+            <Button fx:id="Abonnement" mnemonicParsing="false" onAction="#Abonnement" prefWidth="90.0" text="Abonnement" textAlignment="CENTER">
                <HBox.margin>
-                  <Insets left="50.0" />
+                  <Insets left="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="Revue" mnemonicParsing="false" onAction="#Revue" text="Revue" textAlignment="CENTER">
+            <Button fx:id="Revue" mnemonicParsing="false" onAction="#Revue" prefWidth="90.0" text="Revue" textAlignment="CENTER">
                <HBox.margin>
-                  <Insets left="50.0" />
+                  <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </Button>
          </children>

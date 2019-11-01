@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import dao.metier.Abonnement;
-import dao.metier.Client;
 import dao.metier.Revue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -148,7 +147,7 @@ public class CtrlAbo implements Initializable{
 		URL fxmlURL = getClass().getResource("fenetres/fenetre_ajout_client.fxml");
 		FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 		Node root = fxmlLoader.load();
-		Scene scene = new Scene((VBox) root, 674.0, 600.0);
+		Scene scene = new Scene((VBox) root, 758.0, 636.0);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
 		stage1.setScene(scene);

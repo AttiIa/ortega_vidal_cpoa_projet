@@ -285,7 +285,8 @@ public class CtrlClient implements Initializable{
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
 			stage1.setScene(scene);
-			stage1.setTitle("Abonnements");
+			stage1.setTitle("Abonnements de " + tblClient.getSelectionModel().getSelectedItem().getNom() + " " +
+					tblClient.getSelectionModel().getSelectedItem().getPrenom());
 			stage1.show();
 		} 
 		catch (Exception e) {

@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="281.0" prefWidth="625.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlPeriodicite">
+<VBox alignment="TOP_CENTER" prefHeight="322.0" prefWidth="625.0" styleClass="background" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CtrlPeriodicite">
    <children>
-      <GridPane fx:id="form" alignment="CENTER" disable="true" maxWidth="850.0" prefHeight="69.0" prefWidth="962.0" style="-fx-alignment: center;" styleClass="background">
+      <GridPane fx:id="form" alignment="CENTER" disable="true" maxWidth="850.0" prefHeight="45.0" prefWidth="625.0" style="-fx-alignment: center;" styleClass="background">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="504.0" minWidth="10.0" prefWidth="479.0" />
@@ -23,7 +23,7 @@
             <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Libelle:" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+            <Label text="Libelle :" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                <padding>
                   <Insets right="10.0" />
                </padding></Label>
@@ -36,7 +36,7 @@
             <Insets />
          </VBox.margin>
       </GridPane>
-      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="90.0" prefWidth="600.0" rowValignment="BASELINE" styleClass="background">
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="31.0" prefWidth="625.0" rowValignment="BASELINE" styleClass="background">
          <children>                  
                   <Button fx:id="valider" disable="true" mnemonicParsing="false" onAction="#valider" prefHeight="25.0" prefWidth="70.0" text="Valider" />
            </children>
@@ -46,9 +46,9 @@
             <Label fx:id="affichage" alignment="CENTER" prefHeight="25.0" prefWidth="600.0" />
          </children>
       </FlowPane>
-      <VBox prefHeight="112.0" prefWidth="602.0" styleClass="background">
+      <VBox prefHeight="178.0" prefWidth="625.0" styleClass="background">
          <children>
-            <HBox alignment="CENTER" prefHeight="112.0" prefWidth="578.0">
+            <HBox alignment="CENTER" prefHeight="183.0" prefWidth="625.0">
                <children>
                   <TableView fx:id="tblPeriodicite" prefHeight="112.0" prefWidth="483.0" styleClass="tableau">
                      <opaqueInsets>
@@ -60,17 +60,17 @@
                   </TableView>
                   <VBox prefHeight="112.0" prefWidth="88.0">
                      <children>
-                        <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefWidth="75.0" text="Creer">
+                        <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefWidth="76.0" text="Creer">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="supprimer" mnemonicParsing="false" onAction="#delete" prefHeight="27.0" prefWidth="85.0" text="Supprimer">
+                        <Button fx:id="supprimer" mnemonicParsing="false" onAction="#delete" prefHeight="27.0" prefWidth="76.0" text="Supprimer">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="modifier" mnemonicParsing="false" onAction="#update" prefWidth="75.0" text="Modifier" />
+                        <Button fx:id="modifier" mnemonicParsing="false" onAction="#update" prefWidth="76.0" text="Modifier" />
                      </children>
                      <HBox.margin>
                         <Insets left="20.0" />
@@ -80,10 +80,10 @@
             </HBox>
          </children>
       </VBox>
-      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="90.0" prefWidth="600.0" rowValignment="BASELINE" styleClass="background">
-         <children>
-            <Button fx:id="retour" mnemonicParsing="false" onAction="#retour" prefHeight="25.0" prefWidth="70.0" text="Retour" />
-         </children>
-      </FlowPane>
+      <Button fx:id="retour" mnemonicParsing="false" onAction="#retour" prefHeight="25.0" prefWidth="76.0" text="Retour">
+         <VBox.margin>
+            <Insets bottom="10.0" left="500.0" top="10.0" />
+         </VBox.margin>
+      </Button>
    </children>
 </VBox>

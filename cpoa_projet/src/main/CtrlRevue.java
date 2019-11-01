@@ -66,7 +66,6 @@ public class CtrlRevue implements Initializable {
 	private Window vue;
 	@FXML
 	private Window accueil;
-
 	
 	public TableView<Revue> tblRevue() {
 
@@ -76,8 +75,6 @@ public class CtrlRevue implements Initializable {
 		TableColumn<Revue, String> colTarif = new TableColumn<>("Tarif");
 		TableColumn<Revue, String> colPeriodicite = new TableColumn<>("Periodicite");
 		TableColumn<Revue, String> colVisuel = new TableColumn<>("Visuel");
-		TableColumn<Revue, String> colAbo = new TableColumn<>("Abonnement en Cours");
-
 
 		colIdRevue.setCellValueFactory(new PropertyValueFactory<Revue, String>("id_revue"));
 		colTitre.setCellValueFactory(new PropertyValueFactory<Revue, String>("titre"));
@@ -85,9 +82,8 @@ public class CtrlRevue implements Initializable {
 		colTarif.setCellValueFactory(new PropertyValueFactory<Revue, String>("tarif_numero"));
 		colPeriodicite.setCellValueFactory(new PropertyValueFactory<Revue, String>("id_periodicite"));
 		colVisuel.setCellValueFactory(new PropertyValueFactory<Revue, String>("visuel"));
-		colAbo.setCellValueFactory(new PropertyValueFactory<Revue, String>("en_cours"));
 
-		tblRevue.getColumns().setAll(colIdRevue, colTitre, colDescription, colTarif, colPeriodicite, colVisuel, colAbo);
+		tblRevue.getColumns().setAll(colIdRevue, colTitre, colDescription, colTarif, colPeriodicite, colVisuel);
 
 		List<Revue> revues = CtrlAccueil.daorev.findAll();
 		

@@ -28,10 +28,22 @@
             <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="id du client:" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
-            <Label text="id de la revue:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Label text="date de début:" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-            <Label text="date de fin:" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Label text="id du client :" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin></Label>
+            <Label text="id de la revue :" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin></Label>
+            <Label text="date de début :" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin></Label>
+            <Label text="date de fin :" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin></Label>
             <DatePicker fx:id="date_deb" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <DatePicker fx:id="date_fin" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <ComboBox fx:id="id_client" prefWidth="150.0" GridPane.columnIndex="1" />
@@ -65,18 +77,21 @@
                   </TableView>
                   <VBox prefHeight="215.0" prefWidth="106.0">
                      <children>
-                        <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefWidth="75.0" text="Creer">
+                        <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefWidth="76.0" text="Creer">
                            <VBox.margin>
-                              <Insets bottom="10.0" />
+                              <Insets />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="supprimer" mnemonicParsing="false" onAction="#delete" prefHeight="27.0" prefWidth="87.0" text="Supprimer">
+                        <Button fx:id="supprimer" mnemonicParsing="false" onAction="#delete" prefWidth="76.0" text="Supprimer">
                            <VBox.margin>
-                              <Insets bottom="10.0" />
+                              <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="modifier" mnemonicParsing="false" onAction="#update" prefWidth="75.0" text="Modifier" />
-                        <CheckBox fx:id="en_cours" mnemonicParsing="false" onAction="#en_cours" text="en_cours">
+                        <Button fx:id="modifier" mnemonicParsing="false" onAction="#update" prefWidth="76.0" text="Modifier">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin></Button>
+                        <CheckBox fx:id="en_cours" mnemonicParsing="false" onAction="#en_cours" text="en_cours" textFill="WHITE">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
@@ -92,17 +107,20 @@
       </VBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="Client" />
-                  <Label text="Revue">
+                  <Label text="Client :">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></Label>
+                  <Label text="Revue :">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="86.0" prefWidth="146.0">
+            <VBox alignment="CENTER" prefHeight="86.0" prefWidth="179.0">
                <children>
                   <ComboBox fx:id="recherche_client" prefWidth="150.0" />
                   <ComboBox fx:id="recherche_revue" prefWidth="150.0">
@@ -117,7 +135,7 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="retour" mnemonicParsing="false" onAction="#retour" prefHeight="25.0" prefWidth="70.0" text="Retour">
+            <Button fx:id="retour" mnemonicParsing="false" onAction="#retour" prefHeight="25.0" prefWidth="76.0" text="Retour">
                <HBox.margin>
                   <Insets left="200.0" />
                </HBox.margin>
