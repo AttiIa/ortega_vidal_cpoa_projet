@@ -77,6 +77,7 @@ public class CtrlAbonnement implements Initializable{
 	@FXML
 	private Window accueil;
 	
+	@SuppressWarnings("unchecked")
 	public TableView<Abonnement> tblAbonnement() {
 
 		TableColumn<Abonnement, String> colIdClient = new TableColumn<>("id_client");

@@ -42,6 +42,7 @@ public class CtrlAbo implements Initializable{
 	@FXML
 	private ComboBox<Revue> recherche_revue;
 	
+	@SuppressWarnings("unchecked")
 	public TableView<Abonnement> tblAbo() {
 
 		TableColumn<Abonnement, String> colIdClient = new TableColumn<>("id_client");

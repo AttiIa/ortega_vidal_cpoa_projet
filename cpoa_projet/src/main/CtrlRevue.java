@@ -67,6 +67,7 @@ public class CtrlRevue implements Initializable {
 	@FXML
 	private Window accueil;
 	
+	@SuppressWarnings("unchecked")
 	public TableView<Revue> tblRevue() {
 
 		TableColumn<Revue, String> colIdRevue = new TableColumn<>("id_revue");

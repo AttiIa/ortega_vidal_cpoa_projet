@@ -48,6 +48,7 @@ public class CtrlPeriodicite implements Initializable{
 	@FXML
 	private Window accueil;
 	
+	@SuppressWarnings("unchecked")
 	public TableView<Periodicite> tblPeriodicite() {
 		
 		TableColumn<Periodicite, String> colIdPeriodicite = new TableColumn<>("id_periodicite");

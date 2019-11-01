@@ -75,6 +75,7 @@ public class CtrlClient implements Initializable{
 	@FXML
 	private Window accueil;
 	
+	@SuppressWarnings("unchecked")
 	public TableView<Client> tblClient() {
 
 		TableColumn<Client, String> colIdClient = new TableColumn<>("id_Client");
