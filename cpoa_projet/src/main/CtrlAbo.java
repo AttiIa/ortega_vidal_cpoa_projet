@@ -80,7 +80,7 @@ public class CtrlAbo implements Initializable{
 	}
 	
 	@FXML
-	public void en_cours() {
+	public void en_cours() throws Exception{
 		try {
 			List<Abonnement> abo = new ArrayList<Abonnement>();
 			

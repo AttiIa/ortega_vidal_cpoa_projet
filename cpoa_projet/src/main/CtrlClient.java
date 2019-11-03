@@ -199,7 +199,7 @@ public class CtrlClient implements Initializable{
 	}
 	
 	@FXML
-	public void create() {
+	public void create() throws Exception{
 		form.setDisable(false);
 		valider.setDisable(false);
 		
@@ -217,7 +217,7 @@ public class CtrlClient implements Initializable{
 	}
 	
 	@FXML
-	public void delete() {
+	public void delete() throws Exception{
 		try {
 			b_delete=true;
 			CtrlAccueil.daocli.delete(tblClient.getSelectionModel().getSelectedItem()); 
@@ -238,7 +238,7 @@ public class CtrlClient implements Initializable{
 	}
 	
 	@FXML
-	public void update() {
+	public void update() throws Exception{
 		try {			
 			Client client=tblClient.getSelectionModel().getSelectedItem();
 						

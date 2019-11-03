@@ -188,7 +188,7 @@ public class CtrlRevue implements Initializable {
 	}
 	
 	@FXML
-	public void create() {
+	public void create() throws Exception{
 		form.setDisable(false);
 		valider.setDisable(false);
 		
@@ -204,7 +204,7 @@ public class CtrlRevue implements Initializable {
 	}	
 	
 	@FXML
-	public void delete() {
+	public void delete() throws Exception{
 		try {
 			b_delete=true;
 			CtrlAccueil.daorev.delete(tblRevue.getSelectionModel().getSelectedItem()); 
@@ -224,7 +224,7 @@ public class CtrlRevue implements Initializable {
 	}
 	
 	@FXML
-	public void update() {
+	public void update() throws Exception {
 		try {			
 			Revue revue=tblRevue.getSelectionModel().getSelectedItem();
 						

@@ -188,7 +188,7 @@ public class CtrlAbonnement implements Initializable{
 	}
 	
 	@FXML
-	public void create() {
+	public void create() throws Exception {
 		id_revue.setDisable(false);
 		id_client.setDisable(false);
 		form.setDisable(false);
@@ -205,7 +205,7 @@ public class CtrlAbonnement implements Initializable{
 	}
 	
 	@FXML
-	public void delete() {
+	public void delete() throws Exception {
 		try {
 			b_delete=true;
 			CtrlAccueil.daoabo.delete(tblAbonnement.getSelectionModel().getSelectedItem()); 
@@ -260,7 +260,7 @@ public class CtrlAbonnement implements Initializable{
 	}
 	
 	@FXML
-	public void en_cours() {
+	public void en_cours()throws Exception {
 		try {
 			List<Abonnement> abo = new ArrayList<Abonnement>();
 			

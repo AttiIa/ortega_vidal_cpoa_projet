@@ -144,7 +144,7 @@ public class CtrlPeriodicite implements Initializable{
 	}
 	
 	@FXML
-	public void create() {
+	public void create()throws Exception {
 		form.setDisable(false);
 		valider.setDisable(false);
 		
@@ -155,7 +155,7 @@ public class CtrlPeriodicite implements Initializable{
 	}
 	
 	@FXML
-	public void delete(){
+	public void delete()throws Exception{
 		try {
 			b_delete=true;
 			CtrlAccueil.daoper.delete(tblPeriodicite.getSelectionModel().getSelectedItem());  
@@ -176,7 +176,7 @@ public class CtrlPeriodicite implements Initializable{
 	}
 	
 	@FXML
-	public void update(){
+	public void update()throws Exception{
 		try {
 			Periodicite period = tblPeriodicite.getSelectionModel().getSelectedItem();
 			
