@@ -49,7 +49,7 @@ public class MySQLRevueDAO implements RevueDAO{
 	}
 	
 	@Override
-	public boolean delete(Revue revue) {
+	public boolean delete(Revue revue) throws Exception {
 		boolean ok;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
@@ -66,14 +66,15 @@ public class MySQLRevueDAO implements RevueDAO{
 				
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Revue.delete " + sqle.getMessage());
 			ok = false;
+			throw new Exception("Pb Revue.delete " + sqle.getMessage());
+			
 		}
 		return ok;		
 	}
 	
 	@Override
-	public boolean update(Revue revue) {
+	public boolean update(Revue revue) throws Exception {
 		boolean ok;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
@@ -95,14 +96,15 @@ public class MySQLRevueDAO implements RevueDAO{
 				
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Revue.update " + sqle.getMessage());
 			ok = false;
+			throw new Exception("Pb Revue.update " + sqle.getMessage());
+			
 		}
 		return ok;		
 	}
 	
 	@Override
-	public Revue getById(int id) {
+	public Revue getById(int id) throws Exception {
 		Revue revue = null;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
@@ -123,13 +125,13 @@ public class MySQLRevueDAO implements RevueDAO{
 				res.close();
 			}
 		catch(SQLException sqle){
-			System.out.println("Pb Revue.getById " + sqle.getMessage());
+			throw new Exception("Pb Revue.getById " + sqle.getMessage());
 		}
 		
 		return revue;			
 	}
 	@Override
-	public ArrayList<Revue> findAll() {
+	public ArrayList<Revue> findAll() throws Exception {
 		ArrayList<Revue> listeRevue = new ArrayList<>();
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
@@ -156,7 +158,7 @@ public class MySQLRevueDAO implements RevueDAO{
 					res.close();
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Revue.findAll " + sqle.getMessage());
+			throw new Exception("Pb Revue.findAll " + sqle.getMessage());
 		}
 		
 		return listeRevue;	

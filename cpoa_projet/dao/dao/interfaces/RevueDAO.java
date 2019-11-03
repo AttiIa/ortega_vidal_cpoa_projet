@@ -9,15 +9,15 @@ public interface RevueDAO extends IDAO<Revue>{
 	boolean create(Revue revue);
 
 	@Override
-	boolean delete(Revue revue);
+	boolean delete(Revue revue) throws Exception;
 
 	@Override
-	boolean update(Revue revue);
+	boolean update(Revue revue) throws Exception;
 	
 	@Override
-	Revue getById(int id);
+	Revue getById(int id) throws Exception;
 	
 	@Override
-	ArrayList<Revue> findAll();
+	ArrayList<Revue> findAll() throws Exception;
 
 }

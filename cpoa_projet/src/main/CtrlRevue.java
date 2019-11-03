@@ -71,7 +71,7 @@ public class CtrlRevue implements Initializable {
 	private Window vue;
 	
 	@SuppressWarnings("unchecked")
-	public TableView<Revue> tblRevue() {
+	public TableView<Revue> tblRevue() throws Exception {
 
 		TableColumn<Revue, String> colIdRevue = new TableColumn<>("id_revue");
 		TableColumn<Revue, String> colTitre = new TableColumn<>("Titre");
@@ -122,7 +122,7 @@ public class CtrlRevue implements Initializable {
 	}
 
 	@FXML
-	public void valider() {
+	public void valider() throws Exception {
 
 		Periodicite period = periode.getValue();
 
@@ -281,7 +281,7 @@ public class CtrlRevue implements Initializable {
 	}
 	
 	@FXML
-	public void recherche() {
+	public void recherche() throws Exception {
 		tblRevue.getItems().clear();
 		List<Revue> revues = CtrlAccueil.daorev.findAll();
 		tblRevue.getItems().addAll(revues);

@@ -15,7 +15,7 @@ class ListeMemoireRevueDAOTest {
 	RevueDAO lrev = daos.getRevueDAO();
 
 	@Test
-	void testCreate() {
+	void testCreate() throws Exception {
 		int id_revue =18;
 		String titre ="coder en Java";
 		String description="livre pour apprendre a coder en Java";
@@ -32,7 +32,7 @@ class ListeMemoireRevueDAOTest {
 	}
 
 	@Test
-	void testDelete() {
+	void testDelete() throws Exception {
 		int id_revue =19;
 		String titre ="coder en Java";
 		String description="livre pour apprendre a coder en Java";
@@ -49,7 +49,7 @@ class ListeMemoireRevueDAOTest {
 	}
 
 	@Test
-	void testUpdate() {
+	void testUpdate() throws Exception {
 		int id_revue =20;
 		String titre ="coder en Java";
 		String description="livre pour apprendre a coder en Java";
@@ -68,7 +68,7 @@ class ListeMemoireRevueDAOTest {
 	}
 
 	@Test
-	void testGetById() {
+	void testGetById() throws Exception {
 		int id_revue =21;
 		String titre ="coder en Java";
 		String description="livre pour apprendre a coder en Java";
@@ -88,7 +88,7 @@ class ListeMemoireRevueDAOTest {
 	}
 
 	@Test
-	void testFindAll() {
+	void testFindAll() throws Exception {
 		int id_revue =22;
 		String titre ="coder en Java";
 		String description="livre pour apprendre a coder en Java";
