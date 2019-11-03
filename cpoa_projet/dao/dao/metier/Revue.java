@@ -1,6 +1,9 @@
 package dao.metier;
 
+import java.util.Date;
+
 public class Revue {
+	
 	 int id_revue;
 	 String titre;
 	 String description;
@@ -128,4 +131,11 @@ public class Revue {
 		
 		return true;
 	}	 
+
+	public boolean abo_en_cours(Date date_debut, Date date_fin) {
+		Date date = new Date();
+		
+		if(date_debut.compareTo(date)<=0 && date_fin.compareTo(date)>=0) return true;
+		else return false;
+	}
 }
