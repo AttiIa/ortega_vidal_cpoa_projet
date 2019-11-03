@@ -29,7 +29,6 @@ public class CtrlRevue implements Initializable {
 	
 	private boolean b_create=false;
 	private boolean b_update=false;
-	private boolean b_delete=false;
 
 	@FXML
 	private TextField titre;
@@ -99,7 +98,6 @@ public class CtrlRevue implements Initializable {
 	@Override
 	public String toString() {
 		if(b_create) return "Ajout de : " + titre.getText().trim() + " (" + tarif.getText().trim() + "€)";
-		else if(b_delete) return "Suppression de : " + tblRevue.getSelectionModel().getSelectedItem().getTitre().trim();
 		else if(b_update) return "Modifiction de : " + titre.getText().trim();
 		else return "";
 	}
@@ -176,7 +174,6 @@ public class CtrlRevue implements Initializable {
 			
 		}
 		b_create=false;
-		b_delete=false;
 		b_update=false;
 		
 		List<Revue> revues = CtrlAccueil.daorev.findAll();
@@ -199,16 +196,13 @@ public class CtrlRevue implements Initializable {
 		visuel.setText("");
 		
 		b_create=true;
-		b_delete=false;
 		b_update=false;
 	}	
 	
 	@FXML
 	public void delete() throws Exception{
 		try {
-			b_delete=true;
 			CtrlAccueil.daorev.delete(tblRevue.getSelectionModel().getSelectedItem()); 
-			affichage.setText(toString());;
 	        List<Revue> revues = CtrlAccueil.daorev.findAll();
 			tblRevue.getItems().clear();
 			tblRevue.getItems().addAll(revues);
@@ -238,7 +232,6 @@ public class CtrlRevue implements Initializable {
 			valider.setDisable(false);
 			
 			b_create=false;
-			b_delete=false;
 			b_update=true;
 		}
 		catch (Exception e) {

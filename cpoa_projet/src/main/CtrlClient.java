@@ -28,7 +28,6 @@ import javafx.stage.Window;
 public class CtrlClient implements Initializable{
 
 	private boolean b_create;
-	private boolean b_delete;
 	private boolean b_update;
 	public static int id_cli;
 	
@@ -106,7 +105,6 @@ public class CtrlClient implements Initializable{
 	@Override
 	public String toString() {
 		if(b_create) return "Ajout de : " + nom.getText().trim() +" "+ prenom.getText().trim();
-		else if(b_delete) return "Suppression de : " + nom.getText().trim() +" "+ prenom.getText().trim();
 		else if(b_update) return "Modifiction de : "+ nom.getText().trim() +" "+ prenom.getText().trim();
 		else return "";
 	}	
@@ -212,17 +210,14 @@ public class CtrlClient implements Initializable{
 		pays.setText("");
 		
 		b_create=true;
-		b_delete=false;
 		b_update=false;
 	}
 	
 	@FXML
 	public void delete() throws Exception{
 		try {
-			b_delete=true;
 			CtrlAccueil.daocli.delete(tblClient.getSelectionModel().getSelectedItem()); 
-			affichage.setText(toString());;
-	        List<Client> clients = CtrlAccueil.daocli.findAll();
+			List<Client> clients = CtrlAccueil.daocli.findAll();
 	        tblClient.getItems().clear();
 	        tblClient.getItems().addAll(clients);
 		} 
@@ -254,7 +249,6 @@ public class CtrlClient implements Initializable{
 			valider.setDisable(false);
 			
 			b_create=false;
-			b_delete=false;
 			b_update=true;
 		}
 		catch (Exception e) {

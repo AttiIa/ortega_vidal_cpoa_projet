@@ -38,7 +38,6 @@ public class CtrlAbonnement implements Initializable{
 	
 	private boolean b_create=false;
 	private boolean b_update=false;
-	private boolean b_delete=false;
 	
 	@FXML
 	private ComboBox<Client> id_client;
@@ -99,7 +98,6 @@ public class CtrlAbonnement implements Initializable{
 	@Override
 	public String toString() {
 		if(b_create) return "Ajout de : " + id_client.getSelectionModel().getSelectedItem().getNom().trim() +" "+ id_revue.getSelectionModel().getSelectedItem().getTitre().trim();
-		else if(b_delete) return "Suppression de : " + id_client.getSelectionModel().getSelectedItem().getNom().trim() +" "+ id_revue.getSelectionModel().getSelectedItem().getTitre().trim();
 		else if(b_update) return "Modifiction de : "+ id_client.getSelectionModel().getSelectedItem().getNom().trim() +" "+ id_revue.getSelectionModel().getSelectedItem().getTitre().trim();
 		else return "";
 	}
@@ -200,15 +198,12 @@ public class CtrlAbonnement implements Initializable{
 		date_fin.setValue(null);
 	
 		b_create=true;
-		b_delete=false;
 		b_update=false;
 	}
 	
 	@FXML
 	public void delete() throws Exception {
 		try {
-			b_delete=true;			
-			affichage.setText(toString());
 			CtrlAccueil.daoabo.delete(tblAbonnement.getSelectionModel().getSelectedItem()); 
 	        List<Abonnement> abos = CtrlAccueil.daoabo.findAll();
 	        tblAbonnement.getItems().clear();
@@ -247,7 +242,6 @@ public class CtrlAbonnement implements Initializable{
 			valider.setDisable(false);
 			
 			b_create=false;
-			b_delete=false;
 			b_update=true;
 		}
 		catch (Exception e) {
