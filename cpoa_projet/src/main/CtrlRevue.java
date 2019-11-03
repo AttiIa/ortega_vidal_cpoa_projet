@@ -68,8 +68,8 @@ public class CtrlRevue implements Initializable {
 	private GridPane form;
 	@FXML
 	private TableView<Revue> tblRevue;
-	@FXML
-	private TableColumn colEnCours;
+/*	@FXML
+	private TableColumn colEnCours;*/
 	@FXML
 	private Window vue;
 	@FXML
@@ -91,9 +91,9 @@ public class CtrlRevue implements Initializable {
 		colTarif.setCellValueFactory(new PropertyValueFactory<Revue, String>("tarif_numero"));
 		colPeriodicite.setCellValueFactory(new PropertyValueFactory<Revue, String>("id_periodicite"));
 		colVisuel.setCellValueFactory(new PropertyValueFactory<Revue, String>("visuel"));
-		colEnCours.setCellValueFactory(cellData -> Revue.getValue);
+		//colEnCours.setCellValueFactory(cellData -> Revue.abo_en_cours());
 
-		tblRevue.getColumns().setAll(colIdRevue, colTitre, colDescription, colTarif, colPeriodicite, colVisuel, colEnCours);
+		tblRevue.getColumns().setAll(colIdRevue, colTitre, colDescription, colTarif, colPeriodicite, colVisuel/*, colEnCours*/);
 
 		List<Revue> revues = CtrlAccueil.daorev.findAll();
 		
