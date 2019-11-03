@@ -10,20 +10,20 @@ public interface AbonnementDAO extends IDAO<Abonnement> {
 	boolean create(Abonnement abonnement) throws Exception;
 
 	@Override
-	boolean delete(Abonnement abonnement);
+	boolean delete(Abonnement abonnement) throws Exception;
 
 	@Override
-	boolean update(Abonnement abonnement);
+	boolean update(Abonnement abonnement) throws Exception;
 	
 	@Override
 	Abonnement getById(int id);
 	
-	ArrayList<Abonnement> getById_client(int id);
+	ArrayList<Abonnement> getById_client(int id) throws Exception;
 	
-	ArrayList<Abonnement> getById_revue(int id_revue);
+	ArrayList<Abonnement> getById_revue(int id_revue) throws Exception;
 	
-	Abonnement getById(int id1, int id2);
+	Abonnement getById(int id1, int id2) throws Exception;
 
 	@Override
-	ArrayList<Abonnement> findAll();	
+	ArrayList<Abonnement> findAll() throws Exception;	
 }

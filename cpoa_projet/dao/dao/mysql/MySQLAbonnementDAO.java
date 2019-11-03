@@ -46,13 +46,11 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 			ok = true;
 			}
 			else {
-				System.out.println("La date de debut est superieur a la date de fin, Veuillez recommencer");
 				ok = false;
 				throw new Exception("La date de debut est superieur a la date de fin, Veuillez recommencer");
 			}
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Abonnement.create " + sqle.getMessage());
 			ok = false;
 			throw new Exception("Pb Abonnement.create " + sqle.getMessage());
 			
@@ -61,7 +59,7 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 	}
 	
 	@Override
-	public boolean delete(Abonnement abonnement) {
+	public boolean delete(Abonnement abonnement) throws Exception{
 		boolean ok;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
@@ -79,14 +77,14 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 				
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Abonnement.delete " + sqle.getMessage());
 			ok = false;
+			throw new Exception("Pb Abonnement.delete " + sqle.getMessage());
 		}
 		return ok;		
 	}
 	
 	@Override
-	public boolean update(Abonnement abonnement){
+	public boolean update(Abonnement abonnement) throws Exception{
 		boolean nbLignes;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
@@ -111,8 +109,9 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 			nbLignes = true;
 			}
 			else {
-				System.out.println("La date de debut est supperieur a la date de fin, Veuillez recommencer");
+				
 				nbLignes = false;
+				throw new Exception("La date de debut est supperieur a la date de fin, Veuillez recommencer");
 			}
 				
 		}
@@ -124,11 +123,11 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 	}
 	
 	@Override
-	public Abonnement getById(int id) {
+	public Abonnement getById(int id){
 		return null;
 	}
 	
-	public ArrayList<Abonnement> getById_client(int id_client) {
+	public ArrayList<Abonnement> getById_client(int id_client) throws Exception {
 		ArrayList<Abonnement> abonnement = new ArrayList<>();
 		
 		try {
@@ -150,13 +149,14 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 					res.close();
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Abonnement.getById_client " + sqle.getMessage());
+			
+			throw new Exception("Pb Abonnement.getById_client " + sqle.getMessage());
 		}
 		
 		return abonnement;
 	}
 	
-	public ArrayList<Abonnement> getById_revue(int id_revue) {
+	public ArrayList<Abonnement> getById_revue(int id_revue) throws Exception{
 		ArrayList<Abonnement> abonnement = new ArrayList<>();
 		
 		try {
@@ -178,13 +178,13 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 					res.close();
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Abonnement.getById_revue " + sqle.getMessage());
+			throw new Exception("Pb Abonnement.getById_revue " + sqle.getMessage());
 		}
 		
 		return abonnement;
 	}
 	
-	public Abonnement getById(int id_client, int id_revue) {
+	public Abonnement getById(int id_client, int id_revue) throws Exception{
 		Abonnement abonnement = null;
 		
 		try {
@@ -207,14 +207,14 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 				res.close();
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Abonnement.getById " + sqle.getMessage());
+			throw new Exception("Pb Abonnement.getById " + sqle.getMessage());
 		}
 		
 		return abonnement;
 	}
 
 	@Override
-	public ArrayList<Abonnement> findAll() {
+	public ArrayList<Abonnement> findAll() throws Exception{
 		ArrayList<Abonnement> listeAbonnement = new ArrayList<>();
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
@@ -239,7 +239,7 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 					res.close();
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Abonnement.findAll " + sqle.getMessage());
+			throw new Exception("Pb Abonnement.findAll " + sqle.getMessage());
 		}
 		
 		return listeAbonnement;	
