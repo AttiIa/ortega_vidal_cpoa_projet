@@ -116,8 +116,9 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 				
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Abonnement.update " + sqle.getMessage());
+			
 			nbLignes = false;
+			throw new Exception("Pb Abonnement.update " + sqle.getMessage());
 		}
 		return nbLignes;		
 	}
