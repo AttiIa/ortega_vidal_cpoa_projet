@@ -5,11 +5,13 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import connexion.Connexion;
+import dao.metier.Abonnement;
 import dao.metier.Periodicite;
 import dao.metier.Revue;
 import javafx.collections.FXCollections;
@@ -67,6 +69,8 @@ public class CtrlRevue implements Initializable {
 	@FXML
 	private TableView<Revue> tblRevue;
 	@FXML
+	private TableColumn colEnCours;
+	@FXML
 	private Window vue;
 	@FXML
 	private Window accueil;
@@ -80,7 +84,6 @@ public class CtrlRevue implements Initializable {
 		TableColumn<Revue, String> colTarif = new TableColumn<>("Tarif");
 		TableColumn<Revue, String> colPeriodicite = new TableColumn<>("Periodicite");
 		TableColumn<Revue, String> colVisuel = new TableColumn<>("Visuel");
-		TableColumn<Revue, String> colEnCours = null;
 		
 		colIdRevue.setCellValueFactory(new PropertyValueFactory<Revue, String>("id_revue"));
 		colTitre.setCellValueFactory(new PropertyValueFactory<Revue, String>("titre"));
@@ -88,9 +91,9 @@ public class CtrlRevue implements Initializable {
 		colTarif.setCellValueFactory(new PropertyValueFactory<Revue, String>("tarif_numero"));
 		colPeriodicite.setCellValueFactory(new PropertyValueFactory<Revue, String>("id_periodicite"));
 		colVisuel.setCellValueFactory(new PropertyValueFactory<Revue, String>("visuel"));
-	colEnCours.setCellValueFactory(new PropertyValueFactory<Revue, String>("en_cours"));
+		colEnCours.setCellValueFactory(new PropertyValueFactory<Abonnement, String>("en_cours"));
 
-		tblRevue.getColumns().setAll(colIdRevue, colTitre, colDescription, colTarif, colPeriodicite, colVisuel);
+		tblRevue.getColumns().setAll(colIdRevue, colTitre, colDescription, colTarif, colPeriodicite, colVisuel, colEnCours);
 
 		List<Revue> revues = CtrlAccueil.daorev.findAll();
 		
@@ -253,9 +256,9 @@ public class CtrlRevue implements Initializable {
 			alert.showAndWait();
 		}
 	}
-	public void en_cours() {
+	public void en_cours() throws SQLException {
 		Connection laConnexion = Connexion.getInstance().creeConnexion();
-		PreparedStatement requete = laConnexion.prepareStatement(SELECT count(*) FROM Abonnement WHERE now()<=date_fin AND now()>=date_debut AND id_revue=?);
+		PreparedStatement requete = laConnexion.prepareStatement("SELECT count(*) FROM Abonnement WHERE now()<=date_fin AND now()>=date_debut AND id_revue=?");
 		
 	}
 	
