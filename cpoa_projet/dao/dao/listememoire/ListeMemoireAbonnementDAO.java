@@ -123,7 +123,6 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 				i++;
 		}
 		if (!trouve) {
-			System.out.println("Pas d'abonnement avec cet id");
 			abo = null;
 		}
 		return abo;
@@ -142,7 +141,6 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO{
 				i++;
 		}
 		if (!trouve) {
-			System.out.println("Pas d'abonnement avec cet id");
 			abo = null;
 		}
 		return abo;

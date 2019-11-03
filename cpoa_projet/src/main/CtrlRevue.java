@@ -2,16 +2,12 @@ package main;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.util.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import connexion.Connexion;
 import dao.metier.Abonnement;
 import dao.metier.Periodicite;
 import dao.metier.Revue;
@@ -73,8 +69,6 @@ public class CtrlRevue implements Initializable {
 	private TableView<Revue> tblRevue;
 	@FXML
 	private Window vue;
-	@FXML
-	private Window accueil;
 	
 	@SuppressWarnings("unchecked")
 	public TableView<Revue> tblRevue() {
@@ -264,14 +258,14 @@ public class CtrlRevue implements Initializable {
 			int i=0;
 			int nb_abo=0;
 			Date date = new Date();
-							
-			while(i<abonnement.size()) {
-				Date date_d = new SimpleDateFormat("yyyy-MM-dd").parse(abonnement.get(i).getDate_debut());
-				Date date_f = new SimpleDateFormat("yyyy-MM-dd").parse(abonnement.get(i).getDate_fin());
-				if(date_d.compareTo(date)<=0 && date_f.compareTo(date)>=0) {
-					nb_abo++;
+			
+			if(abonnement != null) {
+				while(i<abonnement.size()) {
+					Date date_d = new SimpleDateFormat("yyyy-MM-dd").parse(abonnement.get(i).getDate_debut());
+					Date date_f = new SimpleDateFormat("yyyy-MM-dd").parse(abonnement.get(i).getDate_fin());
+					if(date_d.compareTo(date)<=0 && date_f.compareTo(date)>=0) nb_abo++;
+					i++;
 				}
-				i++;
 			}
 			
 			affichage.setText(tblRevue.getSelectionModel().getSelectedItem().getTitre() + " a " + nb_abo + " abonnements");
