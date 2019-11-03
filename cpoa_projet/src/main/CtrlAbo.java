@@ -58,8 +58,8 @@ public class CtrlAbo implements Initializable{
 		tblAbo.getColumns().setAll(colIdClient, colIdRevue, colDate_Deb, colDate_Fin);
 
 		List<Abonnement> abonnements = CtrlAccueil.daoabo.getById_client(CtrlClient.id_cli);
-		
-		tblAbo.getItems().addAll(abonnements);
+		if(abonnements!=null)
+			tblAbo.getItems().addAll(abonnements);
 		return tblAbo;
 	}
 	
