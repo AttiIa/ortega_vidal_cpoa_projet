@@ -1,6 +1,10 @@
 package dao.metier;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javafx.beans.property.SimpleStringProperty;
 
 public class Revue {
 	
@@ -132,10 +136,17 @@ public class Revue {
 		return true;
 	}	 
 
-	public boolean abo_en_cours(Date date_debut, Date date_fin) {
-		Date date = new Date();
-		
-		if(date_debut.compareTo(date)<=0 && date_fin.compareTo(date)>=0) return true;
-		else return false;
+	public boolean abo_en_cours(Abonnement abo) {
+		try {
+			Date date = new Date();
+			Date date_d = new SimpleDateFormat("yyyy-MM-dd").parse(abo.getDate_debut());
+			Date date_f = new SimpleDateFormat("yyyy-MM-dd").parse(abo.getDate_fin());
+			
+			if(date_d.compareTo(date)<=0 && date_f.compareTo(date)>=0) return true;
+			else return false;
+		} 
+		catch (Exception e) {
+			return false;
+		}
 	}
 }
