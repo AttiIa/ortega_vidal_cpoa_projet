@@ -162,10 +162,12 @@ public class CtrlAccueil implements Initializable {
 		if (mysql.isSelected()) {
 			daorev = DAOFactory.getDAOFactory(Persistance.MySQL).getRevueDAO();
 			daoper = DAOFactory.getDAOFactory(Persistance.MySQL).getPeriodiciteDAO();
+			daoabo = DAOFactory.getDAOFactory(Persistance.MySQL).getAbonnementDAO();
 		} 
 		else if (list.isSelected()) {
 			daorev = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getRevueDAO();
 			daoper = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getPeriodiciteDAO();
+			daoabo = DAOFactory.getDAOFactory(Persistance.ListeMemoire).getAbonnementDAO();
 		}
 		else {
 			Alert alert=new Alert(Alert.AlertType.ERROR);

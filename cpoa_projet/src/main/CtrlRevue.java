@@ -3,9 +3,10 @@ package main;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -63,13 +64,13 @@ public class CtrlRevue implements Initializable {
 	@FXML
 	private Button recherche;
 	@FXML
+	private Button btn_en_cours;
+	@FXML
 	private Button retour;
 	@FXML
 	private GridPane form;
 	@FXML
 	private TableView<Revue> tblRevue;
-/*	@FXML
-	private TableColumn colEnCours;*/
 	@FXML
 	private Window vue;
 	@FXML
@@ -91,9 +92,8 @@ public class CtrlRevue implements Initializable {
 		colTarif.setCellValueFactory(new PropertyValueFactory<Revue, String>("tarif_numero"));
 		colPeriodicite.setCellValueFactory(new PropertyValueFactory<Revue, String>("id_periodicite"));
 		colVisuel.setCellValueFactory(new PropertyValueFactory<Revue, String>("visuel"));
-		//colEnCours.setCellValueFactory(cellData -> Revue.abo_en_cours());
 
-		tblRevue.getColumns().setAll(colIdRevue, colTitre, colDescription, colTarif, colPeriodicite, colVisuel/*, colEnCours*/);
+		tblRevue.getColumns().setAll(colIdRevue, colTitre, colDescription, colTarif, colPeriodicite, colVisuel);
 
 		List<Revue> revues = CtrlAccueil.daorev.findAll();
 		
@@ -256,10 +256,34 @@ public class CtrlRevue implements Initializable {
 			alert.showAndWait();
 		}
 	}
-	public void en_cours() throws SQLException {
-		Connection laConnexion = Connexion.getInstance().creeConnexion();
-		PreparedStatement requete = laConnexion.prepareStatement("SELECT count(*) FROM Abonnement WHERE now()<=date_fin AND now()>=date_debut AND id_revue=?");
-		
+	
+	public void en_cours() {
+		try {
+			ArrayList<Abonnement> abonnement = CtrlAccueil.daoabo.getById_revue(tblRevue.getSelectionModel().getSelectedItem().getId_revue());
+						
+			int i=0;
+			int nb_abo=0;
+			Date date = new Date();
+							
+			while(i<abonnement.size()) {
+				Date date_d = new SimpleDateFormat("yyyy-MM-dd").parse(abonnement.get(i).getDate_debut());
+				Date date_f = new SimpleDateFormat("yyyy-MM-dd").parse(abonnement.get(i).getDate_fin());
+				if(date_d.compareTo(date)<=0 && date_f.compareTo(date)>=0) {
+					nb_abo++;
+				}
+				i++;
+			}
+			
+			affichage.setText(tblRevue.getSelectionModel().getSelectedItem().getTitre() + " a " + nb_abo + " abonnements");
+		}
+		catch (Exception e) {
+			Alert alert=new Alert(Alert.AlertType.ERROR);
+			alert.initOwner(vue);
+			alert.setTitle("Un probleme est survenue lors de l'affichage du nombre d'abonnements");
+			alert.setHeaderText("Aucune Revue selectionnee");
+			alert.setContentText(e.toString());
+			alert.showAndWait();
+		}
 	}
 	
 	@FXML

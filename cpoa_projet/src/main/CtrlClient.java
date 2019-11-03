@@ -72,8 +72,6 @@ public class CtrlClient implements Initializable{
 	private TableView<Client> tblClient;
 	@FXML
 	private Window vue;
-	@FXML
-	private Window accueil;
 	
 	@SuppressWarnings("unchecked")
 	public TableView<Client> tblClient() {

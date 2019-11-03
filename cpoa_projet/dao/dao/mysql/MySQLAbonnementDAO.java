@@ -147,7 +147,35 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 					res.close();
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Abonnement.getById " + sqle.getMessage());
+			System.out.println("Pb Abonnement.getById_client " + sqle.getMessage());
+		}
+		
+		return abonnement;
+	}
+	
+	public ArrayList<Abonnement> getById_revue(int id_revue) {
+		ArrayList<Abonnement> abonnement = new ArrayList<>();
+		
+		try {
+			Connection laConnexion = Connexion.getInstance().creeConnexion();			
+
+			PreparedStatement requete = laConnexion.prepareStatement("select * from Abonnement where id_revue = ?");
+			requete.setInt(1, id_revue);
+			
+			ResultSet res = requete.executeQuery();
+			
+			while (res.next()) {
+				abonnement.add(new Abonnement(res.getInt("id_client"), id_revue, res.getString("date_debut"), res.getString("date_fin")));
+			}
+				
+				if (requete != null)
+					requete.close();
+				
+				if (res != null)
+					res.close();
+		}
+		catch(SQLException sqle){
+			System.out.println("Pb Abonnement.getById_revue " + sqle.getMessage());
 		}
 		
 		return abonnement;
@@ -213,5 +241,4 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 		
 		return listeAbonnement;	
 	}
-
 }

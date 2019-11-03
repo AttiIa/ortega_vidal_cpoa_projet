@@ -45,8 +45,6 @@ public class CtrlPeriodicite implements Initializable{
 	private TableView<Periodicite> tblPeriodicite;
 	@FXML
 	private Window vue;
-	@FXML
-	private Window accueil;
 	
 	@SuppressWarnings("unchecked")
 	public TableView<Periodicite> tblPeriodicite() {

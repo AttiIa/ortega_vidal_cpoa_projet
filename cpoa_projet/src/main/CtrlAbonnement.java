@@ -74,8 +74,6 @@ public class CtrlAbonnement implements Initializable{
 	private TableView<Abonnement> tblAbonnement;
 	@FXML
 	private Window vue;
-	@FXML
-	private Window accueil;
 	
 	@SuppressWarnings("unchecked")
 	public TableView<Abonnement> tblAbonnement() {
