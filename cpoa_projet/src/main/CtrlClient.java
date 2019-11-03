@@ -74,7 +74,7 @@ public class CtrlClient implements Initializable{
 	private Window vue;
 	
 	@SuppressWarnings("unchecked")
-	public TableView<Client> tblClient() {
+	public TableView<Client> tblClient() throws Exception {
 
 		TableColumn<Client, String> colIdClient = new TableColumn<>("id_Client");
 		TableColumn<Client, String> colNom = new TableColumn<>("Nom");
@@ -126,7 +126,7 @@ public class CtrlClient implements Initializable{
 	}
 	
 	@FXML
-	public void valider(){
+	public void valider() throws Exception{
 		if ((nom.getText().trim().isEmpty()) || (prenom.getText().trim().isEmpty())
 				|| (no_rue.getText().trim().isEmpty()) || (voie.getText().trim().isEmpty()) || (cde.getText().trim().isEmpty()) || 
 				(ville.getText().trim().isEmpty()) || (pays.getText().trim().isEmpty())) {			
@@ -300,7 +300,7 @@ public class CtrlClient implements Initializable{
 	}
 	
 	@FXML
-	public void recherche() {
+	public void recherche() throws Exception {
 		tblClient.getItems().clear();
 		List<Client> clients = CtrlAccueil.daocli.findAll();
 		tblClient.getItems().addAll(clients);

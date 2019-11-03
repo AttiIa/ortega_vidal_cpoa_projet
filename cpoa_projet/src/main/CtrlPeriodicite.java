@@ -47,7 +47,7 @@ public class CtrlPeriodicite implements Initializable{
 	private Window vue;
 	
 	@SuppressWarnings("unchecked")
-	public TableView<Periodicite> tblPeriodicite() {
+	public TableView<Periodicite> tblPeriodicite() throws Exception {
 		
 		TableColumn<Periodicite, String> colIdPeriodicite = new TableColumn<>("id_periodicite");
 		TableColumn<Periodicite, String> colLibelle = new TableColumn<>("libelle");
@@ -85,7 +85,7 @@ public class CtrlPeriodicite implements Initializable{
 	}
 	
 	@FXML
-	public void valider(){
+	public void valider() throws Exception{
 		if (libelle.getText().trim().isEmpty()) {			
 			affichage.setTextFill(Color.web("red"));
 			affichage.setText("Les champs ne sont pas tous valides");
