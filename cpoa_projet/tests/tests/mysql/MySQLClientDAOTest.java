@@ -15,7 +15,7 @@ class MySQLClientDAOTest {
 	ClientDAO mcli = daos.getClientDAO();
 
 	@Test
-	void testCreate() {
+	void testCreate() throws Exception {
 		int id_client = 15;
 		String nom = "Vidal";
 		String prenom = "Thomas";
@@ -35,7 +35,7 @@ class MySQLClientDAOTest {
 	}
 
 	@Test
-	void testDelete() {
+	void testDelete() throws Exception {
 		int id_client = 16;
 		String nom = "Vidal";
 		String prenom = "Thomas";
@@ -54,7 +54,7 @@ class MySQLClientDAOTest {
 	}
 
 	@Test
-	void testUpdate() {
+	void testUpdate() throws Exception {
 		int id_client = 17;
 		String nom = "Vidal";
 		String prenom = "Thomas";
@@ -74,7 +74,7 @@ class MySQLClientDAOTest {
 	}
 
 	@Test
-	void testGetById() {
+	void testGetById() throws Exception {
 		int id_client = 18;
 		String nom = "Vidal";
 		String prenom = "Thomas";
@@ -96,7 +96,7 @@ class MySQLClientDAOTest {
 	}
 	
 	@Test
-	void testFindAll() {
+	void testFindAll() throws Exception {
 		int id_client = 19;
 		String nom = "Vidal";
 		String prenom = "Thomas";

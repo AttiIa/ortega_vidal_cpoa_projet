@@ -10,7 +10,7 @@ public interface IDAO<T> {
 		
 		abstract boolean update(T object) throws Exception;
 		
-		abstract T getById(int id);
+		abstract T getById(int id) throws Exception;
 
 		ArrayList<T> findAll() throws Exception;
 

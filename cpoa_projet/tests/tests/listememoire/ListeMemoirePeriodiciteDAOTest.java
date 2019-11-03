@@ -15,7 +15,7 @@ class ListeMemoirePeriodiciteDAOTest {
 	PeriodiciteDAO lper = daos.getPeriodiciteDAO();
 
 	@Test
-	void testCreate() {
+	void testCreate() throws Exception {
 		int id_periodicite = 11;
 		String libelle = "test";		
 		Periodicite per = new Periodicite(id_periodicite, libelle);
@@ -27,7 +27,7 @@ class ListeMemoirePeriodiciteDAOTest {
 	}
 
 	@Test
-	void testDelete() {
+	void testDelete() throws Exception {
 		int id_periodicite = 22;
 		String libelle = "test";		
 		Periodicite per = new Periodicite(id_periodicite, libelle);
@@ -39,7 +39,7 @@ class ListeMemoirePeriodiciteDAOTest {
 	}
 
 	@Test
-	void testUpdate() {
+	void testUpdate() throws Exception {
 		int id_periodicite = 33;
 		String libelle = "test";		
 		Periodicite per = new Periodicite(id_periodicite, libelle);
@@ -52,7 +52,7 @@ class ListeMemoirePeriodiciteDAOTest {
 	}
 
 	@Test
-	void testGetById() {
+	void testGetById() throws Exception {
 		int id_periodicite = 44;
 		String libelle = "test";		
 		Periodicite per = new Periodicite(id_periodicite, libelle);
@@ -66,7 +66,7 @@ class ListeMemoirePeriodiciteDAOTest {
 	}
 
 	@Test
-	void testFindAll() {
+	void testFindAll() throws Exception {
 		int id_periodicite = 55;
 		String libelle = "test";		
 		Periodicite per = new Periodicite(id_periodicite, libelle);

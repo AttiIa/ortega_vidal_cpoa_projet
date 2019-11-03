@@ -21,7 +21,7 @@ public class MySQLClientDAO implements ClientDAO{
 	}
 	
 	@Override
-	public boolean create(Client client) {
+	public boolean create(Client client) throws Exception {
 		boolean ok;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
@@ -43,14 +43,15 @@ public class MySQLClientDAO implements ClientDAO{
 			ok = true;			
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Client.create " + sqle.getMessage());
+			
 			ok = false;
+			throw new Exception("Pb Client.create " + sqle.getMessage());
 		}
 		return ok;	
 	}
 	
 	@Override
-	public boolean delete(Client client) {
+	public boolean delete(Client client) throws Exception {
 		boolean ok;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
@@ -67,14 +68,15 @@ public class MySQLClientDAO implements ClientDAO{
 				
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Client.delete " + sqle.getMessage());
+			
 			ok = false;
+			throw new Exception("Pb Client.delete " + sqle.getMessage());
 		}
 		return ok;		
 	}
 	
 	@Override
-	public boolean update(Client client) {
+	public boolean update(Client client) throws Exception {
 		boolean ok;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
@@ -98,14 +100,15 @@ public class MySQLClientDAO implements ClientDAO{
 				
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Client.update " + sqle.getMessage());
+			
 			ok = false;
+			throw new Exception("Pb Client.update " + sqle.getMessage());
 		}
 		return ok;		
 	}
 	
 	@Override
-	public Client getById(int id) {
+	public Client getById(int id) throws Exception {
 		Client client = null;
 		
 		try {
@@ -127,7 +130,7 @@ public class MySQLClientDAO implements ClientDAO{
 				res.close();			
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Client.getById " + sqle.getMessage());
+			throw new Exception("Pb Client.getById " + sqle.getMessage());
 		}
 		
 		return client;
@@ -135,7 +138,7 @@ public class MySQLClientDAO implements ClientDAO{
 		
 	}
 	@Override
-	public ArrayList<Client> findAll() {
+	public ArrayList<Client> findAll() throws Exception {
 		ArrayList<Client> listeClient = new ArrayList<>();
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
@@ -164,7 +167,7 @@ public class MySQLClientDAO implements ClientDAO{
 					res.close();
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Revue.findAll " + sqle.getMessage());
+			throw new Exception("Pb Revue.findAll " + sqle.getMessage());
 		}
 		
 		return listeClient;	

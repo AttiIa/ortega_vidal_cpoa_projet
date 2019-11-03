@@ -22,7 +22,7 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 	}
 	
 	@Override
-	public boolean create(Periodicite periodicite) {
+	public boolean create(Periodicite periodicite) throws Exception {
 		boolean ok;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
@@ -39,14 +39,15 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 				
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Periodicite.create " + sqle.getMessage());
 			ok = false;
+			throw new Exception("Pb Periodicite.create " + sqle.getMessage());
+			
 		}
 		return ok;
 	}
 	
 	@Override
-	public boolean delete(Periodicite periodicite) {
+	public boolean delete(Periodicite periodicite) throws Exception {
 		boolean ok;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
@@ -63,14 +64,15 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 				
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Periodicite.delete " + sqle.getMessage());
 			ok = false;
+			throw new Exception("Pb Periodicite.delete " + sqle.getMessage());
+			
 		}
 		return ok;
 	}
 	
 	@Override
-	public boolean update(Periodicite periodicite) {
+	public boolean update(Periodicite periodicite) throws Exception {
 		boolean ok;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
@@ -88,14 +90,15 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 				
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Periodicite.update " + sqle.getMessage());
 			ok = false;
+			throw new Exception("Pb Periodicite.update " + sqle.getMessage());
+			
 		}
 		return ok;	
 	}
 	
 	@Override
-	public Periodicite getById(int id) {
+	public Periodicite getById(int id) throws Exception {
 		Periodicite periodicite = null;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
@@ -117,14 +120,14 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 			
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Periodicite.getById " + sqle.getMessage());
+			throw new Exception("Pb Periodicite.getById " + sqle.getMessage());
 		}
 		
 		return periodicite;		
 	}
 
 	@Override
-	public ArrayList<Periodicite> findAll() {
+	public ArrayList<Periodicite> findAll() throws Exception {
 		ArrayList<Periodicite> listePeriodicite = new ArrayList<>();
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();			
@@ -147,7 +150,7 @@ public class MySQLPeriodiciteDAO implements PeriodiciteDAO{
 				res.close();
 		}
 		catch(SQLException sqle){
-			System.out.println("Pb Periodicite.findAll " + sqle.getMessage());
+			throw new Exception("Pb Periodicite.findAll " + sqle.getMessage());
 		}
 		
 		return listePeriodicite;	
