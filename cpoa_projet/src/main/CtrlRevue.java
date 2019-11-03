@@ -2,10 +2,14 @@ package main;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import connexion.Connexion;
 import dao.metier.Periodicite;
 import dao.metier.Revue;
 import javafx.collections.FXCollections;
@@ -76,13 +80,15 @@ public class CtrlRevue implements Initializable {
 		TableColumn<Revue, String> colTarif = new TableColumn<>("Tarif");
 		TableColumn<Revue, String> colPeriodicite = new TableColumn<>("Periodicite");
 		TableColumn<Revue, String> colVisuel = new TableColumn<>("Visuel");
-
+		TableColumn<Revue, String> colEnCours = null;
+		
 		colIdRevue.setCellValueFactory(new PropertyValueFactory<Revue, String>("id_revue"));
 		colTitre.setCellValueFactory(new PropertyValueFactory<Revue, String>("titre"));
 		colDescription.setCellValueFactory(new PropertyValueFactory<Revue, String>("description"));
 		colTarif.setCellValueFactory(new PropertyValueFactory<Revue, String>("tarif_numero"));
 		colPeriodicite.setCellValueFactory(new PropertyValueFactory<Revue, String>("id_periodicite"));
 		colVisuel.setCellValueFactory(new PropertyValueFactory<Revue, String>("visuel"));
+	colEnCours.setCellValueFactory(new PropertyValueFactory<Revue, String>("en_cours"));
 
 		tblRevue.getColumns().setAll(colIdRevue, colTitre, colDescription, colTarif, colPeriodicite, colVisuel);
 
@@ -246,6 +252,11 @@ public class CtrlRevue implements Initializable {
 			alert.setContentText(e.toString());
 			alert.showAndWait();
 		}
+	}
+	public void en_cours() {
+		Connection laConnexion = Connexion.getInstance().creeConnexion();
+		PreparedStatement requete = laConnexion.prepareStatement(SELECT count(*) FROM Abonnement WHERE now()<=date_fin AND now()>=date_debut AND id_revue=?);
+		
 	}
 	
 	@FXML
