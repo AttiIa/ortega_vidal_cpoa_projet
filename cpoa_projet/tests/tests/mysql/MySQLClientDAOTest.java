@@ -11,12 +11,11 @@ import dao.metier.Client;
 
 class MySQLClientDAOTest {
 	
-	DAOFactory daos = DAOFactory.getDAOFactory(Persistance.MySQL);
-	ClientDAO mcli = daos.getClientDAO();
+	ClientDAO mcli = DAOFactory.getDAOFactory(Persistance.MySQL).getClientDAO();
 
 	@Test
 	void testCreate() throws Exception {
-		String nom = "Vidal";
+		String nom = "test create";
 		String prenom = "Thomas";
 		String no_rue = "4";
 		String voie ="rue paul doumer";
@@ -35,7 +34,7 @@ class MySQLClientDAOTest {
 
 	@Test
 	void testDelete() throws Exception {
-		String nom = "Vidal";
+		String nom = "test delete";
 		String prenom = "Thomas";
 		String no_rue = "4";
 		String voie ="rue paul doumer";
@@ -52,7 +51,7 @@ class MySQLClientDAOTest {
 
 	@Test
 	void testUpdate() throws Exception {
-		String nom = "Vidal";
+		String nom = "test updatetest ";
 		String prenom = "Thomas";
 		String no_rue = "5";
 		String voie ="rue paul doumer";
@@ -70,7 +69,7 @@ class MySQLClientDAOTest {
 
 	@Test
 	void testGetById() throws Exception {
-		String nom = "test";
+		String nom = "test getbyid";
 		String prenom = "Thomas";
 		String no_rue = "5";
 		String voie ="rue paul doumer";
@@ -90,7 +89,7 @@ class MySQLClientDAOTest {
 	
 	@Test
 	void testFindAll() throws Exception {
-		String nom = "Vidal";
+		String nom = "test findall";
 		String prenom = "Thomas";
 		String no_rue = "5";
 		String voie ="rue paul doumer";

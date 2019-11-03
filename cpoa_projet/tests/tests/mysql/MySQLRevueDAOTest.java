@@ -11,12 +11,11 @@ import dao.metier.Revue;
 
 class MySQLRevueDAOTest {
 	
-	DAOFactory daos = DAOFactory.getDAOFactory(Persistance.MySQL);
-	RevueDAO mrev = daos.getRevueDAO();
+	RevueDAO  mrev = DAOFactory.getDAOFactory(Persistance.MySQL).getRevueDAO();
 	
 	@Test
 	void testCreate() throws Exception {
-		String titre ="coder en Java";
+		String titre ="test create";
 		String description="livre pour apprendre a coder en Java";
 		double tarif_numero= 3.4;
 		String visuel="logo.png";
@@ -32,7 +31,7 @@ class MySQLRevueDAOTest {
 
 	@Test
 	void testDelete() throws Exception {
-		String titre ="coder en Java";
+		String titre ="test delete";
 		String description="livre pour apprendre a coder en Java";
 		double tarif_numero= 3.4;
 		String visuel="logo.png";
@@ -47,7 +46,7 @@ class MySQLRevueDAOTest {
 
 	@Test
 	void testUpdate() throws Exception {
-		String titre ="coder en Java";
+		String titre ="test update";
 		String description="livre pour apprendre a coder en Java";
 		double tarif_numero= 3.4;
 		String visuel="logo.png";
@@ -63,7 +62,7 @@ class MySQLRevueDAOTest {
 
 	@Test
 	void testGetById() throws Exception {
-		String titre ="coder en Java";
+		String titre ="test getbyid";
 		String description="livre pour apprendre a coder en Java";
 		double tarif_numero= 3.4;
 		String visuel="logo.png";
@@ -82,7 +81,7 @@ class MySQLRevueDAOTest {
 	
 	@Test
 	void testFindAll() throws Exception {
-		String titre ="coder en Java";
+		String titre ="test findall";
 		String description="livre pour apprendre a coder en Java";
 		double tarif_numero= 3.4;
 		String visuel="logo.png";

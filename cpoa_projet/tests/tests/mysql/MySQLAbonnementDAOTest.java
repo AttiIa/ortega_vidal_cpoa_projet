@@ -10,8 +10,7 @@ import dao.interfaces.AbonnementDAO;
 import dao.metier.Abonnement;
 
 class MySQLAbonnementDAOTest {
-	DAOFactory daos = DAOFactory.getDAOFactory(Persistance.MySQL);
-	AbonnementDAO mabo = daos.getAbonnementDAO();
+	AbonnementDAO mabo = DAOFactory.getDAOFactory(Persistance.MySQL).getAbonnementDAO();
 
 	@Test
 	void testCreate() throws Exception {

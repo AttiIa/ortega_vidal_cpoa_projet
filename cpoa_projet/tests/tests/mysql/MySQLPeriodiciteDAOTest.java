@@ -10,12 +10,11 @@ import dao.metier.Periodicite;
 
 class MySQLPeriodiciteDAOTest {
 	
-	DAOFactory daos = DAOFactory.getDAOFactory(Persistance.MySQL);
-	PeriodiciteDAO mper = daos.getPeriodiciteDAO();
+	PeriodiciteDAO mper = DAOFactory.getDAOFactory(Persistance.MySQL).getPeriodiciteDAO();
 
 	@Test
 	void testCreate() throws Exception {
-		String libelle = "test";		
+		String libelle = "test create";		
 		Periodicite per = new Periodicite(libelle);
 		
 		if(!mper.create(per)) {
@@ -26,7 +25,7 @@ class MySQLPeriodiciteDAOTest {
 
 	@Test
 	void testDelete() throws Exception {
-		String libelle = "test";		
+		String libelle = "test delete";		
 		Periodicite per = new Periodicite(libelle);
 	
 		if(!mper.delete(per)) {
@@ -36,7 +35,7 @@ class MySQLPeriodiciteDAOTest {
 
 	@Test
 	void testUpdate() throws Exception {
-		String libelle = "test";		
+		String libelle = "test update";		
 		Periodicite per = new Periodicite(libelle);
 		
 		if(!mper.update(per)) { 
@@ -47,7 +46,7 @@ class MySQLPeriodiciteDAOTest {
 
 	@Test
 	void testGetById() throws Exception {
-		String libelle = "test";		
+		String libelle = "test getbyid";		
 		Periodicite per = new Periodicite(libelle);
 		mper.create(per);
 		
@@ -61,7 +60,7 @@ class MySQLPeriodiciteDAOTest {
 	
 	@Test
 	void testFindAll() throws Exception {
-		String libelle = "test";		
+		String libelle = "test findall";		
 		Periodicite per = new Periodicite(libelle);
 		
 		if(mper.findAll()==null) {
