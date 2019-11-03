@@ -107,6 +107,11 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
+                        <Button fx:id="btn_en_cours" mnemonicParsing="false" onAction="#en_cours" text="En cours">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Button>
                      </children>
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" />
