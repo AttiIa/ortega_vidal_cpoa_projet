@@ -70,7 +70,6 @@ class MySQLRevueDAOTest {
 		 
 		Revue rev = new Revue(titre, description, tarif_numero, visuel,
 					id_periodicite);
-		mrev.create(rev);
 				
 		if(!mrev.getById(rev.getId_revue()).equals(rev)) {
 			mrev.delete(rev);
@@ -89,7 +88,6 @@ class MySQLRevueDAOTest {
 		 
 		Revue rev = new Revue(titre, description, tarif_numero, visuel,
 					id_periodicite);
-		mrev.create(rev);
 		
 		if(mrev.findAll()==null) {
 			mrev.delete(rev);

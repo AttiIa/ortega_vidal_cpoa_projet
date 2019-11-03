@@ -77,7 +77,6 @@ class MySQLClientDAOTest {
 		String ville = "pont sainte marie";
 		String pays = "France";		
 		Client cli = new Client(nom, prenom, no_rue, voie, code_postal, ville, pays);
-		mcli.create(cli);
 		
 		if(!mcli.getById(cli.getId_client()).equals(cli)) {
 			mcli.delete(cli);
@@ -97,7 +96,6 @@ class MySQLClientDAOTest {
 		String ville = "pont sainte marie";
 		String pays = "France";		
 		Client cli = new Client(nom, prenom, no_rue, voie, code_postal, ville, pays);
-		mcli.create(cli);
 		
 		if(mcli.findAll()==null) {
 			mcli.delete(cli);

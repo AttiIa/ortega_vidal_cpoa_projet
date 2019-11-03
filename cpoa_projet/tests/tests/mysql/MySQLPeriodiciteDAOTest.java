@@ -48,7 +48,6 @@ class MySQLPeriodiciteDAOTest {
 	void testGetById() throws Exception {
 		String libelle = "test getbyid";		
 		Periodicite per = new Periodicite(libelle);
-		mper.create(per);
 		
 		if(!mper.getById(per.getId_periodicite()).equals(per)) {
 			mper.delete(per);
