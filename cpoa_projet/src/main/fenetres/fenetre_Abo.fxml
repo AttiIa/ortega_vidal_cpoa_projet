@@ -22,6 +22,9 @@
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
                   <CheckBox fx:id="en_cours" mnemonicParsing="false" onAction="#en_cours" text="en_cours" textFill="WHITE">
                      <HBox.margin>

@@ -86,7 +86,10 @@
                      </HBox.margin>
                      <columns>
                         <TableColumn id="colEnCours" fx:id="colEnCours" onEditStart="#en_cours" prefWidth="75.0" text="En cours" />
-                     </columns></TableView>
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy></TableView>
                   <VBox alignment="CENTER" prefHeight="192.0" prefWidth="76.0">
                      <children>
                         <Button fx:id="creer" mnemonicParsing="false" onAction="#create" prefWidth="76.0" text="Créer">

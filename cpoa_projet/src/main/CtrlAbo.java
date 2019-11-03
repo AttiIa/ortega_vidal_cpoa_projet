@@ -107,7 +107,12 @@ public class CtrlAbo implements Initializable{
 			}
 		}
 		catch (Exception e) {
-			
+			Alert alert=new Alert(Alert.AlertType.ERROR);
+			alert.initOwner(vue);
+			alert.setTitle("Probleme au triage");
+			alert.setHeaderText("Un probleme est survenue lors du tri de vos date");
+			alert.setContentText(e.toString());
+			alert.showAndWait();
 		}
 	}
 	
