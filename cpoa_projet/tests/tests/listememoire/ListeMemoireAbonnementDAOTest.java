@@ -15,7 +15,7 @@ class ListeMemoireAbonnementDAOTest {
 	AbonnementDAO labo = daos.getAbonnementDAO();
 
 	@Test
-	void testCreate() {
+	void testCreate() throws Exception {
 		int id_client = 11;
 		int  id_revue = 22;
 		String date_debut = "2018-09-18";
@@ -28,7 +28,7 @@ class ListeMemoireAbonnementDAOTest {
 	}
 
 	@Test
-	void testDelete() {
+	void testDelete() throws Exception {
 		int id_client = 33;
 		int  id_revue = 44;
 		String date_debut = "2018-09-18";
@@ -42,7 +42,7 @@ class ListeMemoireAbonnementDAOTest {
 	}
 
 	@Test
-	void testUpdate() {
+	void testUpdate() throws Exception {
 		int id_client = 55;
 		int  id_revue = 66;
 		String date_debut = "2018-09-18";
@@ -57,7 +57,7 @@ class ListeMemoireAbonnementDAOTest {
 	}
 
 	@Test
-	void testGetById() {
+	void testGetById() throws Exception {
 		int id_client = 77;
 		int  id_revue = 88;
 		String date_debut = "2018-09-18";
@@ -73,7 +73,7 @@ class ListeMemoireAbonnementDAOTest {
 	}
 
 	@Test
-	void testFindAll() {
+	void testFindAll() throws Exception {
 		int id_client = 99;
 		int  id_revue = 111;
 		String date_debut = "2018-09-18";

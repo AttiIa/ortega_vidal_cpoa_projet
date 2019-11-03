@@ -7,7 +7,7 @@ import dao.metier.Abonnement;
 public interface AbonnementDAO extends IDAO<Abonnement> {
 
 	@Override
-	boolean create(Abonnement abonnement);
+	boolean create(Abonnement abonnement) throws Exception;
 
 	@Override
 	boolean delete(Abonnement abonnement);

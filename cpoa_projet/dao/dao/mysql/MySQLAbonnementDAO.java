@@ -23,7 +23,7 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 	}
 	
 	@Override
-	public boolean create(Abonnement abonnement){
+	public boolean create(Abonnement abonnement) throws Exception{
 		boolean ok;
 		try {
 			Connection laConnexion = Connexion.getInstance().creeConnexion();
@@ -46,13 +46,16 @@ public class MySQLAbonnementDAO implements AbonnementDAO{
 			ok = true;
 			}
 			else {
-				System.out.println("La date de debut est supperieur a la date de fin, Veuillez recommencer");
+				System.out.println("La date de debut est superieur a la date de fin, Veuillez recommencer");
 				ok = false;
+				throw new Exception("La date de debut est superieur a la date de fin, Veuillez recommencer");
 			}
 		}
 		catch(SQLException sqle){
 			System.out.println("Pb Abonnement.create " + sqle.getMessage());
 			ok = false;
+			throw new Exception("Pb Abonnement.create " + sqle.getMessage());
+			
 		}
 		return ok;
 	}
