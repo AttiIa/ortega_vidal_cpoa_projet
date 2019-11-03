@@ -76,7 +76,7 @@ public class CtrlAbonnement implements Initializable{
 	private Window vue;
 	
 	@SuppressWarnings("unchecked")
-	public TableView<Abonnement> tblAbonnement() {
+	public TableView<Abonnement> tblAbonnement() throws Exception {
 
 		TableColumn<Abonnement, String> colIdClient = new TableColumn<>("id_client");
 		TableColumn<Abonnement, String> colIdRevue = new TableColumn<>("id_revue");
@@ -123,7 +123,7 @@ public class CtrlAbonnement implements Initializable{
 	}
 	
 	@FXML
-	public void valider() {
+	public void valider() throws Exception {
 		Client idcli = id_client.getValue();
 		Revue idrev = id_revue.getValue();
 		
@@ -292,7 +292,7 @@ public class CtrlAbonnement implements Initializable{
 	}
 	
 	@FXML
-	public void recherche() {
+	public void recherche() throws Exception {
 		tblAbonnement.getItems().clear();
 		List<Abonnement> abonnement = CtrlAccueil.daoabo.findAll();
 		tblAbonnement.getItems().addAll(abonnement);

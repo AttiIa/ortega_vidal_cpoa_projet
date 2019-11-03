@@ -43,7 +43,7 @@ public class CtrlAbo implements Initializable{
 	private ComboBox<Revue> recherche_revue;
 	
 	@SuppressWarnings("unchecked")
-	public TableView<Abonnement> tblAbo() {
+	public TableView<Abonnement> tblAbo() throws Exception {
 
 		TableColumn<Abonnement, String> colIdClient = new TableColumn<>("id_client");
 		TableColumn<Abonnement, String> colIdRevue = new TableColumn<>("id_revue");
@@ -117,7 +117,7 @@ public class CtrlAbo implements Initializable{
 	}
 	
 	@FXML
-	public void recherche() {
+	public void recherche() throws Exception {
 		tblAbo.getItems().clear();
 		List<Abonnement> abonnement = CtrlAccueil.daoabo.getById_client(CtrlClient.id_cli);
 		tblAbo.getItems().addAll(abonnement);
