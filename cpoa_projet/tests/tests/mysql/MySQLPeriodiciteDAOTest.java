@@ -15,9 +15,8 @@ class MySQLPeriodiciteDAOTest {
 
 	@Test
 	void testCreate() throws Exception {
-		int id_periodicite = 11;
 		String libelle = "test";		
-		Periodicite per = new Periodicite(id_periodicite, libelle);
+		Periodicite per = new Periodicite(libelle);
 		
 		if(!mper.create(per)) {
 			fail("Pas implemente");
@@ -27,9 +26,8 @@ class MySQLPeriodiciteDAOTest {
 
 	@Test
 	void testDelete() throws Exception {
-		int id_periodicite = 22;
 		String libelle = "test";		
-		Periodicite per = new Periodicite(id_periodicite, libelle);
+		Periodicite per = new Periodicite(libelle);
 	
 		if(!mper.delete(per)) {
 			fail("Pas supprime");
@@ -38,9 +36,8 @@ class MySQLPeriodiciteDAOTest {
 
 	@Test
 	void testUpdate() throws Exception {
-		int id_periodicite = 33;
 		String libelle = "test";		
-		Periodicite per = new Periodicite(id_periodicite, libelle);
+		Periodicite per = new Periodicite(libelle);
 		
 		if(!mper.update(per)) { 
 			fail("Pas modifie");
@@ -50,9 +47,8 @@ class MySQLPeriodiciteDAOTest {
 
 	@Test
 	void testGetById() throws Exception {
-		int id_periodicite = 44;
 		String libelle = "test";		
-		Periodicite per = new Periodicite(id_periodicite, libelle);
+		Periodicite per = new Periodicite(libelle);
 		mper.create(per);
 		
 		if(!mper.getById(per.getId_periodicite()).equals(per)) {
@@ -65,9 +61,8 @@ class MySQLPeriodiciteDAOTest {
 	
 	@Test
 	void testFindAll() throws Exception {
-		int id_periodicite = 55;
 		String libelle = "test";		
-		Periodicite per = new Periodicite(id_periodicite, libelle);
+		Periodicite per = new Periodicite(libelle);
 		
 		if(mper.findAll()==null) {
 			mper.delete(per);
