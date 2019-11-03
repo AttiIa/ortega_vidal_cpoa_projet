@@ -207,12 +207,13 @@ public class CtrlAbonnement implements Initializable{
 	@FXML
 	public void delete() throws Exception {
 		try {
-			b_delete=true;
-			CtrlAccueil.daoabo.delete(tblAbonnement.getSelectionModel().getSelectedItem()); 
+			b_delete=true;			
 			affichage.setText(toString());
+			CtrlAccueil.daoabo.delete(tblAbonnement.getSelectionModel().getSelectedItem()); 
 	        List<Abonnement> abos = CtrlAccueil.daoabo.findAll();
 	        tblAbonnement.getItems().clear();
 	        tblAbonnement.getItems().addAll(abos);
+	        
 		} 
 		catch (Exception e) {
 			affichage.setText("");
