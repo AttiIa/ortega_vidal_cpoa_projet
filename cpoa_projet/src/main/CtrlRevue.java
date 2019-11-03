@@ -91,7 +91,7 @@ public class CtrlRevue implements Initializable {
 		colTarif.setCellValueFactory(new PropertyValueFactory<Revue, String>("tarif_numero"));
 		colPeriodicite.setCellValueFactory(new PropertyValueFactory<Revue, String>("id_periodicite"));
 		colVisuel.setCellValueFactory(new PropertyValueFactory<Revue, String>("visuel"));
-		colEnCours.setCellValueFactory(new PropertyValueFactory<Abonnement, String>("en_cours"));
+		colEnCours.setCellValueFactory(cellData -> Revue.getValue);
 
 		tblRevue.getColumns().setAll(colIdRevue, colTitre, colDescription, colTarif, colPeriodicite, colVisuel, colEnCours);
 
