@@ -4,9 +4,9 @@ Pour afficher le nombre d'abonnement en cours dans revue il faut sélectionner l
 La répartition des tâches n'est pas très précise car dès que l'un avais un problème l'autre allait l'aider.
 TD1:
   Classe :  Abonnement: Jérémie Ortega
-            Client Thomas: Vidal
+            Client: Thomas Vidal
             connexion: Thomas Vidal
-            main Jérémie: Ortega
+            main: Jérémie Ortega
             Periodicite: Thomas Vidal
             Revue: Jérémie Ortega
  TD2
